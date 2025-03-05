@@ -64,8 +64,10 @@ namespace UniSync.Data
                 .HasConversion<int>();
 
             modelBuilder.Entity<User>()
-                .Property(u => u.SpecialtyId)
-                .HasConversion<int?>();
+                   .HasOne(u => u.Specialty)
+                   .WithMany(s => s.Users)
+                   .HasForeignKey(u => u.SpecialtyId)
+                   .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

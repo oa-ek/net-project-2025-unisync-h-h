@@ -5,7 +5,7 @@ namespace UniSync.Models.Entity
     public class User
     {
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
 
         [Required, EmailAddress]
         public string Email { get; set; }

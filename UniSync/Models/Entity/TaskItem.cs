@@ -5,7 +5,7 @@ namespace UniSync.Models.Entity
     public class TaskItem
     {
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public int ProjectId { get; set; }

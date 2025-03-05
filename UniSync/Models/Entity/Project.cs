@@ -5,10 +5,10 @@ namespace UniSync.Models.Entity
     public class Project
     {
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public int SubjectId { get; set; }
+        public int? SubjectId { get; set; }
         public Subject Subject { get; set; }
 
         [Required]

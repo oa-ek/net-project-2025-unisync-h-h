@@ -15,7 +15,7 @@ namespace UniSync.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -28,7 +28,7 @@ namespace UniSync.Migrations
                 name: "Specialties",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -41,7 +41,7 @@ namespace UniSync.Migrations
                 name: "Tags",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -54,7 +54,7 @@ namespace UniSync.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -62,45 +62,43 @@ namespace UniSync.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SpecialtyId = table.Column<int>(type: "int", nullable: true),
-                    SpecialtyId1 = table.Column<long>(type: "bigint", nullable: true),
                     Course = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Specialties_SpecialtyId1",
-                        column: x => x.SpecialtyId1,
+                        name: "FK_Users_Specialties_SpecialtyId",
+                        column: x => x.SpecialtyId,
                         principalTable: "Specialties",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Articles",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    UserId1 = table.Column<long>(type: "bigint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SpecialtyId = table.Column<int>(type: "int", nullable: true),
-                    SpecialtyId1 = table.Column<long>(type: "bigint", nullable: true),
                     Course = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Articles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Articles_Specialties_SpecialtyId1",
-                        column: x => x.SpecialtyId1,
+                        name: "FK_Articles_Specialties_SpecialtyId",
+                        column: x => x.SpecialtyId,
                         principalTable: "Specialties",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Articles_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Articles_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -110,18 +108,17 @@ namespace UniSync.Migrations
                 name: "Subjects",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UserId1 = table.Column<long>(type: "bigint", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Subjects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Subjects_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Subjects_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -131,8 +128,8 @@ namespace UniSync.Migrations
                 name: "ArticleTags",
                 columns: table => new
                 {
-                    ArticlesId = table.Column<long>(type: "bigint", nullable: false),
-                    TagsId = table.Column<long>(type: "bigint", nullable: false)
+                    ArticlesId = table.Column<int>(type: "int", nullable: false),
+                    TagsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -152,42 +149,40 @@ namespace UniSync.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ArticleId = table.Column<long>(type: "bigint", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UserId1 = table.Column<long>(type: "bigint", nullable: false),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comments_Articles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comments_Users_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
+    name: "Comments",
+    columns: table => new
+    {
+        Id = table.Column<int>(nullable: false)
+            .Annotation("SqlServer:Identity", "1, 1"),
+        ArticleId = table.Column<int>(nullable: false),
+        UserId = table.Column<int>(nullable: false),
+        Text = table.Column<string>(nullable: false),
+        CreatedAt = table.Column<DateTime>(nullable: false)
+    },
+    constraints: table =>
+    {
+        table.PrimaryKey("PK_Comments", x => x.Id);
+        table.ForeignKey(
+            name: "FK_Comments_Articles_ArticleId",
+            column: x => x.ArticleId,
+            principalTable: "Articles",
+            principalColumn: "Id",
+            onDelete: ReferentialAction.Cascade); // Можна змінити на NO ACTION
+        table.ForeignKey(
+            name: "FK_Comments_Users_UserId",
+            column: x => x.UserId,
+            principalTable: "Users",
+            principalColumn: "Id",
+            onDelete: ReferentialAction.NoAction); // Оновлено до NoAction
+    });
 
             migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SubjectId = table.Column<int>(type: "int", nullable: false),
-                    SubjectId1 = table.Column<long>(type: "bigint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -201,8 +196,8 @@ namespace UniSync.Migrations
                 {
                     table.PrimaryKey("PK_Projects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Projects_Subjects_SubjectId1",
-                        column: x => x.SubjectId1,
+                        name: "FK_Projects_Subjects_SubjectId",
+                        column: x => x.SubjectId,
                         principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -212,8 +207,8 @@ namespace UniSync.Migrations
                 name: "ProjectCategories",
                 columns: table => new
                 {
-                    CategoriesId = table.Column<long>(type: "bigint", nullable: false),
-                    ProjectsId = table.Column<long>(type: "bigint", nullable: false)
+                    CategoriesId = table.Column<int>(type: "int", nullable: false),
+                    ProjectsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -236,10 +231,9 @@ namespace UniSync.Migrations
                 name: "Tasks",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProjectId = table.Column<int>(type: "int", nullable: false),
-                    ProjectId1 = table.Column<long>(type: "bigint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -252,22 +246,22 @@ namespace UniSync.Migrations
                 {
                     table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tasks_Projects_ProjectId1",
-                        column: x => x.ProjectId1,
+                        name: "FK_Tasks_Projects_ProjectId",
+                        column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_SpecialtyId1",
+                name: "IX_Articles_SpecialtyId",
                 table: "Articles",
-                column: "SpecialtyId1");
+                column: "SpecialtyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_UserId1",
+                name: "IX_Articles_UserId",
                 table: "Articles",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArticleTags_TagsId",
@@ -280,9 +274,9 @@ namespace UniSync.Migrations
                 column: "ArticleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_UserId1",
+                name: "IX_Comments_UserId",
                 table: "Comments",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectCategories_ProjectsId",
@@ -290,24 +284,24 @@ namespace UniSync.Migrations
                 column: "ProjectsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_SubjectId1",
+                name: "IX_Projects_SubjectId",
                 table: "Projects",
-                column: "SubjectId1");
+                column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subjects_UserId1",
+                name: "IX_Subjects_UserId",
                 table: "Subjects",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_ProjectId1",
+                name: "IX_Tasks_ProjectId",
                 table: "Tasks",
-                column: "ProjectId1");
+                column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_SpecialtyId1",
+                name: "IX_Users_SpecialtyId",
                 table: "Users",
-                column: "SpecialtyId1");
+                column: "SpecialtyId");
         }
 
         /// <inheritdoc />

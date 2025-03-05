@@ -12,7 +12,7 @@ using UniSync.Data;
 namespace UniSync.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250305225208_InitialCreate")]
+    [Migration("20250305231937_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,11 +27,11 @@ namespace UniSync.Migrations
 
             modelBuilder.Entity("ArticleTag", b =>
                 {
-                    b.Property<long>("ArticlesId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("ArticlesId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("TagsId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("TagsId")
+                        .HasColumnType("int");
 
                     b.HasKey("ArticlesId", "TagsId");
 
@@ -42,11 +42,11 @@ namespace UniSync.Migrations
 
             modelBuilder.Entity("CategoryProject", b =>
                 {
-                    b.Property<long>("CategoriesId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("ProjectsId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("ProjectsId")
+                        .HasColumnType("int");
 
                     b.HasKey("CategoriesId", "ProjectsId");
 
@@ -57,11 +57,11 @@ namespace UniSync.Migrations
 
             modelBuilder.Entity("UniSync.Models.Entity.Article", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -76,9 +76,6 @@ namespace UniSync.Migrations
                     b.Property<int?>("SpecialtyId")
                         .HasColumnType("int");
 
-                    b.Property<long?>("SpecialtyId1")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -86,25 +83,22 @@ namespace UniSync.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<long>("UserId1")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SpecialtyId1");
+                    b.HasIndex("SpecialtyId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.Category", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -123,8 +117,8 @@ namespace UniSync.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<long>("ArticleId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -136,25 +130,22 @@ namespace UniSync.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<long>("UserId1")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ArticleId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.Project", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -179,9 +170,6 @@ namespace UniSync.Migrations
                     b.Property<int>("SubjectId")
                         .HasColumnType("int");
 
-                    b.Property<long>("SubjectId1")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -191,18 +179,18 @@ namespace UniSync.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SubjectId1");
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.Specialty", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -215,11 +203,11 @@ namespace UniSync.Migrations
 
             modelBuilder.Entity("UniSync.Models.Entity.Subject", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -228,23 +216,20 @@ namespace UniSync.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<long>("UserId1")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.Tag", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -257,11 +242,11 @@ namespace UniSync.Migrations
 
             modelBuilder.Entity("UniSync.Models.Entity.TaskItem", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -278,9 +263,6 @@ namespace UniSync.Migrations
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<long>("ProjectId1")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -294,18 +276,18 @@ namespace UniSync.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectId1");
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("Course")
                         .HasColumnType("int");
@@ -333,12 +315,9 @@ namespace UniSync.Migrations
                     b.Property<int?>("SpecialtyId")
                         .HasColumnType("int");
 
-                    b.Property<long?>("SpecialtyId1")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SpecialtyId1");
+                    b.HasIndex("SpecialtyId");
 
                     b.ToTable("Users");
                 });
@@ -377,11 +356,11 @@ namespace UniSync.Migrations
                 {
                     b.HasOne("UniSync.Models.Entity.Specialty", "Specialty")
                         .WithMany()
-                        .HasForeignKey("SpecialtyId1");
+                        .HasForeignKey("SpecialtyId");
 
                     b.HasOne("UniSync.Models.Entity.User", "User")
                         .WithMany("Articles")
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -400,7 +379,7 @@ namespace UniSync.Migrations
 
                     b.HasOne("UniSync.Models.Entity.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -413,7 +392,7 @@ namespace UniSync.Migrations
                 {
                     b.HasOne("UniSync.Models.Entity.Subject", "Subject")
                         .WithMany()
-                        .HasForeignKey("SubjectId1")
+                        .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -424,7 +403,7 @@ namespace UniSync.Migrations
                 {
                     b.HasOne("UniSync.Models.Entity.User", "User")
                         .WithMany("Subjects")
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -435,7 +414,7 @@ namespace UniSync.Migrations
                 {
                     b.HasOne("UniSync.Models.Entity.Project", "Project")
                         .WithMany("Tasks")
-                        .HasForeignKey("ProjectId1")
+                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -446,7 +425,8 @@ namespace UniSync.Migrations
                 {
                     b.HasOne("UniSync.Models.Entity.Specialty", "Specialty")
                         .WithMany("Users")
-                        .HasForeignKey("SpecialtyId1");
+                        .HasForeignKey("SpecialtyId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Specialty");
                 });

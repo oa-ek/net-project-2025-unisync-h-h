@@ -5,7 +5,7 @@ namespace UniSync.Models.Entity
     public class Category
     {
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Title { get; set; }

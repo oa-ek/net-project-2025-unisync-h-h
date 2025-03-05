@@ -6,7 +6,7 @@ namespace UniSync.Models.Entity
     public class Article
     {
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public int UserId { get; set; }
