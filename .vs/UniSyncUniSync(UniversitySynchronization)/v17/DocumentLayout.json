@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\models\\entity\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\models\\entity\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\unisync.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\unisync.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\obj\\project.nuget.cache||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\obj\\project.nuget.cache||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\obj\\project.assets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\obj\\project.assets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\obj\\unisync.csproj.nuget.dgspec.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\obj\\unisync.csproj.nuget.dgspec.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\obj\\debug\\net8.0\\unisync.generatedmsbuildeditorconfig.editorconfig||{68B46364-D378-42F2-9E72-37D86C5F4468}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\obj\\debug\\net8.0\\unisync.generatedmsbuildeditorconfig.editorconfig||{68B46364-D378-42F2-9E72-37D86C5F4468}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\obj\\debug\\net8.0\\unisync.assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\obj\\debug\\net8.0\\unisync.assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\obj\\debug\\net8.0\\unisync.assemblyinfoinputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\obj\\debug\\net8.0\\unisync.assemblyinfoinputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\obj\\debug\\net8.0\\staticwebassets.uptodatecheck.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\obj\\debug\\net8.0\\staticwebassets.uptodatecheck.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\models\\entity\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\models\\entity\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisyncunisync(universitysynchronization)\\unisync\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -22,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1257,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,20 +74,149 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "project.nuget.cache",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\project.nuget.cache",
+              "RelativeDocumentMoniker": "UniSync\\obj\\project.nuget.cache",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\project.nuget.cache",
+              "RelativeToolTip": "UniSync\\obj\\project.nuget.cache",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002368|",
+              "WhenOpened": "2025-03-05T21:05:42.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "project.assets.json",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\project.assets.json",
+              "RelativeDocumentMoniker": "UniSync\\obj\\project.assets.json",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\project.assets.json",
+              "RelativeToolTip": "UniSync\\obj\\project.assets.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-05T21:05:17.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UniSync.csproj.nuget.dgspec.json",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\UniSync.csproj.nuget.dgspec.json",
+              "RelativeDocumentMoniker": "UniSync\\obj\\UniSync.csproj.nuget.dgspec.json",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\UniSync.csproj.nuget.dgspec.json",
+              "RelativeToolTip": "UniSync\\obj\\UniSync.csproj.nuget.dgspec.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-05T21:04:27.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UniSync.GeneratedMSBuildEditorConfig.editorconfig",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\UniSync.GeneratedMSBuildEditorConfig.editorconfig",
+              "RelativeDocumentMoniker": "UniSync\\obj\\Debug\\net8.0\\UniSync.GeneratedMSBuildEditorConfig.editorconfig",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\UniSync.GeneratedMSBuildEditorConfig.editorconfig",
+              "RelativeToolTip": "UniSync\\obj\\Debug\\net8.0\\UniSync.GeneratedMSBuildEditorConfig.editorconfig",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-05T21:00:51.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UniSync",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\UniSync.csproj",
+              "RelativeDocumentMoniker": "UniSync\\UniSync.csproj",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\UniSync.csproj",
+              "RelativeToolTip": "UniSync\\UniSync.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-05T20:37:43.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "staticwebassets.upToDateCheck.txt",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\staticwebassets.upToDateCheck.txt",
+              "RelativeDocumentMoniker": "UniSync\\obj\\Debug\\net8.0\\staticwebassets.upToDateCheck.txt",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\staticwebassets.upToDateCheck.txt",
+              "RelativeToolTip": "UniSync\\obj\\Debug\\net8.0\\staticwebassets.upToDateCheck.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-03-05T20:47:58.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "UniSync\\Properties\\launchSettings.json",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\Properties\\launchSettings.json",
+              "RelativeToolTip": "UniSync\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-05T20:38:20.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\appsettings.json",
+              "RelativeDocumentMoniker": "UniSync\\appsettings.json",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\appsettings.json",
+              "RelativeToolTip": "UniSync\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-05T19:55:06.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UniSync.AssemblyInfo.cs",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfo.cs",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfo.cs",
+              "RelativeToolTip": "UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfo.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:47:24.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UniSync.AssemblyInfoInputs.cache",
+              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfoInputs.cache",
+              "RelativeDocumentMoniker": "UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfoInputs.cache",
+              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfoInputs.cache",
+              "RelativeToolTip": "UniSync\\obj\\Debug\\net8.0\\UniSync.AssemblyInfoInputs.cache",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002368|",
+              "WhenOpened": "2025-03-05T20:47:55.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Article.cs",
               "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\Models\\Entity\\Article.cs",
               "RelativeDocumentMoniker": "UniSync\\Models\\Entity\\Article.cs",
               "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\Models\\Entity\\Article.cs",
               "RelativeToolTip": "UniSync\\Models\\Entity\\Article.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-05T19:58:28.321Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "docker-compose.yml",
               "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\docker-compose.yml",
               "RelativeDocumentMoniker": "UniSync\\docker-compose.yml",
@@ -59,21 +224,7 @@
               "RelativeToolTip": "UniSync\\docker-compose.yml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-03-05T19:56:45.96Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\appsettings.json",
-              "RelativeDocumentMoniker": "UniSync\\appsettings.json",
-              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\appsettings.json",
-              "RelativeToolTip": "UniSync\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-05T19:55:06.214Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T19:56:45.96Z"
             }
           ]
         },
