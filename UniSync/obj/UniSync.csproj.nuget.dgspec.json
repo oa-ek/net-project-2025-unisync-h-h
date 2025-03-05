@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\UniSync.csproj": {}
+    "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj": {}
   },
   "projects": {
-    "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\UniSync.csproj": {
+    "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\UniSync.csproj",
+        "projectUniqueName": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj",
         "projectName": "UniSync",
-        "projectPath": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\UniSync.csproj",
-        "packagesPath": "C:\\Users\\Huliiev\\.nuget\\packages\\",
-        "outputPath": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSyncUniSync(UniversitySynchronization)\\UniSync\\obj\\",
+        "projectPath": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj",
+        "packagesPath": "C:\\Users\\naezz\\.nuget\\packages\\",
+        "outputPath": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "F:\\Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Huliiev\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\naezz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,12 +40,27 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -68,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
