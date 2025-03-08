@@ -1,0 +1,48 @@
+[33mcommit 678c36e389174e3b893f617233863e9f3f2fc071[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mInterface[m[33m, [m[1;31morigin/Interface[m[33m)[m
+Author: Stanislav-creator-bin-h <naezze@gmail.com>
+Date:   Thu Mar 6 01:32:04 2025 +0200
+
+    Created Migration
+
+[33mcommit 4939c647546eeaf7a3730c218c28f400a0998efa[m
+Author: Stanislav-creator-bin-h <naezze@gmail.com>
+Date:   Thu Mar 6 01:01:38 2025 +0200
+
+    Created Migration
+
+[33mcommit 2714a2a2682544c8d032ce0ebc2050597da1849d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: af861e1 bb8742c
+Author: Artur Huliiev <artur.huliiev@oa.edu.ua>
+Date:   Wed Mar 5 23:17:01 2025 +0200
+
+    mergin develop changes into the main branch and resolving conflicts”
+
+[33mcommit af861e1e9bf2c3f2442f6a448589912adc6854ee[m
+Author: Artur Huliiev <artur.huliiev@oa.edu.ua>
+Date:   Wed Mar 5 22:04:58 2025 +0200
+
+    Created entity classes
+
+[33mcommit bb8742c08e837da3ee926d41f410089a0f780da1[m
+Author: Artur Huliiev <artur.huliiev@oa.edu.ua>
+Date:   Wed Mar 5 15:45:36 2025 +0200
+
+    repeated initial commit
+
+[33mcommit 8a1125a129a8e5afb3aa67441295a984dfbe3fb1[m
+Author: Artur Huliiev <artur.huliiev@oa.edu.ua>
+Date:   Wed Mar 5 15:06:36 2025 +0200
+
+    Add .gitignore file
+
+[33mcommit 40d084225390b7ce6df8aa782684ab16d2cac7b0[m
+Author: Artur Huliiev <artur.huliiev@oa.edu.ua>
+Date:   Wed Mar 5 14:41:29 2025 +0200
+
+    inital commit
+
+[33mcommit 5fc2dc2780e0639946e6ab89d4bbed07103feef2[m
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Wed Mar 5 12:07:39 2025 +0000
+
+    add deadline
