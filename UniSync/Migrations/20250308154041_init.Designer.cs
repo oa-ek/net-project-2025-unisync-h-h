@@ -12,7 +12,7 @@ using UniSync.Data;
 namespace UniSync.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250308114503_init")]
+    [Migration("20250308154041_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -156,12 +156,12 @@ namespace UniSync.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Priority")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Progress")
+                    b.Property<string>("Priority")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Progress")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -172,7 +172,8 @@ namespace UniSync.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");

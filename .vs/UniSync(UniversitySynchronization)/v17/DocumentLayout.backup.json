@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync CRUD\\net-project-2025-unisync-h-h\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync crud\\net-project-2025-unisync-h-h\\unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync crud\\net-project-2025-unisync-h-h\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -23,6 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync CRUD\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "UniSync\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync CRUD\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "UniSync\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAEQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-08T15:59:32.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync CRUD\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "UniSync\\Views\\Shared\\_Layout.cshtml",
