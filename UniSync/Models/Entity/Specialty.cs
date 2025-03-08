@@ -11,5 +11,6 @@ namespace UniSync.Models.Entity
         public string Title { get; set; }
 
         public ICollection<User> Users { get; set; }
+        public ICollection<Article> Articles { get; set; }
     }
 }

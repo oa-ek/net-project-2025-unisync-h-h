@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UniSync.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -95,7 +95,8 @@ namespace UniSync.Migrations
                         name: "FK_Articles_Specialties_SpecialtyId",
                         column: x => x.SpecialtyId,
                         principalTable: "Specialties",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Articles_Users_UserId",
                         column: x => x.UserId,
@@ -149,32 +150,31 @@ namespace UniSync.Migrations
                 });
 
             migrationBuilder.CreateTable(
-    name: "Comments",
-    columns: table => new
-    {
-        Id = table.Column<int>(nullable: false)
-            .Annotation("SqlServer:Identity", "1, 1"),
-        ArticleId = table.Column<int>(nullable: false),
-        UserId = table.Column<int>(nullable: false),
-        Text = table.Column<string>(nullable: false),
-        CreatedAt = table.Column<DateTime>(nullable: false)
-    },
-    constraints: table =>
-    {
-        table.PrimaryKey("PK_Comments", x => x.Id);
-        table.ForeignKey(
-            name: "FK_Comments_Articles_ArticleId",
-            column: x => x.ArticleId,
-            principalTable: "Articles",
-            principalColumn: "Id",
-            onDelete: ReferentialAction.Cascade); // Можна змінити на NO ACTION
-        table.ForeignKey(
-            name: "FK_Comments_Users_UserId",
-            column: x => x.UserId,
-            principalTable: "Users",
-            principalColumn: "Id",
-            onDelete: ReferentialAction.NoAction); // Оновлено до NoAction
-    });
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ArticleId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Articles_ArticleId",
+                        column: x => x.ArticleId,
+                        principalTable: "Articles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Comments_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Projects",

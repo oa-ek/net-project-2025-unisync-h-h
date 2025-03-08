@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 using UniSync.Models.Entity;
 
 namespace UniSync.Data
@@ -26,48 +24,63 @@ namespace UniSync.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure many-to-many relationship between Article and Tag
+            modelBuilder.Entity<Article>()
+                .HasOne(a => a.User)
+                .WithMany(u => u.Articles)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Article>()
+                .HasOne(a => a.Specialty)
+                .WithMany(s => s.Articles)
+                .HasForeignKey(a => a.SpecialtyId)
+                .OnDelete(DeleteBehavior.SetNull);
+
             modelBuilder.Entity<Article>()
                 .HasMany(a => a.Tags)
                 .WithMany(t => t.Articles)
                 .UsingEntity(j => j.ToTable("ArticleTags"));
 
-            // Configure many-to-many relationship between Project and Category
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Article)
+                .WithMany(a => a.Comments)
+                .HasForeignKey(c => c.ArticleId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Comments)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Project>()
                 .HasMany(p => p.Categories)
                 .WithMany(c => c.Projects)
                 .UsingEntity(j => j.ToTable("ProjectCategories"));
 
-            // Fix the property types to match the navigation properties
-            modelBuilder.Entity<Article>()
-                .Property(a => a.UserId)
-                .HasConversion<int>();
-
-            modelBuilder.Entity<Article>()
-                .Property(a => a.SpecialtyId)
-                .HasConversion<int?>();
-
-            modelBuilder.Entity<Comment>()
-                .Property(c => c.UserId)
-                .HasConversion<int>();
-
             modelBuilder.Entity<Project>()
-                .Property(p => p.SubjectId)
-                .HasConversion<int>();
+                .HasOne(p => p.Subject)
+                .WithMany()
+                .HasForeignKey(p => p.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Subject>()
-                .Property(s => s.UserId)
-                .HasConversion<int>();
+                .HasOne(s => s.User)
+                .WithMany(u => u.Subjects)
+                .HasForeignKey(s => s.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TaskItem>()
-                .Property(t => t.ProjectId)
-                .HasConversion<int>();
+                .HasOne(t => t.Project)
+                .WithMany(p => p.Tasks)
+                .HasForeignKey(t => t.ProjectId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<User>()
-                   .HasOne(u => u.Specialty)
-                   .WithMany(s => s.Users)
-                   .HasForeignKey(u => u.SpecialtyId)
-                   .OnDelete(DeleteBehavior.SetNull);
+                .HasOne(u => u.Specialty)
+                .WithMany(s => s.Users)
+                .HasForeignKey(u => u.SpecialtyId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

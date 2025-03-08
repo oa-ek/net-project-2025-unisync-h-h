@@ -10,7 +10,7 @@ namespace UniSync.Models.Entity
         [Required, EmailAddress]
         public string Email { get; set; }
 
-        [Required, /*Range(7, 20)*/]
+        [Required]
         public string Password { get; set; }
 
         [Required]
@@ -30,5 +30,6 @@ namespace UniSync.Models.Entity
 
         public ICollection<Article> Articles { get; set; }
         public ICollection<Subject> Subjects { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

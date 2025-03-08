@@ -352,8 +352,9 @@ namespace UniSync.Migrations
             modelBuilder.Entity("UniSync.Models.Entity.Article", b =>
                 {
                     b.HasOne("UniSync.Models.Entity.Specialty", "Specialty")
-                        .WithMany()
-                        .HasForeignKey("SpecialtyId");
+                        .WithMany("Articles")
+                        .HasForeignKey("SpecialtyId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("UniSync.Models.Entity.User", "User")
                         .WithMany("Articles")
@@ -375,9 +376,9 @@ namespace UniSync.Migrations
                         .IsRequired();
 
                     b.HasOne("UniSync.Models.Entity.User", "User")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Article");
@@ -440,12 +441,16 @@ namespace UniSync.Migrations
 
             modelBuilder.Entity("UniSync.Models.Entity.Specialty", b =>
                 {
+                    b.Navigation("Articles");
+
                     b.Navigation("Users");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.User", b =>
                 {
                     b.Navigation("Articles");
+
+                    b.Navigation("Comments");
 
                     b.Navigation("Subjects");
                 });

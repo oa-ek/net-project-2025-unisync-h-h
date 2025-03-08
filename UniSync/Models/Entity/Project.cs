@@ -8,7 +8,7 @@ namespace UniSync.Models.Entity
         public int Id { get; set; }
 
         [Required]
-        public int? SubjectId { get; set; }
+        public int SubjectId { get; set; } // Прибрано ?
         public Subject Subject { get; set; }
 
         [Required]
