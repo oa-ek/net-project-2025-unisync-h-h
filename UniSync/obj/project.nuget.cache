@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "azmlaWkBf+Y=",
+  "dgSpecHash": "XWKtcWfmEoI=",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
+  "projectFilePath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\UniSync.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\naezz\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\naezz\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

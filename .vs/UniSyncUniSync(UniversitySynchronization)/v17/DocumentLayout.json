@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync CRUD\\net-project-2025-unisync-h-h\\",
+  "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync crud\\net-project-2025-unisync-h-h\\unisync\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -23,15 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProjectsController.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync CRUD\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\ProjectsController.cs",
-              "RelativeDocumentMoniker": "UniSync\\Controllers\\ProjectsController.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync CRUD\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\ProjectsController.cs",
-              "RelativeToolTip": "UniSync\\Controllers\\ProjectsController.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAcwKEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T14:19:49.509Z",
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "UniSync\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "UniSync\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAADMBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-08T16:53:56.475Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "UniSync\\Controllers\\ProjectsController.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "UniSync\\Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAywKEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T14:19:49.509Z"
             }
           ]
         }
