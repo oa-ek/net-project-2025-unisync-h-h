@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using UniSync.Data;
+using UniSync.Data; // Використовуємо UniSyncContext
 using UniSync.Models.Entity;
 
 namespace UniSync.Controllers
 {
     public class ProjectsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly UniSyncContext _context; // Замінюємо ApplicationDbContext на UniSyncContext
 
-        public ProjectsController(ApplicationDbContext context)
+        public ProjectsController(UniSyncContext context) // Оновлюємо конструктор
         {
             _context = context;
         }

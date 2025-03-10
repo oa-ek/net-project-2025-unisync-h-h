@@ -1,32 +1,47 @@
 using Microsoft.EntityFrameworkCore;
 using UniSync.Data;
+using UniSync.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Додаємо сервіси
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages(); // Підтримка Razor Pages для Identity
 
-// Add DbContext configuration
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+// Додаємо DbContext
+builder.Services.AddDbContext<UniSyncContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Додаємо Identity
+builder.Services.AddDefaultIdentity<UniSyncUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 8;
+})
+.AddEntityFrameworkStores<UniSyncContext>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Конфігурація HTTP pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapRazorPages(); // Маршрути для Razor Pages (Identity)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

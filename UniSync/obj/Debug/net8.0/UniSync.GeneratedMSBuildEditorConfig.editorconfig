@@ -17,59 +17,123 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UniSync
 build_property.RootNamespace = UniSync
-build_property.ProjectDir = D:\Visual Studio\Project\UniSync\net-project-2025-unisync-h-h\UniSync\
+build_property.ProjectDir = D:\Visual Studio\Project\UniSync\net-project-2025-unisync-h-h - Copy\UniSync\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Visual Studio\Project\UniSync\net-project-2025-unisync-h-h\UniSync
+build_property.MSBuildProjectDirectory = D:\Visual Studio\Project\UniSync\net-project-2025-unisync-h-h - Copy\UniSync
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Home/Index.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Home/Privacy.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Projects/Create.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Projects/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Projects/Delete.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Projects/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Projects/Details.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Projects/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Projects/Edit.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Projects/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Projects/Index.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Projects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Shared/Error.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/_ViewImports.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/_ViewStart.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Shared/_Layout.cshtml]
+[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h - Copy/UniSync/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7xzsmq29xy
