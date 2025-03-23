@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UniSync.Areas.Identity.Data;
 
 namespace UniSync.Models.Entity
 {
@@ -10,7 +11,7 @@ namespace UniSync.Models.Entity
         [Required]
         public string Title { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public ICollection<UniSyncUser> Users { get; set; }
         public ICollection<Article> Articles { get; set; }
     }
 }

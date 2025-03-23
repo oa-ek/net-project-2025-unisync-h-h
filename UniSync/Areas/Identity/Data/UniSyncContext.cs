@@ -8,9 +8,10 @@ namespace UniSync.Data
     public class UniSyncContext : IdentityDbContext<UniSyncUser>
     {
         public UniSyncContext(DbContextOptions<UniSyncContext> options)
-            : base(options) { }
+            : base(options)
+        {
+        }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Project> Projects { get; set; }
@@ -76,7 +77,7 @@ namespace UniSync.Data
                 .HasForeignKey(t => t.ProjectId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<UniSyncUser>()
                 .HasOne(u => u.Specialty)
                 .WithMany(s => s.Users)
                 .HasForeignKey(u => u.SpecialtyId)

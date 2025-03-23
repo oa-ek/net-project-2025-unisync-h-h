@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UniSync.Areas.Identity.Data;
 
 namespace UniSync.Models.Entity
 {
@@ -8,8 +9,8 @@ namespace UniSync.Models.Entity
         public int Id { get; set; }
 
         [Required]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        public string UserId { get; set; }
+        public UniSyncUser User { get; set; }
 
         [Required]
         public DateTime CreatedAt { get; set; }
@@ -25,7 +26,7 @@ namespace UniSync.Models.Entity
 
         public int? Course { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<Tag> Tags { get; set; }
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
     }
 }

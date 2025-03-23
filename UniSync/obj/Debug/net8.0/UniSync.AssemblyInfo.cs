@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UniSync")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8653e90eb9df55ca8c6b543e05b226d2456b1b32")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3506d2ebda6aa1b2cf8b3246d83b0157818d5879")]
 [assembly: System.Reflection.AssemblyProductAttribute("UniSync")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UniSync")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

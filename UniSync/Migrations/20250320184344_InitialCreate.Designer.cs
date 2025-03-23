@@ -12,8 +12,8 @@ using UniSync.Data;
 namespace UniSync.Migrations
 {
     [DbContext(typeof(UniSyncContext))]
-    [Migration("20250310174815_InitialIdentitySetup")]
-    partial class InitialIdentitySetup
+    [Migration("20250320184344_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -135,12 +135,10 @@ namespace UniSync.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -177,12 +175,10 @@ namespace UniSync.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -254,6 +250,9 @@ namespace UniSync.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -269,6 +268,8 @@ namespace UniSync.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.HasIndex("SpecialtyId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -298,7 +299,11 @@ namespace UniSync.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("UserId1")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -306,6 +311,8 @@ namespace UniSync.Migrations
                     b.HasIndex("SpecialtyId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Articles");
                 });
@@ -345,7 +352,11 @@ namespace UniSync.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("UserId1")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -353,6 +364,8 @@ namespace UniSync.Migrations
                     b.HasIndex("ArticleId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Comments");
                 });
@@ -432,12 +445,18 @@ namespace UniSync.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("UserId1")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Subjects");
                 });
@@ -538,7 +557,7 @@ namespace UniSync.Migrations
 
                     b.HasIndex("SpecialtyId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("ArticleTag", b =>
@@ -625,10 +644,19 @@ namespace UniSync.Migrations
             modelBuilder.Entity("UniSync.Areas.Identity.Data.UniSyncUser", b =>
                 {
                     b.HasOne("UniSync.Models.Entity.Specialty", "Specialty")
+                        .WithMany("Users")
+                        .HasForeignKey("SpecialtyId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("UniSync.Models.Entity.User", "User")
                         .WithMany()
-                        .HasForeignKey("SpecialtyId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Specialty");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.Article", b =>
@@ -638,11 +666,15 @@ namespace UniSync.Migrations
                         .HasForeignKey("SpecialtyId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("UniSync.Models.Entity.User", "User")
+                    b.HasOne("UniSync.Areas.Identity.Data.UniSyncUser", "User")
                         .WithMany("Articles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("UniSync.Models.Entity.User", null)
+                        .WithMany("Articles")
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Specialty");
 
@@ -657,11 +689,15 @@ namespace UniSync.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UniSync.Models.Entity.User", "User")
+                    b.HasOne("UniSync.Areas.Identity.Data.UniSyncUser", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("UniSync.Models.Entity.User", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Article");
 
@@ -681,11 +717,15 @@ namespace UniSync.Migrations
 
             modelBuilder.Entity("UniSync.Models.Entity.Subject", b =>
                 {
-                    b.HasOne("UniSync.Models.Entity.User", "User")
+                    b.HasOne("UniSync.Areas.Identity.Data.UniSyncUser", "User")
                         .WithMany("Subjects")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("UniSync.Models.Entity.User", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });
@@ -704,11 +744,19 @@ namespace UniSync.Migrations
             modelBuilder.Entity("UniSync.Models.Entity.User", b =>
                 {
                     b.HasOne("UniSync.Models.Entity.Specialty", "Specialty")
-                        .WithMany("Users")
-                        .HasForeignKey("SpecialtyId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .WithMany()
+                        .HasForeignKey("SpecialtyId");
 
                     b.Navigation("Specialty");
+                });
+
+            modelBuilder.Entity("UniSync.Areas.Identity.Data.UniSyncUser", b =>
+                {
+                    b.Navigation("Articles");
+
+                    b.Navigation("Comments");
+
+                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.Article", b =>

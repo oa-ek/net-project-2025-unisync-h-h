@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UniSync.Areas.Identity.Data;
 
 namespace UniSync.Models.Entity
 {
@@ -12,8 +13,8 @@ namespace UniSync.Models.Entity
         public Article Article { get; set; }
 
         [Required]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        public string UserId { get; set; }
+        public UniSyncUser User { get; set; }
 
         [Required]
         public string Text { get; set; }

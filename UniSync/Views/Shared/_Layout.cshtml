@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<UniSync.Areas.Identity.Data.UniSyncUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -62,10 +65,17 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
+                            var user = await UserManager.GetUserAsync(User);
                             <div class="dropdown">
                                 <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="avatar-initials me-2">@User.Identity.Name.Split(' ')[0][0]@User.Identity.Name.Split(' ')[1][0]</span>
-                                    <span class="d-none d-md-inline">@User.Identity.Name</span>
+                                    <span class="avatar-initials me-2">
+                                        @{
+                                            var firstInitial = !string.IsNullOrEmpty(user?.FirstName) ? user.FirstName[0] : '?';
+                                            var secondInitial = !string.IsNullOrEmpty(user?.LastName) ? user.LastName[0] : ' ';
+                                        }
+                                        @firstInitial@secondInitial
+                                    </span>
+                                    <span class="d-none d-md-inline">@(user?.FirstName) @(user?.LastName)</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
                                     <li>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\UniSync.csproj": {}
+    "D:\\Visual Studio\\Project\\UniSync\\Register_Login\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\UniSync.csproj": {
+    "D:\\Visual Studio\\Project\\UniSync\\Register_Login\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\UniSync.csproj",
+        "projectUniqueName": "D:\\Visual Studio\\Project\\UniSync\\Register_Login\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
         "projectName": "UniSync",
-        "projectPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\UniSync.csproj",
+        "projectPath": "D:\\Visual Studio\\Project\\UniSync\\Register_Login\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
         "packagesPath": "C:\\Users\\naezz\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\obj\\",
+        "outputPath": "D:\\Visual Studio\\Project\\UniSync\\Register_Login\\net-project-2025-unisync-h-h\\UniSync\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\naezz\\AppData\\Roaming\\NuGet\\NuGet.Config",

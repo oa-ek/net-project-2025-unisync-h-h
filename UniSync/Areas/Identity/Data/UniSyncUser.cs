@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using UniSync.Models.Entity;
 
-namespace UniSync.Areas.Identity.Data;
-
-public class UniSyncUser : IdentityUser
+namespace UniSync.Areas.Identity.Data
 {
-    [PersonalData]
-    public string FirstName { get; set; }
+    public class UniSyncUser : IdentityUser
+    {
+        [PersonalData]
+        public string FirstName { get; set; }
 
-    [PersonalData]
-    public string LastName { get; set; }
+        [PersonalData]
+        public string LastName { get; set; }
 
-    public int? SpecialtyId { get; set; }
-    public Specialty? Specialty { get; set; }
+        public int? SpecialtyId { get; set; }
+        public Specialty? Specialty { get; set; }
 
-    [Range(1, 10)]
-    public int? Course { get; set; }
+        [Range(1, 10)]
+        public int? Course { get; set; }
+
+        public ICollection<Article> Articles { get; set; }
+        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Subject> Subjects { get; set; }
+    }
 }
-
