@@ -367,6 +367,7 @@ namespace UniSync.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Priority")
@@ -391,9 +392,15 @@ namespace UniSync.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SubjectId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
@@ -627,12 +634,19 @@ namespace UniSync.Migrations
             modelBuilder.Entity("UniSync.Models.Entity.Project", b =>
                 {
                     b.HasOne("UniSync.Models.Entity.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("Projects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("UniSync.Areas.Identity.Data.UniSyncUser", "User")
+                        .WithMany("Projects")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
                     b.Navigation("Subject");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.Subject", b =>
@@ -663,6 +677,8 @@ namespace UniSync.Migrations
 
                     b.Navigation("Comments");
 
+                    b.Navigation("Projects");
+
                     b.Navigation("Subjects");
                 });
 
@@ -681,6 +697,11 @@ namespace UniSync.Migrations
                     b.Navigation("Articles");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("UniSync.Models.Entity.Subject", b =>
+                {
+                    b.Navigation("Projects");
                 });
 #pragma warning restore 612, 618
         }

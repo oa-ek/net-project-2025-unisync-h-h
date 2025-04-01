@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using UniSync.Areas.Identity.Data;
 
 namespace UniSync.Models.Entity
 {
@@ -10,7 +14,13 @@ namespace UniSync.Models.Entity
         [Required]
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        public virtual Subject Subject { get; set; }
+
+        [Display(Name = "Created By")]
+        [StringLength(450)]
+        [ForeignKey("User")]
+        public string? UserId { get; set; }
+        public virtual UniSyncUser User { get; set; }
 
         [Required]
         [Display(Name = "Created At")]
@@ -37,8 +47,8 @@ namespace UniSync.Models.Entity
         public string Status { get; set; } = "Not Started";
 
         [Display(Name = "Description")]
-        public string? Description { get; set; }
-
+        [Required]
+        public string Description { get; set; }
         [Required]
         [Display(Name = "Progress")]
         [Range(0, 100)]

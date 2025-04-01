@@ -13,6 +13,10 @@ namespace UniSync.Models.Entity
 
         [Required]
         public string UserId { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
+
+        // Навігаційна властивість до користувача
         public UniSyncUser User { get; set; }
     }
 }

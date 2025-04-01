@@ -1,8 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,66 +18,40 @@ namespace UniSync.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<UniSyncUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<UniSyncUser> _userManager;
 
-        public LoginModel(SignInManager<UniSyncUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<UniSyncUser> signInManager,
+                          ILogger<LoginModel> logger,
+                          UserManager<UniSyncUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string ReturnUrl { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [TempData]
         public string ErrorMessage { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Електронна пошта обов'язкова")]
+            [EmailAddress(ErrorMessage = "Невірний формат електронної пошти")]
+            [Display(Name = "Електронна пошта")]
             public string Email { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Пароль обов'язковий")]
             [DataType(DataType.Password)]
+            [Display(Name = "Пароль")]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Запам'ятати мене?")]
             public bool RememberMe { get; set; }
         }
 
@@ -94,7 +64,7 @@ namespace UniSync.Areas.Identity.Pages.Account
 
             returnUrl ??= Url.Content("~/");
 
-            // Clear the existing external cookie to ensure a clean login process
+            // Очищуємо зовнішні cookie для чистого логіну
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -110,12 +80,11 @@ namespace UniSync.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                // Спроба входу
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation("Користувач увійшов в систему.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -124,18 +93,18 @@ namespace UniSync.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("User account locked out.");
+                    _logger.LogWarning("Обліковий запис користувача заблоковано.");
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Невдала спроба входу. Перевірте електронну пошту та пароль.");
                     return Page();
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }
 }
+

@@ -21,5 +21,7 @@ namespace UniSync.Areas.Identity.Data
         public ICollection<Article> Articles { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Subject> Subjects { get; set; }
+
+        public ICollection<Project> Projects { get; set; }
     }
 }

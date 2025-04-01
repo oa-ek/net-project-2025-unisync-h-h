@@ -61,9 +61,17 @@ namespace UniSync.Data
 
             modelBuilder.Entity<Project>()
                 .HasOne(p => p.Subject)
-                .WithMany()
+                .WithMany(s => s.Projects)
                 .HasForeignKey(p => p.SubjectId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Правильне налаштування зв'язку між Project і User
+            modelBuilder.Entity<Project>()
+                .HasOne(p => p.User)
+                .WithMany(u => u.Projects)
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired(false);
 
             modelBuilder.Entity<Subject>()
                 .HasOne(s => s.User)
@@ -85,3 +93,4 @@ namespace UniSync.Data
         }
     }
 }
+

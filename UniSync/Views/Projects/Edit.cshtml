@@ -1,74 +1,89 @@
 ﻿@model UniSync.Models.Entity.Project
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Project";
 }
 
-<h1>Edit</h1>
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <h1 class="fw-bold mb-4">Edit Project</h1>
 
-<h4>Project</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="SubjectId" class="control-label"></label>
-                <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.SubjectId"></select>
-                <span asp-validation-for="SubjectId" class="text-danger"></span>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label fw-medium">Project Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Enter project title" required />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="SubjectTitle" class="form-label fw-medium">Subject</label>
+                        <input name="SubjectTitle" id="SubjectTitle" class="form-control" type="text" value="@Model.Subject.Title" placeholder="Enter subject name" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Priority" class="form-label fw-medium">Priority</label>
+                        <select asp-for="Priority" class="form-select" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <span asp-validation-for="Priority" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="Status" class="form-label fw-medium">Status</label>
+                        <select asp-for="Status" class="form-select" required>
+                            <option value="Not Started">Not Started</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="On Hold">On Hold</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Deadline" class="form-label fw-medium">Deadline</label>
+                        <input asp-for="Deadline" class="form-control" type="date" />
+                        <span asp-validation-for="Deadline" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Progress" class="form-label fw-medium">Progress (%)</label>
+                        <input asp-for="Progress" class="form-control" type="number" min="0" max="100" required />
+                        <span asp-validation-for="Progress" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label fw-medium">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter project description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedAt" class="control-label"></label>
-                <input asp-for="UpdatedAt" class="form-control" />
-                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Priority" class="control-label"></label>
-                <input asp-for="Priority" class="form-control" />
-                <span asp-validation-for="Priority" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Deadline" class="control-label"></label>
-                <input asp-for="Deadline" class="form-control" />
-                <span asp-validation-for="Deadline" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Progress" class="control-label"></label>
-                <input asp-for="Progress" class="form-control" />
-                <span asp-validation-for="Progress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save me-2"></i> Save Changes
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i> Back to List
+                </a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

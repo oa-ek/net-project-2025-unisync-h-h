@@ -1,46 +1,45 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\",
+  "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\areas\\identity\\data\\unisynccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\data\\unisynccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\areas\\identity\\data\\unisyncuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\areas\\identity\\data\\unisyncuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\data\\unisyncuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\areas\\identity\\data\\unisynccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\data\\unisynccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h - copy\\unisync\\migrations\\20250310174815_initialidentitysetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\migrations\\20250310174815_initialidentitysetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Migrations\\20250310174815_InitialIdentitySetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +49,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1257,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,24 +57,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Register.cshtml",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "UniSync\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "ViewState": "AgIAAC4AAAAAAAAAAAAqwDYAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-10T17:54:14.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-10T17:54:14.78Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "UniSync\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "ViewState": "AgIAABgAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -83,11 +81,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "UniSync\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "UniSync\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAFYAAAAAAAAAAAAuwGUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -98,20 +96,20 @@
               "DocumentIndex": 9,
               "Title": "20250310174815_InitialIdentitySetup.cs",
               "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Migrations\\20250310174815_InitialIdentitySetup.cs",
-              "RelativeDocumentMoniker": "UniSync\\Migrations\\20250310174815_InitialIdentitySetup.cs",
+              "RelativeDocumentMoniker": "..\\net-project-2025-unisync-h-h - Copy\\UniSync\\Migrations\\20250310174815_InitialIdentitySetup.cs",
               "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Migrations\\20250310174815_InitialIdentitySetup.cs",
-              "RelativeToolTip": "UniSync\\Migrations\\20250310174815_InitialIdentitySetup.cs",
+              "RelativeToolTip": "..\\net-project-2025-unisync-h-h - Copy\\UniSync\\Migrations\\20250310174815_InitialIdentitySetup.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T17:48:16.203Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ProjectsController.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Controllers\\ProjectsController.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\ProjectsController.cs",
               "RelativeDocumentMoniker": "UniSync\\Controllers\\ProjectsController.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Controllers\\ProjectsController.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\ProjectsController.cs",
               "RelativeToolTip": "UniSync\\Controllers\\ProjectsController.cs",
               "ViewState": "AgIAAJMAAAAAAAAAAAAowKEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -119,11 +117,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Controllers\\HomeController.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "UniSync\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\HomeController.cs",
               "RelativeToolTip": "UniSync\\Controllers\\HomeController.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAowCYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -131,37 +129,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "UniSyncContext.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
               "RelativeDocumentMoniker": "UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA2wFUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAmwFYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T17:42:01.488Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "UniSyncUser.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
               "RelativeDocumentMoniker": "UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowBgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T17:35:24.917Z"
+              "WhenOpened": "2025-03-10T17:35:24.917Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Program.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Program.cs",
               "RelativeDocumentMoniker": "UniSync\\Program.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\Program.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Program.cs",
               "RelativeToolTip": "UniSync\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAuwDkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T17:29:50.801Z"
             },
@@ -169,9 +168,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "ScaffoldingReadMe.txt",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\ScaffoldingReadMe.txt",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\ScaffoldingReadMe.txt",
               "RelativeDocumentMoniker": "UniSync\\ScaffoldingReadMe.txt",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h - Copy\\UniSync\\ScaffoldingReadMe.txt",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\ScaffoldingReadMe.txt",
               "RelativeToolTip": "UniSync\\ScaffoldingReadMe.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",

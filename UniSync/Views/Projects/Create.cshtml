@@ -1,38 +1,43 @@
 ﻿@model UniSync.Models.Entity.Project
 
 @{
-    ViewData["Title"] = "Create Project";
+    ViewData["Title"] = "Створення проекту";
 }
 
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-body p-4">
-        <h1 class="fw-bold mb-4">Create New Project</h1>
+        <h1 class="fw-bold mb-4">Створення нового проекту</h1>
 
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
 
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label asp-for="Title" class="form-label fw-medium">Project Title</label>
-                        <input asp-for="Title" class="form-control" placeholder="Enter project title" />
+                        <label asp-for="Title" class="form-label fw-medium">Назва проекту</label>
+                        <input asp-for="Title" class="form-control" placeholder="Введіть назву проекту" required />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="SubjectId" class="form-label fw-medium">Subject</label>
-                        <select asp-for="SubjectId" class="form-select" asp-items="ViewBag.SubjectId">
-                            <option value="">-- Select Subject --</option>
+                        <label asp-for="SubjectId" class="form-label fw-medium">Предмет</label>
+                        <select asp-for="SubjectId" class="form-select" asp-items="ViewBag.SubjectId" required>
+                            <option value="">-- Виберіть предмет --</option>
                         </select>
                         <span asp-validation-for="SubjectId" class="text-danger"></span>
+                        <div class="mt-2">
+                            <a asp-controller="Subjects" asp-action="Create" class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-plus-circle me-1"></i>Додати новий предмет
+                            </a>
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Priority" class="form-label fw-medium">Priority</label>
-                        <select asp-for="Priority" class="form-select">
-                            <option value="Low">Low</option>
-                            <option value="Medium" selected>Medium</option>
-                            <option value="High">High</option>
+                        <label asp-for="Priority" class="form-label fw-medium">Пріоритет</label>
+                        <select asp-for="Priority" class="form-select" required>
+                            <option value="Low">Низький</option>
+                            <option value="Medium" selected>Середній</option>
+                            <option value="High">Високий</option>
                         </select>
                         <span asp-validation-for="Priority" class="text-danger"></span>
                     </div>
@@ -40,33 +45,33 @@
 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label asp-for="Status" class="form-label fw-medium">Status</label>
-                        <select asp-for="Status" class="form-select">
-                            <option value="Not Started" selected>Not Started</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="On Hold">On Hold</option>
-                            <option value="Completed">Completed</option>
+                        <label asp-for="Status" class="form-label fw-medium">Статус</label>
+                        <select asp-for="Status" class="form-select" required>
+                            <option value="Not Started" selected>Не розпочато</option>
+                            <option value="In Progress">В процесі</option>
+                            <option value="On Hold">Призупинено</option>
+                            <option value="Completed">Завершено</option>
                         </select>
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Deadline" class="form-label fw-medium">Deadline</label>
+                        <label asp-for="Deadline" class="form-label fw-medium">Дедлайн</label>
                         <input asp-for="Deadline" class="form-control" type="date" />
                         <span asp-validation-for="Deadline" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Progress" class="form-label fw-medium">Progress (%)</label>
-                        <input asp-for="Progress" class="form-control" type="number" min="0" max="100" />
+                        <label asp-for="Progress" class="form-label fw-medium">Прогрес (%)</label>
+                        <input asp-for="Progress" class="form-control" type="number" min="0" max="100" value="0" required />
                         <span asp-validation-for="Progress" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="mb-3">
-                        <label asp-for="Description" class="form-label fw-medium">Description</label>
-                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter project description"></textarea>
+                        <label asp-for="Description" class="form-label fw-medium">Опис</label>
+                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Введіть опис проекту"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
@@ -74,10 +79,10 @@
 
             <div class="d-flex gap-2 mt-4">
                 <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-save me-2"></i> Create Project
+                    <i class="bi bi-save me-2"></i> Створити проект
                 </button>
                 <a asp-action="Index" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrow-left me-2"></i> Back to List
+                    <i class="bi bi-arrow-left me-2"></i> Назад до списку
                 </a>
             </div>
         </form>
@@ -89,3 +94,4 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
