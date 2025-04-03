@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UniSync.Areas.Identity.Data;
 
 namespace UniSync.Models.Entity
 {
     public class Specialty
     {
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Title { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public ICollection<UniSyncUser> Users { get; set; }
+        public ICollection<Article> Articles { get; set; }
     }
 }

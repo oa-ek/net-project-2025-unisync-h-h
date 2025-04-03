@@ -1,0 +1,120 @@
+﻿@model IEnumerable<UniSync.Models.Entity.Project>
+@using Microsoft.AspNetCore.Identity
+@using UniSync.Areas.Identity.Data
+@inject UserManager<UniSyncUser> UserManager
+
+@{
+    ViewData["Title"] = "Мої проекти";
+    var currentUser = await UserManager.GetUserAsync(User);
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold"><i class="bi bi-kanban me-2 text-primary"></i>@ViewData["Title"]</h1>
+        <p class="text-muted">Вітаємо, @currentUser.FirstName @currentUser.LastName</p>
+    </div>
+    <div>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle me-2"></i>Створити новий проект
+        </a>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle me-2"></i>У вас ще немає проектів. Створіть свій перший проект!
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm hover-shadow">
+                    <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0 text-truncate" style="max-width: 200px;">@item.Title</h5>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                <li>
+                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="bi bi-pencil me-2"></i>Редагувати
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="bi bi-eye me-2"></i>Деталі
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@item.Id">
+                                        <i class="bi bi-trash me-2"></i>Видалити
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <span class="badge bg-secondary">@item.Subject.Title</span>
+                            @{
+                                var priorityBadgeClass = item.Priority switch
+                                {
+                                    "Low" => "bg-success",
+                                    "Medium" => "bg-warning",
+                                    "High" => "bg-danger",
+                                    _ => "bg-secondary"
+                                };
+                                var statusBadgeClass = item.Status switch
+                                {
+                                    "Not Started" => "bg-secondary",
+                                    "In Progress" => "bg-primary",
+                                    "On Hold" => "bg-warning",
+                                    "Completed" => "bg-success",
+                                    _ => "bg-secondary"
+                                };
+                            }
+                            <span class="badge @priorityBadgeClass">@item.Priority</span>
+                            <span class="badge @statusBadgeClass">@item.Status</span>
+                        </div>
+
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div class="progress-bar @(item.Progress == 100 ? "bg-success" : "")" role="progressbar" style="width: @item.Progress%;" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="card-text small text-muted mb-0">@item.Progress% Виконано</p>
+                    </div>
+                    <div class="card-footer bg-transparent text-muted small">
+                        <div class="d-flex justify-content-between">
+                            <span><i class="bi bi-calendar me-1"></i>@item.CreatedAt.ToString("dd.MM.yyyy")</span>
+                            @if (item.Deadline.HasValue)
+                            {
+                                <span><i class="bi bi-alarm me-1"></i>@item.Deadline.Value.ToString("dd.MM.yyyy")</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

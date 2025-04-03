@@ -1,0 +1,356 @@
+diff --git a/.vs/ProjectEvaluation/unisync(universitysynchronization).metadata.v9.bin b/.vs/ProjectEvaluation/unisync(universitysynchronization).metadata.v9.bin
+index 1dc8ef4..9c37f5c 100644
+Binary files a/.vs/ProjectEvaluation/unisync(universitysynchronization).metadata.v9.bin and b/.vs/ProjectEvaluation/unisync(universitysynchronization).metadata.v9.bin differ
+diff --git a/.vs/ProjectEvaluation/unisync(universitysynchronization).projects.v9.bin b/.vs/ProjectEvaluation/unisync(universitysynchronization).projects.v9.bin
+index 90651ff..40ae9be 100644
+Binary files a/.vs/ProjectEvaluation/unisync(universitysynchronization).projects.v9.bin and b/.vs/ProjectEvaluation/unisync(universitysynchronization).projects.v9.bin differ
+diff --git a/.vs/ProjectEvaluation/unisync(universitysynchronization).strings.v9.bin b/.vs/ProjectEvaluation/unisync(universitysynchronization).strings.v9.bin
+index ca8a3cf..7b801d5 100644
+Binary files a/.vs/ProjectEvaluation/unisync(universitysynchronization).strings.v9.bin and b/.vs/ProjectEvaluation/unisync(universitysynchronization).strings.v9.bin differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/CodeChunks.db b/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/CodeChunks.db
+index 5b62d47..575190f 100644
+Binary files a/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/CodeChunks.db and b/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/CodeChunks.db differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-shm b/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-shm
+index 1b7bdd1..7cf9744 100644
+Binary files a/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-shm and b/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-shm differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-wal b/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-wal
+index 38b1b97..6ae0ffd 100644
+Binary files a/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-wal and b/.vs/UniSync(UniversitySynchronization)/CopilotIndices/0.2.1657.32929/SemanticSymbols.db-wal differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/DesignTimeBuild/.dtbcache.v2 b/.vs/UniSync(UniversitySynchronization)/DesignTimeBuild/.dtbcache.v2
+index e7af124..e18ff4a 100644
+Binary files a/.vs/UniSync(UniversitySynchronization)/DesignTimeBuild/.dtbcache.v2 and b/.vs/UniSync(UniversitySynchronization)/DesignTimeBuild/.dtbcache.v2 differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/FileContentIndex/3cbcc2a2-7f72-444e-8444-bfc887038bf3.vsidx b/.vs/UniSync(UniversitySynchronization)/FileContentIndex/3cbcc2a2-7f72-444e-8444-bfc887038bf3.vsidx
+deleted file mode 100644
+index 70aef67..0000000
+Binary files a/.vs/UniSync(UniversitySynchronization)/FileContentIndex/3cbcc2a2-7f72-444e-8444-bfc887038bf3.vsidx and /dev/null differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/FileContentIndex/54f9e94d-0c9c-40b1-8a7b-47c544328b44.vsidx b/.vs/UniSync(UniversitySynchronization)/FileContentIndex/54f9e94d-0c9c-40b1-8a7b-47c544328b44.vsidx
+deleted file mode 100644
+index 91c00be..0000000
+Binary files a/.vs/UniSync(UniversitySynchronization)/FileContentIndex/54f9e94d-0c9c-40b1-8a7b-47c544328b44.vsidx and /dev/null differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/v17/.futdcache.v2 b/.vs/UniSync(UniversitySynchronization)/v17/.futdcache.v2
+index 281add0..415f2f1 100644
+Binary files a/.vs/UniSync(UniversitySynchronization)/v17/.futdcache.v2 and b/.vs/UniSync(UniversitySynchronization)/v17/.futdcache.v2 differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/v17/.suo b/.vs/UniSync(UniversitySynchronization)/v17/.suo
+index 64a40fd..aa3bac3 100644
+Binary files a/.vs/UniSync(UniversitySynchronization)/v17/.suo and b/.vs/UniSync(UniversitySynchronization)/v17/.suo differ
+diff --git a/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.backup.json b/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.backup.json
+index c4b2bb6..ecb7456 100644
+--- a/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.backup.json
++++ b/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.backup.json
+@@ -1,9 +1,13 @@
+ {
+   "Version": 1,
+-  "WorkspaceRootPath": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSync(UniversitySynchronization)\\",
++  "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\",
+   "Documents": [
+     {
+-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisync(universitysynchronization)\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
++      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
++      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
++    },
++    {
++      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+       "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+     }
+   ],
+@@ -14,54 +18,36 @@
+       "DocumentGroups": [
+         {
+           "DockedWidth": 1257,
+-          "SelectedChildIndex": 3,
++          "SelectedChildIndex": 1,
+           "Children": [
+             {
+               "$type": "Bookmark",
+-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
++              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+             },
+             {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
++              "$type": "Document",
++              "DocumentIndex": 0,
++              "Title": "site.css",
++              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
++              "RelativeDocumentMoniker": "UniSync\\wwwroot\\css\\site.css",
++              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
++              "RelativeToolTip": "UniSync\\wwwroot\\css\\site.css",
++              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
++              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
++              "WhenOpened": "2025-03-08T16:27:00.527Z",
++              "EditorCaption": ""
+             },
+             {
+               "$type": "Document",
+-              "DocumentIndex": 0,
++              "DocumentIndex": 1,
+               "Title": "_Layout.cshtml",
+-              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSync(UniversitySynchronization)\\UniSync\\Views\\Shared\\_Layout.cshtml",
++              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
+               "RelativeDocumentMoniker": "UniSync\\Views\\Shared\\_Layout.cshtml",
+-              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSync(UniversitySynchronization)\\UniSync\\Views\\Shared\\_Layout.cshtml",
++              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
+               "RelativeToolTip": "UniSync\\Views\\Shared\\_Layout.cshtml",
+               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+-              "WhenOpened": "2025-03-05T11:25:53.992Z",
+-              "EditorCaption": ""
+-            }
+-          ]
+-        },
+-        {
+-          "DockedWidth": 35,
+-          "SelectedChildIndex": -1,
+-          "Children": [
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
++              "WhenOpened": "2025-03-05T11:25:53.992Z"
+             }
+           ]
+         }
+diff --git a/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.json b/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.json
+index c4b2bb6..ec81b48 100644
+--- a/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.json
++++ b/.vs/UniSync(UniversitySynchronization)/v17/DocumentLayout.json
+@@ -1,9 +1,13 @@
+ {
+   "Version": 1,
+-  "WorkspaceRootPath": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSync(UniversitySynchronization)\\",
++  "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\",
+   "Documents": [
+     {
+-      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|f:\\visual studio\\projects\\c#\\2 course\\second semester\\unisync(universitysynchronization)\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
++      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
++      "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
++    },
++    {
++      "AbsoluteMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync\\net-project-2025-unisync-h-h\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+       "RelativeMoniker": "D:0:0:{1296A177-C741-43DF-8915-8EFB161449C6}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+     }
+   ],
+@@ -14,54 +18,36 @@
+       "DocumentGroups": [
+         {
+           "DockedWidth": 1257,
+-          "SelectedChildIndex": 3,
++          "SelectedChildIndex": 1,
+           "Children": [
+             {
+               "$type": "Bookmark",
+-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
++              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+             },
+             {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
++              "$type": "Document",
++              "DocumentIndex": 0,
++              "Title": "site.css",
++              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
++              "RelativeDocumentMoniker": "UniSync\\wwwroot\\css\\site.css",
++              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
++              "RelativeToolTip": "UniSync\\wwwroot\\css\\site.css",
++              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
++              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
++              "WhenOpened": "2025-03-08T16:27:00.527Z",
++              "EditorCaption": ""
+             },
+             {
+               "$type": "Document",
+-              "DocumentIndex": 0,
++              "DocumentIndex": 1,
+               "Title": "_Layout.cshtml",
+-              "DocumentMoniker": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSync(UniversitySynchronization)\\UniSync\\Views\\Shared\\_Layout.cshtml",
++              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
+               "RelativeDocumentMoniker": "UniSync\\Views\\Shared\\_Layout.cshtml",
+-              "ToolTip": "F:\\Visual Studio\\Projects\\C#\\2 Course\\Second semester\\UniSync(UniversitySynchronization)\\UniSync\\Views\\Shared\\_Layout.cshtml",
++              "ToolTip": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
+               "RelativeToolTip": "UniSync\\Views\\Shared\\_Layout.cshtml",
+               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+-              "WhenOpened": "2025-03-05T11:25:53.992Z",
+-              "EditorCaption": ""
+-            }
+-          ]
+-        },
+-        {
+-          "DockedWidth": 35,
+-          "SelectedChildIndex": -1,
+-          "Children": [
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+-            },
+-            {
+-              "$type": "Bookmark",
+-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
++              "WhenOpened": "2025-03-05T11:25:53.992Z"
+             }
+           ]
+         }
+diff --git a/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfo.cs b/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfo.cs
+index 43536db..e8bd894 100644
+--- a/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfo.cs
++++ b/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfo.cs
+@@ -14,7 +14,7 @@ using System.Reflection;
+ [assembly: System.Reflection.AssemblyCompanyAttribute("UniSync")]
+ [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+ [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2714a2a2682544c8d032ce0ebc2050597da1849d")]
++[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4939c647546eeaf7a3730c218c28f400a0998efa")]
+ [assembly: System.Reflection.AssemblyProductAttribute("UniSync")]
+ [assembly: System.Reflection.AssemblyTitleAttribute("UniSync")]
+ [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+diff --git a/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfoInputs.cache b/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfoInputs.cache
+index a8d6c62..1488b3e 100644
+--- a/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfoInputs.cache
++++ b/UniSync/obj/Debug/net8.0/UniSync.AssemblyInfoInputs.cache
+@@ -1 +1 @@
+-090cabcd6c70e43a0d242f6df62bc7793a241393b522d65f22db214b3a070211
++bf1bcff6f301b29fe47f0d6fbe0a8513f746a5c97bb8acce2385afe105425c8a
+diff --git a/UniSync/obj/Debug/net8.0/UniSync.GeneratedMSBuildEditorConfig.editorconfig b/UniSync/obj/Debug/net8.0/UniSync.GeneratedMSBuildEditorConfig.editorconfig
+index 84accef..6661c48 100644
+--- a/UniSync/obj/Debug/net8.0/UniSync.GeneratedMSBuildEditorConfig.editorconfig
++++ b/UniSync/obj/Debug/net8.0/UniSync.GeneratedMSBuildEditorConfig.editorconfig
+@@ -17,39 +17,39 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
+ build_property._SupportedPlatformList = Linux,macOS,Windows
+ build_property.RootNamespace = UniSync
+ build_property.RootNamespace = UniSync
+-build_property.ProjectDir = D:\Visual Studio\Project\UniSync\UniSync\
++build_property.ProjectDir = D:\Visual Studio\Project\UniSync\net-project-2025-unisync-h-h\UniSync\
+ build_property.EnableComHosting = 
+ build_property.EnableGeneratedComInterfaceComImportInterop = 
+ build_property.RazorLangVersion = 8.0
+ build_property.SupportLocalizedComponentNames = 
+ build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+-build_property.MSBuildProjectDirectory = D:\Visual Studio\Project\UniSync\UniSync
++build_property.MSBuildProjectDirectory = D:\Visual Studio\Project\UniSync\net-project-2025-unisync-h-h\UniSync
+ build_property._RazorSourceGeneratorDebug = 
+ 
+-[D:/Visual Studio/Project/UniSync/UniSync/Views/Home/Index.cshtml]
++[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Home/Index.cshtml]
+ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+ build_metadata.AdditionalFiles.CssScope = 
+ 
+-[D:/Visual Studio/Project/UniSync/UniSync/Views/Home/Privacy.cshtml]
++[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Home/Privacy.cshtml]
+ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+ build_metadata.AdditionalFiles.CssScope = 
+ 
+-[D:/Visual Studio/Project/UniSync/UniSync/Views/Shared/Error.cshtml]
++[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Shared/Error.cshtml]
+ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+ build_metadata.AdditionalFiles.CssScope = 
+ 
+-[D:/Visual Studio/Project/UniSync/UniSync/Views/Shared/_ValidationScriptsPartial.cshtml]
++[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Shared/_ValidationScriptsPartial.cshtml]
+ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+ build_metadata.AdditionalFiles.CssScope = 
+ 
+-[D:/Visual Studio/Project/UniSync/UniSync/Views/_ViewImports.cshtml]
++[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/_ViewImports.cshtml]
+ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+ build_metadata.AdditionalFiles.CssScope = 
+ 
+-[D:/Visual Studio/Project/UniSync/UniSync/Views/_ViewStart.cshtml]
++[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/_ViewStart.cshtml]
+ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+ build_metadata.AdditionalFiles.CssScope = 
+ 
+-[D:/Visual Studio/Project/UniSync/UniSync/Views/Shared/_Layout.cshtml]
++[D:/Visual Studio/Project/UniSync/net-project-2025-unisync-h-h/UniSync/Views/Shared/_Layout.cshtml]
+ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+ build_metadata.AdditionalFiles.CssScope = b-7xzsmq29xy
+diff --git a/UniSync/obj/Debug/net8.0/UniSync.assets.cache b/UniSync/obj/Debug/net8.0/UniSync.assets.cache
+index a8b3b8d..1806a63 100644
+Binary files a/UniSync/obj/Debug/net8.0/UniSync.assets.cache and b/UniSync/obj/Debug/net8.0/UniSync.assets.cache differ
+diff --git a/UniSync/obj/UniSync.csproj.nuget.dgspec.json b/UniSync/obj/UniSync.csproj.nuget.dgspec.json
+index 88c40b6..ff21aee 100644
+--- a/UniSync/obj/UniSync.csproj.nuget.dgspec.json
++++ b/UniSync/obj/UniSync.csproj.nuget.dgspec.json
+@@ -1,17 +1,17 @@
+ {
+   "format": 1,
+   "restore": {
+-    "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj": {}
++    "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj": {}
+   },
+   "projects": {
+-    "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj": {
++    "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj": {
+       "version": "1.0.0",
+       "restore": {
+-        "projectUniqueName": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj",
++        "projectUniqueName": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
+         "projectName": "UniSync",
+-        "projectPath": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj",
++        "projectPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
+         "packagesPath": "C:\\Users\\naezz\\.nuget\\packages\\",
+-        "outputPath": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\obj\\",
++        "outputPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\obj\\",
+         "projectStyle": "PackageReference",
+         "configFilePaths": [
+           "C:\\Users\\naezz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+diff --git a/UniSync/obj/project.assets.json b/UniSync/obj/project.assets.json
+index ccfa93c..56c14ef 100644
+--- a/UniSync/obj/project.assets.json
++++ b/UniSync/obj/project.assets.json
+@@ -4739,11 +4739,11 @@
+   "project": {
+     "version": "1.0.0",
+     "restore": {
+-      "projectUniqueName": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj",
++      "projectUniqueName": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
+       "projectName": "UniSync",
+-      "projectPath": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj",
++      "projectPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
+       "packagesPath": "C:\\Users\\naezz\\.nuget\\packages\\",
+-      "outputPath": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\obj\\",
++      "outputPath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\obj\\",
+       "projectStyle": "PackageReference",
+       "configFilePaths": [
+         "C:\\Users\\naezz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+diff --git a/UniSync/obj/project.nuget.cache b/UniSync/obj/project.nuget.cache
+index d0e21aa..5ebe813 100644
+--- a/UniSync/obj/project.nuget.cache
++++ b/UniSync/obj/project.nuget.cache
+@@ -1,8 +1,8 @@
+ {
+   "version": 2,
+-  "dgSpecHash": "l2m9WYFc79E=",
++  "dgSpecHash": "NO8+iNvUcGs=",
+   "success": true,
+-  "projectFilePath": "D:\\Visual Studio\\Project\\UniSync\\UniSync\\UniSync.csproj",
++  "projectFilePath": "D:\\Visual Studio\\Project\\UniSync\\net-project-2025-unisync-h-h\\UniSync\\UniSync.csproj",
+   "expectedPackageFiles": [
+     "C:\\Users\\naezz\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
+     "C:\\Users\\naezz\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

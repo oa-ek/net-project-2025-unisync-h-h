@@ -1,15 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿    using System.ComponentModel.DataAnnotations;
 
-namespace UniSync.Models.Entity
-{
-    public class Tag
+    namespace UniSync.Models.Entity
     {
-        [Key]
-        public uint Id { get; set; }
+        public class Tag
+        {
+            [Key]
+            public int Id { get; set; }
 
-        [Required]
-        public string Title { get; set; }
+            [Required]
+            public string Title { get; set; }
 
-        public ICollection<Article> Articles { get; set; }
+            public ICollection<Article> Articles { get; set; }
+        }
     }
-}
