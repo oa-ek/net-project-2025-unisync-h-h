@@ -1,158 +1,409 @@
 ﻿@model UniSync.Models.Entity.Project
 
 @{
-    ViewData["Title"] = "Project Details";
+    ViewData["Title"] = "Деталі проекту";
+
+    // Розрахунок прогресу на основі часу
+    int calculatedProgress = 0;
+
+    if (Model.Status == "Completed")
+    {
+        calculatedProgress = 100;
+    }
+    else if (Model.Deadline.HasValue)
+    {
+        var now = DateTime.Now;
+        var creationDate = Model.CreatedAt;
+        var deadline = Model.Deadline.Value;
+
+        if (now >= deadline)
+        {
+            calculatedProgress = 100;
+        }
+        else
+        {
+            // Розрахунок на основі часу (в секундах для більшої точності)
+            var totalDuration = (deadline - creationDate).TotalSeconds;
+            var elapsedDuration = (now - creationDate).TotalSeconds;
+
+            if (totalDuration > 0) // Захист від ділення на нуль
+            {
+                calculatedProgress = (int)Math.Floor((elapsedDuration / totalDuration) * 100);
+
+                // Обмеження прогресу до діапазону 0-99%
+                calculatedProgress = Math.Min(Math.Max(calculatedProgress, 0), 99);
+
+                // Для дуже коротких інтервалів (менше години) забезпечуємо видимий прогрес
+                var hoursLeft = (deadline - now).TotalHours;
+                if (hoursLeft < 1 && calculatedProgress < 50)
+                {
+                    // Для дуже коротких інтервалів використовуємо лінійну шкалу від 50% до 99%
+                    calculatedProgress = 50 + (int)((1 - hoursLeft) * 49);
+                }
+            }
+        }
+    }
+
+    // Використовуємо розрахований прогрес замість збереженого в моделі
+    var displayProgress = calculatedProgress;
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+        <i class="bi bi-check-circle me-2"></i>@TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show mb-4" role="alert">
+        <i class="bi bi-info-circle me-2"></i>@TempData["InfoMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-body p-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="fw-bold">@Model.Title</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+            <h1 class="fw-bold mb-2 mb-md-0">@Model.Title</h1>
             <div>
                 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary me-2">
-                    <i class="bi bi-pencil me-2"></i>Edit
+                    <i class="bi bi-pencil me-2"></i>Редагувати
                 </a>
                 <a asp-action="Index" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrow-left me-2"></i>Back to List
+                    <i class="bi bi-arrow-left me-2"></i>Назад до списку
                 </a>
             </div>
         </div>
 
         <div class="row g-4">
+            <!-- Ліва колонка - Інформація про проект -->
             <div class="col-md-8">
                 <div class="card mb-4">
                     <div class="card-header bg-transparent">
-                        <h5 class="card-title mb-0">Project Information</h5>
+                        <h5 class="card-title mb-0">Інформація про проект</h5>
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <div class="d-flex mb-2">
-                                <span class="text-muted me-2" style="width: 120px;">Subject:</span>
+                            <div class="d-flex mb-2 flex-wrap">
+                                <span class="text-muted me-2" style="min-width: 120px;">Предмет:</span>
                                 <span class="badge bg-secondary">@Model.Subject.Title</span>
                             </div>
-                            <div class="d-flex mb-2">
-                                <span class="text-muted me-2" style="width: 120px;">Priority:</span>
+                            <div class="d-flex mb-2 flex-wrap">
+                                <span class="text-muted me-2" style="min-width: 120px;">Пріоритет:</span>
                                 @{
-                                    var priorityBadgeClass = Model.Priority switch
+                                    var priorityBadgeClass = Model.Priority?.ToLower() switch
                                     {
-                                        "Low" => "bg-success",
-                                        "Medium" => "bg-warning",
-                                        "High" => "bg-danger",
+                                        "low" => "bg-success",
+                                        "medium" => "bg-warning text-dark",
+                                        "high" => "bg-danger",
                                         _ => "bg-secondary"
                                     };
-                                }
-                                <span class="badge @priorityBadgeClass">@Model.Priority</span>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <span class="text-muted me-2" style="width: 120px;">Status:</span>
-                                @{
-                                    var statusBadgeClass = Model.Status switch
+
+                                    var priorityText = Model.Priority?.ToLower() switch
                                     {
-                                        "Not Started" => "bg-secondary",
-                                        "In Progress" => "bg-primary",
-                                        "On Hold" => "bg-warning",
-                                        "Completed" => "bg-success",
-                                        _ => "bg-secondary"
+                                        "low" => "Низький",
+                                        "medium" => "Середній",
+                                        "high" => "Високий",
+                                        _ => Model.Priority
                                     };
                                 }
-                                <span class="badge @statusBadgeClass">@Model.Status</span>
+                                <span class="badge @priorityBadgeClass">@priorityText</span>
                             </div>
-                            <div class="d-flex mb-2">
-                                <span class="text-muted me-2" style="width: 120px;">Created:</span>
+                            <div class="d-flex mb-2 flex-wrap">
+                                <span class="text-muted me-2" style="min-width: 120px;">Статус:</span>
+                                @{
+                                    var statusBadgeClass = Model.Status?.ToLower() switch
+                                    {
+                                        "not started" => "bg-secondary",
+                                        "in progress" => "bg-primary",
+                                        "on hold" => "bg-warning text-dark",
+                                        "completed" => "bg-success",
+                                        _ => "bg-secondary"
+                                    };
+
+                                    var statusText = Model.Status?.ToLower() switch
+                                    {
+                                        "not started" => "Не розпочато",
+                                        "in progress" => "В процесі",
+                                        "on hold" => "Призупинено",
+                                        "completed" => "Завершено",
+                                        _ => Model.Status
+                                    };
+                                }
+                                <span class="badge @statusBadgeClass">@statusText</span>
+                            </div>
+                            <div class="d-flex mb-2 flex-wrap">
+                                <span class="text-muted me-2" style="min-width: 120px;">Створено:</span>
                                 <span>@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</span>
                             </div>
                             @if (Model.UpdatedAt.HasValue)
                             {
-                                <div class="d-flex mb-2">
-                                    <span class="text-muted me-2" style="width: 120px;">Last Updated:</span>
+                                <div class="d-flex mb-2 flex-wrap">
+                                    <span class="text-muted me-2" style="min-width: 120px;">Оновлено:</span>
                                     <span>@Model.UpdatedAt.Value.ToString("dd.MM.yyyy HH:mm")</span>
                                 </div>
                             }
                             @if (Model.Deadline.HasValue)
                             {
-                                <div class="d-flex mb-2">
-                                    <span class="text-muted me-2" style="width: 120px;">Deadline:</span>
-                                    <span>@Model.Deadline.Value.ToString("dd.MM.yyyy")</span>
+                                <div class="d-flex mb-2 flex-wrap">
+                                    <span class="text-muted me-2" style="min-width: 120px;">Дедлайн:</span>
+                                    <span>@Model.Deadline.Value.ToString("dd.MM.yyyy HH:mm")</span>
+                                </div>
+
+                                <div class="d-flex mb-2 flex-wrap">
+                                    <span class="text-muted me-2" style="min-width: 120px;">Залишилось:</span>
+                                    @{
+                                        var timeLeft = Model.Deadline.Value - DateTime.Now;
+                                        var isOverdue = timeLeft.TotalMilliseconds < 0;
+
+                                        if (isOverdue)
+                                        {
+                                            <span class="text-danger">Термін минув!</span>
+                                        }
+                                        else
+                                        {
+                                            var days = timeLeft.Days;
+                                            var hours = timeLeft.Hours;
+                                            var minutes = timeLeft.Minutes;
+
+                                            var timeLeftText = "";
+
+                                            if (days > 0)
+                                            {
+                                                timeLeftText += $"{days} {GetDaysText(days)}, ";
+                                            }
+
+                                            if (hours > 0 || days > 0)
+                                            {
+                                                timeLeftText += $"{hours} {GetHoursText(hours)}, ";
+                                            }
+
+                                            timeLeftText += $"{minutes} {GetMinutesText(minutes)}";
+
+                                            <span>@timeLeftText</span>
+                                        }
+                                    }
                                 </div>
                             }
                         </div>
 
                         <div class="mb-3">
-                            <h6 class="fw-bold">Description</h6>
-                            <p>@(string.IsNullOrEmpty(Model.Description) ? "No description provided." : Model.Description)</p>
+                            <h6 class="fw-bold">Опис</h6>
+                            <p class="white-space-pre-wrap">@(string.IsNullOrEmpty(Model.Description) ? "Опис відсутній." : Model.Description)</p>
                         </div>
                     </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <a asp-action="UpdateProgress" asp-route-id="@Model.Id" class="btn btn-outline-info">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Оновити прогрес
+                    </a>
                 </div>
             </div>
 
+            <!-- Права колонка - Прогрес, Дедлайн, Дії -->
             <div class="col-md-4">
+                <!-- Картка прогресу -->
                 <div class="card mb-4">
-                    <div class="card-header bg-transparent">
-                        <h5 class="card-title mb-0">Progress</h5>
+                    <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Прогрес</h5>
+                        <small class="text-muted">Розраховано зараз</small>
                     </div>
                     <div class="card-body text-center">
-                        <div class="display-4 fw-bold mb-3">@Model.Progress%</div>
+                        <div class="display-4 fw-bold mb-3">@displayProgress%</div>
                         <div class="progress mb-3" style="height: 20px;">
-                            <div class="progress-bar @(Model.Progress == 100 ? "bg-success" : "")" role="progressbar" style="width: @Model.Progress%;" aria-valuenow="@Model.Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                            @{
+                                var progressBarClass = displayProgress switch
+                                {
+                                    100 => "bg-success",
+                                    >= 75 => "bg-info",
+                                    >= 50 => "bg-primary",
+                                    >= 25 => "bg-warning",
+                                    _ => "bg-danger"
+                                };
+                            }
+                            <div class="progress-bar @progressBarClass" role="progressbar" style="width: @displayProgress%;" aria-valuenow="@displayProgress" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div class="text-muted small">
-                            @if (Model.Progress == 0)
+                            @if (displayProgress == 0)
                             {
-                                <span>Not started yet</span>
+                                <span>Ще не розпочато</span>
                             }
-                            else if (Model.Progress == 100)
+                            else if (displayProgress == 100)
                             {
-                                <span>Project completed!</span>
+                                <span>Проект завершено!</span>
                             }
-                            else if (Model.Progress < 50)
+                            else if (displayProgress < 50)
                             {
-                                <span>Early stages</span>
+                                <span>Початкова стадія</span>
                             }
                             else
                             {
-                                <span>More than halfway done</span>
+                                <span>Більше половини виконано</span>
                             }
                         </div>
+
+                        @if (Model.Progress != displayProgress)
+                        {
+                            <div class="alert alert-info mt-3" role="alert">
+                                <small>
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    Збережений прогрес (@Model.Progress%) відрізняється від розрахованого (@displayProgress%).
+                                    <a asp-action="UpdateProgress" asp-route-id="@Model.Id" class="alert-link">Оновити</a>
+                                </small>
+                            </div>
+                        }
                     </div>
                 </div>
 
+                <!-- Картка дедлайну -->
                 @if (Model.Deadline.HasValue)
                 {
                     <div class="card mb-4">
                         <div class="card-header bg-transparent">
-                            <h5 class="card-title mb-0">Deadline</h5>
+                            <h5 class="card-title mb-0">Дедлайн</h5>
                         </div>
                         <div class="card-body text-center">
                             @{
-                                var daysLeft = (Model.Deadline.Value - DateTime.Now).Days;
-                                var textClass = daysLeft <= 3 ? "text-danger" : daysLeft <= 7 ? "text-warning" : "text-success";
+                                var timeLeft = Model.Deadline.Value - DateTime.Now;
+                                var daysLeft = timeLeft.Days;
+                                var hoursLeft = timeLeft.Hours;
+                                var minutesLeft = timeLeft.Minutes;
+                                var isOverdue = timeLeft.TotalMilliseconds < 0;
+                                var textClass = isOverdue ? "text-danger" : daysLeft <= 0 && hoursLeft <= 3 ? "text-danger" : daysLeft <= 1 ? "text-warning" : "text-success";
                             }
-                            <div class="display-4 fw-bold @textClass mb-2">@daysLeft</div>
-                            <div class="text-muted">days left</div>
-                            <div class="mt-3">
-                                @if (daysLeft <= 3)
-                                {
+
+                            @if (isOverdue)
+                            {
+                                <div class="display-4 fw-bold text-danger mb-2">0</div>
+                                <div class="text-danger">Термін минув!</div>
+                                <div class="mt-3">
                                     <div class="alert alert-danger" role="alert">
-                                        <i class="bi bi-exclamation-triangle me-2"></i>Deadline is approaching soon!
+                                        <i class="bi bi-exclamation-triangle me-2"></i>
+                                        @{
+                                            var overdueDays = Math.Abs(daysLeft);
+                                            var overdueHours = Math.Abs(hoursLeft);
+                                            var overdueMinutes = Math.Abs(minutesLeft);
+
+                                            if (overdueDays > 0)
+                                            {
+                                                <span>Дедлайн минув @overdueDays @(GetDaysText(overdueDays)) тому!</span>
+                                            }
+                                            else if (overdueHours > 0)
+                                            {
+                                                <span>Дедлайн минув @overdueHours @(GetHoursText(overdueHours)) тому!</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Дедлайн минув @overdueMinutes @(GetMinutesText(overdueMinutes)) тому!</span>
+                                            }
+                                        }
                                     </div>
-                                }
-                                else if (daysLeft <= 7)
+                                </div>
+                            }
+                            else
+                            {
+                                @if (daysLeft > 0)
                                 {
-                                    <div class="alert alert-warning" role="alert">
-                                        <i class="bi bi-clock me-2"></i>Deadline is approaching.
-                                    </div>
+                                    <div class="display-4 fw-bold @textClass mb-2">@daysLeft</div>
+                                    <div class="text-muted">@(GetDaysText(daysLeft)) залишилось</div>
+                                }
+                                else if (hoursLeft > 0)
+                                {
+                                    <div class="display-4 fw-bold @textClass mb-2">@hoursLeft</div>
+                                    <div class="text-muted">@(GetHoursText(hoursLeft)) залишилось</div>
                                 }
                                 else
                                 {
-                                    <div class="alert alert-success" role="alert">
-                                        <i class="bi bi-check-circle me-2"></i>You have plenty of time.
-                                    </div>
+                                    <div class="display-4 fw-bold @textClass mb-2">@minutesLeft</div>
+                                    <div class="text-muted">@(GetMinutesText(minutesLeft)) залишилось</div>
                                 }
-                            </div>
+
+                                <div class="mt-3">
+                                    @if (daysLeft <= 0 && hoursLeft <= 3)
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            <i class="bi bi-exclamation-triangle me-2"></i>
+                                            @if (hoursLeft <= 0)
+                                            {
+                                                <span>Залишилось менше години!</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Залишилось лише @hoursLeft @(GetHoursText(hoursLeft))!</span>
+                                            }
+                                        </div>
+                                    }
+                                    else if (daysLeft <= 1)
+                                    {
+                                        <div class="alert alert-warning" role="alert">
+                                            <i class="bi bi-clock me-2"></i>Дедлайн наближається.
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-success" role="alert">
+                                            <i class="bi bi-check-circle me-2"></i>У вас достатньо часу.
+                                        </div>
+                                    }
+                                </div>
+                            }
                         </div>
                     </div>
                 }
+
+                <!-- Картка дій -->
+                <div class="card mb-4">
+                    <div class="card-header bg-transparent">
+                        <h5 class="card-title mb-0">Дії</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                                <i class="bi bi-pencil me-2"></i>Редагувати проект
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+                                <i class="bi bi-trash me-2"></i>Видалити проект
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+@functions {
+    string GetDaysText(int days)
+    {
+        if (days % 10 == 1 && days % 100 != 11)
+            return "день";
+        else if ((days % 10 >= 2 && days % 10 <= 4) && (days % 100 < 12 || days % 100 > 14))
+            return "дні";
+        else
+            return "днів";
+    }
+
+    string GetHoursText(int hours)
+    {
+        if (hours % 10 == 1 && hours % 100 != 11)
+            return "година";
+        else if ((hours % 10 >= 2 && hours % 10 <= 4) && (hours % 100 < 12 || hours % 100 > 14))
+            return "години";
+        else
+            return "годин";
+    }
+
+    string GetMinutesText(int minutes)
+    {
+        if (minutes % 10 == 1 && minutes % 100 != 11)
+            return "хвилина";
+        else if ((minutes % 10 >= 2 && minutes % 10 <= 4) && (minutes % 100 < 12 || minutes % 100 > 14))
+            return "хвилини";
+        else
+            return "хвилин";
+    }
+}

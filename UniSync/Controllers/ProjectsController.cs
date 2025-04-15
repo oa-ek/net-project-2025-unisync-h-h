@@ -247,22 +247,29 @@ namespace UniSync.Controllers
         {
             if (id != project.Id)
             {
+                _logger.LogWarning($"Невідповідність ID: отримано {id}, але в моделі {project.Id}");
                 return NotFound();
             }
 
             var userId = _userManager.GetUserId(User);
+            _logger.LogInformation($"Спроба редагування проекту з ID: {id} користувачем: {userId}");
 
             try
             {
                 // Перевірка, чи існуючий проект належить поточному користувачу
-                var existingProject = await _context.Projects.FindAsync(id);
+                var existingProject = await _context.Projects
+                    .AsNoTracking() // Важливо для уникнення проблем з відстеженням
+                    .FirstOrDefaultAsync(p => p.Id == id);
+
                 if (existingProject == null)
                 {
+                    _logger.LogWarning($"Проект з ID {id} не знайдено");
                     return NotFound();
                 }
 
                 if (existingProject.UserId != userId)
                 {
+                    _logger.LogWarning($"Спроба редагування проекту, який не належить користувачу. Проект ID: {id}, Власник: {existingProject.UserId}, Поточний користувач: {userId}");
                     return Forbid(); // Заборона доступу, якщо проект не належить користувачу
                 }
 
@@ -270,6 +277,7 @@ namespace UniSync.Controllers
                 var subject = await _context.Subjects.FindAsync(project.SubjectId);
                 if (subject == null)
                 {
+                    _logger.LogWarning($"Предмет з ID {project.SubjectId} не знайдено");
                     ModelState.AddModelError("SubjectId", "Вибраний предмет не існує");
                     ViewBag.SubjectId = new SelectList(await _context.Subjects.Where(s => s.UserId == userId).ToListAsync(), "Id", "Title", project.SubjectId);
                     return View(project);
@@ -277,6 +285,7 @@ namespace UniSync.Controllers
 
                 if (subject.UserId != userId)
                 {
+                    _logger.LogWarning($"Предмет з ID {project.SubjectId} не належить користувачу {userId}");
                     ModelState.AddModelError("SubjectId", "Вибраний предмет не належить вам");
                     ViewBag.SubjectId = new SelectList(await _context.Subjects.Where(s => s.UserId == userId).ToListAsync(), "Id", "Title", project.SubjectId);
                     return View(project);
@@ -285,13 +294,26 @@ namespace UniSync.Controllers
                 // Зберігаємо оригінальний UserId
                 project.UserId = userId;
 
+                // Видаляємо помилки валідації для полів, які ми заповнюємо вручну
+                ModelState.Remove("User");
+                ModelState.Remove("Subject");
+
                 if (ModelState.IsValid)
                 {
                     try
                     {
                         project.UpdatedAt = DateTime.Now;
 
-                        _context.Update(project);
+                        // Важливо: явно вказуємо, що це оновлення
+                        _context.Entry(project).State = EntityState.Modified;
+
+                        // Додаткове логування для відстеження стану
+                        _logger.LogInformation($"Оновлення проекту з ID: {project.Id}. Дані: Title={project.Title}, Status={project.Status}, Progress={project.Progress}");
+                        foreach (var entry in _context.ChangeTracker.Entries<Project>())
+                        {
+                            _logger.LogInformation($"Сутність: {entry.Entity.Id}, Стан: {entry.State}");
+                        }
+
                         await _context.SaveChangesAsync();
                         _logger.LogInformation($"Проект з ID: {project.Id} успішно оновлено");
                         TempData["SuccessMessage"] = "Проект успішно оновлено!";
@@ -310,6 +332,11 @@ namespace UniSync.Controllers
                             throw;
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Загальна помилка при оновленні проекту з ID: {project.Id}");
+                        ModelState.AddModelError("", $"Помилка при оновленні проекту: {ex.Message}");
+                    }
                 }
                 else
                 {
@@ -327,6 +354,17 @@ namespace UniSync.Controllers
             {
                 _logger.LogError(ex, $"Помилка при оновленні проекту з ID: {project.Id}");
                 ModelState.AddModelError("", $"Помилка при оновленні проекту: {ex.Message}");
+            }
+
+            // Якщо ми дійшли до цього місця, щось пішло не так
+            // Завантажуємо предмет для відображення
+            try
+            {
+                project.Subject = await _context.Subjects.FindAsync(project.SubjectId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Помилка при завантаженні предмета для відображення");
             }
 
             ViewBag.SubjectId = new SelectList(await _context.Subjects.Where(s => s.UserId == userId).ToListAsync(), "Id", "Title", project.SubjectId);
@@ -370,6 +408,90 @@ namespace UniSync.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+
+        // GET: Projects/UpdateProgress/5
+        public async Task<IActionResult> UpdateProgress(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                var userId = _userManager.GetUserId(User);
+
+                var project = await _context.Projects
+                    .Include(p => p.Subject)
+                    .FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
+
+                if (project == null)
+                {
+                    return NotFound();
+                }
+
+                int calculatedProgress = 0;
+
+                if (project.Status == "Completed")
+                {
+                    calculatedProgress = 100;
+                }
+                else if (project.Deadline.HasValue)
+                {
+                    var now = DateTime.Now;
+                    var creationDate = project.CreatedAt;
+                    var deadline = project.Deadline.Value;
+
+                    if (now >= deadline)
+                    {
+                        calculatedProgress = 100;
+                    }
+                    else
+                    {
+                        var totalDuration = (deadline - creationDate).TotalSeconds;
+                        var elapsedDuration = (now - creationDate).TotalSeconds;
+
+                        if (totalDuration > 0)
+                        {
+                            calculatedProgress = (int)Math.Floor((elapsedDuration / totalDuration) * 100);
+
+                            calculatedProgress = Math.Min(Math.Max(calculatedProgress, 0), 99);
+
+                            var hoursLeft = (deadline - now).TotalHours;
+                            if (hoursLeft < 1 && calculatedProgress < 50)
+                            {
+                                calculatedProgress = 50 + (int)((1 - hoursLeft) * 49);
+                            }
+                        }
+                    }
+                }
+
+                project.Progress = calculatedProgress;
+
+                project.UpdatedAt = DateTime.Now;
+
+                if (calculatedProgress >= 99 && project.Status != "Completed")
+                {
+                    TempData["InfoMessage"] = "Прогрес досяг майже 100%. Можливо, варто змінити статус проекту на 'Завершено'.";
+                }
+
+                _context.Update(project);
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation($"Прогрес проекту з ID {project.Id} оновлено до {calculatedProgress}%");
+                TempData["SuccessMessage"] = "Прогрес проекту успішно оновлено!";
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Помилка при оновленні прогресу проекту з ID: {id}");
+                TempData["ErrorMessage"] = "Виникла помилка при оновленні прогресу проекту. Спробуйте пізніше.";
+            }
+
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
+
 
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]

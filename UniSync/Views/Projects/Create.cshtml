@@ -8,35 +8,65 @@
     <div class="card-body p-4">
         <h1 class="fw-bold mb-4">Створення нового проекту</h1>
 
-        <form asp-action="Create" method="post">
+        <form asp-action="Create" method="post" id="createProjectForm">
+            @Html.AntiForgeryToken()
             <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
-
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label asp-for="Title" class="form-label fw-medium">Назва проекту</label>
+                        <label asp-for="Title" class="form-label fw-medium">
+                            Назва проекту
+                        </label>
                         <input asp-for="Title" class="form-control" placeholder="Введіть назву проекту" required />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="SubjectId" class="form-label fw-medium">Предмет</label>
-                        <select asp-for="SubjectId" class="form-select" asp-items="ViewBag.SubjectId" required>
+                        <label asp-for="SubjectId" class="form-label fw-medium">
+                            Предмет
+                        </label>
+                        <select asp-for="SubjectId" class="form-select" asp-items="ViewBag.SubjectId" id="subjectSelect" required>
                             <option value="">-- Виберіть предмет --</option>
                         </select>
                         <span asp-validation-for="SubjectId" class="text-danger"></span>
                         <div class="mt-2">
-                            <a asp-controller="Subjects" asp-action="Create" class="btn btn-sm btn-outline-secondary">
+                            <button type="button" id="showNewSubjectFormBtn" class="btn btn-sm btn-outline-secondary">
                                 <i class="bi bi-plus-circle me-1"></i>Додати новий предмет
-                            </a>
+                            </button>
+                        </div>
+
+                        <!-- Форма для додавання нового предмета -->
+                        <div id="newSubjectForm" class="mt-3" style="display: none;">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-3">
+                                    <h6 class="mb-3">Додавання нового предмета</h6>
+                                    <div class="mb-3">
+                                        <label for="newSubjectTitle" class="form-label">Назва предмета</label>
+                                        <input type="text" id="newSubjectTitle" class="form-control" placeholder="Введіть назву предмета" />
+                                        <div id="newSubjectError" class="text-danger mt-1" style="display: none;"></div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button type="button" id="addNewSubjectBtn" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-plus-circle me-1"></i>Додати
+                                        </button>
+                                        <button type="button" id="cancelNewSubjectBtn" class="btn btn-sm btn-outline-secondary">
+                                            Скасувати
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Priority" class="form-label fw-medium">Пріоритет</label>
+                        <label asp-for="Priority" class="form-label fw-medium">
+                            Пріоритет
+                        </label>
                         <select asp-for="Priority" class="form-select" required>
                             <option value="Low">Низький</option>
-                            <option value="Medium" selected>Середній</option>
+                            <option value="Medium" selected>
+                                Середній
+                            </option>
                             <option value="High">Високий</option>
                         </select>
                         <span asp-validation-for="Priority" class="text-danger"></span>
@@ -45,9 +75,13 @@
 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label asp-for="Status" class="form-label fw-medium">Статус</label>
+                        <label asp-for="Status" class="form-label fw-medium">
+                            Статус
+                        </label>
                         <select asp-for="Status" class="form-select" required>
-                            <option value="Not Started" selected>Не розпочато</option>
+                            <option value="Not Started" selected>
+                                Не розпочато
+                            </option>
                             <option value="In Progress">В процесі</option>
                             <option value="On Hold">Призупинено</option>
                             <option value="Completed">Завершено</option>
@@ -56,29 +90,57 @@
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Deadline" class="form-label fw-medium">Дедлайн</label>
-                        <input asp-for="Deadline" class="form-control" type="date" />
+                        <label asp-for="Deadline" class="form-label fw-medium">
+                            Дедлайн
+                        </label>
+                        <div class="input-group">
+                            <input type="date" id="deadlineDate" class="form-control" required />
+                            <input type="text"
+                                   id="deadlineTime"
+                                   class="form-control"
+                                   placeholder="ГГ:ХХ"
+                                   pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]"
+                                   value="23:59"
+                                   required />
+                        </div>
+                        <input asp-for="Deadline" type="hidden" id="deadlineInput" />
                         <span asp-validation-for="Deadline" class="text-danger"></span>
+                        <small class="text-muted">Встановіть дату та час дедлайну (формат часу: ГГ:ХХ, 24-годинний)</small>
+                        <div id="timeError" class="text-danger" style="display: none;">
+                            Введіть час у форматі ГГ:ХХ (від 00:00 до 23:59)
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Progress" class="form-label fw-medium">Прогрес (%)</label>
-                        <input asp-for="Progress" class="form-control" type="number" min="0" max="100" value="0" required />
-                        <span asp-validation-for="Progress" class="text-danger"></span>
+                        <label class="form-label fw-medium">Прогрес</label>
+                        <div class="progress" style="height: 25px;">
+                            <div id="progressBar"
+                                 class="progress-bar"
+                                 role="progressbar"
+                                 style="width: 0%;"
+                                 aria-valuenow="0"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100">
+                                0%
+                            </div>
+                        </div>
+                        <input asp-for="Progress" type="hidden" id="progressInput" value="0" />
+                        <small class="text-muted mt-1 d-block">Прогрес розраховується автоматично на основі дедлайну</small>
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="mb-3">
-                        <label asp-for="Description" class="form-label fw-medium">Опис</label>
+                        <label asp-for="Description" class="form-label fw-medium">
+                            Опис
+                        </label>
                         <textarea asp-for="Description" class="form-control" rows="4" placeholder="Введіть опис проекту"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
             </div>
-
             <div class="d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" id="submitButton">
                     <i class="bi bi-save me-2"></i> Створити проект
                 </button>
                 <a asp-action="Index" class="btn btn-outline-secondary">
@@ -89,9 +151,273 @@
     </div>
 </div>
 
-@section Scripts {
+@section Scripts
+{
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("createProjectForm")
+            const submitButton = document.getElementById("submitButton")
+            const deadlineDate = document.getElementById("deadlineDate")
+            const deadlineTime = document.getElementById("deadlineTime")
+            const deadlineInput = document.getElementById("deadlineInput")
+            const progressBar = document.getElementById("progressBar")
+            const progressInput = document.getElementById("progressInput")
+            const statusSelect = document.querySelector('[name="Status"]')
+            const timeError = document.getElementById("timeError")
 
+            // Елементи для роботи з новим предметом
+            const showNewSubjectFormBtn = document.getElementById("showNewSubjectFormBtn")
+            const newSubjectForm = document.getElementById("newSubjectForm")
+            const newSubjectTitle = document.getElementById("newSubjectTitle")
+            const addNewSubjectBtn = document.getElementById("addNewSubjectBtn")
+            const cancelNewSubjectBtn = document.getElementById("cancelNewSubjectBtn")
+            const newSubjectError = document.getElementById("newSubjectError")
+            const subjectSelect = document.getElementById("subjectSelect")
+
+            // Показати форму додавання нового предмета
+            showNewSubjectFormBtn.addEventListener("click", () => {
+                newSubjectForm.style.display = "block"
+                showNewSubjectFormBtn.style.display = "none"
+                newSubjectTitle.focus()
+            })
+
+            // Скасувати додавання нового предмета
+            cancelNewSubjectBtn.addEventListener("click", () => {
+                newSubjectForm.style.display = "none"
+                showNewSubjectFormBtn.style.display = "inline-block"
+                newSubjectTitle.value = ""
+                newSubjectError.style.display = "none"
+            })
+
+            // Додати новий предмет
+            addNewSubjectBtn.addEventListener("click", async () => {
+                const title = newSubjectTitle.value.trim()
+
+                if (!title) {
+                    newSubjectError.textContent = "Введіть назву предмета"
+                    newSubjectError.style.display = "block"
+                    return
+                }
+
+                // Відображення стану завантаження
+                addNewSubjectBtn.disabled = true
+                addNewSubjectBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Додавання...'
+                newSubjectError.style.display = "none"
+
+                try {
+                    // Отримання CSRF токена
+                    const token = document.querySelector('input[name="__RequestVerificationToken"]').value
+
+                    // Відправка запиту на сервер
+                    const response = await fetch('/Subjects/CreateAjax', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': token
+                        },
+                        body: JSON.stringify({ title: title })
+                    })
+
+                    if (response.ok) {
+                        const result = await response.json()
+
+                        if (result.success) {
+                            // Додавання нового предмета до списку
+                            const option = new Option(result.title, result.id)
+                            subjectSelect.add(option)
+
+                            // Вибір нового предмета
+                            subjectSelect.value = result.id
+
+                            // Приховання форми додавання
+                            newSubjectForm.style.display = "none"
+                            showNewSubjectFormBtn.style.display = "inline-block"
+                            newSubjectTitle.value = ""
+
+                            // Показ повідомлення про успіх
+                            const successAlert = document.createElement('div')
+                            successAlert.className = 'alert alert-success alert-dismissible fade show mt-2'
+                            successAlert.innerHTML = `
+                      <strong>Успіх!</strong> Предмет "${result.title}" успішно додано.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    `
+                            newSubjectForm.parentNode.insertBefore(successAlert, newSubjectForm.nextSibling)
+
+                            // Автоматичне закриття повідомлення через 5 секунд
+                            setTimeout(() => {
+                                successAlert.remove()
+                            }, 5000)
+                        } else {
+                            throw new Error(result.message || 'Помилка при додаванні предмета')
+                        }
+                    } else {
+                        const errorData = await response.json()
+                        throw new Error(errorData.message || 'Помилка при додаванні предмета')
+                    }
+                } catch (error) {
+                    newSubjectError.textContent = error.message || 'Помилка при додаванні предмета. Спробуйте ще раз.'
+                    newSubjectError.style.display = "block"
+                } finally {
+                    // Відновлення стану кнопки
+                    addNewSubjectBtn.disabled = false
+                    addNewSubjectBtn.innerHTML = '<i class="bi bi-plus-circle me-1"></i>Додати'
+                }
+            })
+
+            const today = new Date()
+            const formattedDate = today.toISOString().split("T")[0]
+            deadlineDate.setAttribute("min", formattedDate)
+
+            const tomorrow = new Date()
+            tomorrow.setDate(tomorrow.getDate() + 1)
+            deadlineDate.value = tomorrow.toISOString().split("T")[0]
+
+            // Валідація формату часу
+            deadlineTime.addEventListener("input", (e) => {
+                const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/
+                const value = e.target.value
+
+                if (value && !timeRegex.test(value)) {
+                    timeError.style.display = "block"
+                    e.target.setCustomValidity("Невірний формат часу")
+                } else {
+                    timeError.style.display = "none"
+                    e.target.setCustomValidity("")
+                }
+            })
+
+            // Автоматичне форматування часу
+            deadlineTime.addEventListener("blur", (e) => {
+                const value = e.target.value
+                if (value) {
+                    // Спроба розпізнати введений час
+                    const parts = value.split(":")
+                    if (parts.length === 1 && !isNaN(parts[0])) {
+                        // Якщо введено лише години
+                        const hours = Number.parseInt(parts[0])
+                        if (hours >= 0 && hours <= 23) {
+                            e.target.value = hours.toString().padStart(2, "0") + ":00"
+                            timeError.style.display = "none"
+                            e.target.setCustomValidity("")
+                        }
+                    } else if (parts.length === 2) {
+                        // Якщо введено години і хвилини
+                        const hours = Number.parseInt(parts[0])
+                        const minutes = Number.parseInt(parts[1])
+                        if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
+                            e.target.value = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0")
+                            timeError.style.display = "none"
+                            e.target.setCustomValidity("")
+                        }
+                    }
+                }
+                updateProgress()
+            })
+
+            function updateProgress() {
+                if (!deadlineDate.value || !isValidTimeFormat(deadlineTime.value)) {
+                    setProgress(0)
+                    return
+                }
+
+                if (statusSelect.value === "Completed") {
+                    setProgress(100)
+                    return
+                }
+
+                const now = new Date()
+                const deadlineDateTime = new Date(`${deadlineDate.value}T${deadlineTime.value}:00`)
+
+                deadlineInput.value = deadlineDateTime.toISOString()
+
+                if (now >= deadlineDateTime) {
+                    setProgress(100)
+                    return
+                }
+
+                const creationDate = new Date()
+                creationDate.setHours(0, 0, 0, 0)
+
+                const totalDuration = deadlineDateTime.getTime() - creationDate.getTime()
+                const elapsedDuration = now.getTime() - creationDate.getTime()
+
+                let progressPercentage = Math.floor((elapsedDuration / totalDuration) * 100)
+
+                progressPercentage = Math.min(Math.max(progressPercentage, 0), 99)
+
+                setProgress(progressPercentage)
+            }
+
+            function isValidTimeFormat(time) {
+                const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/
+                return timeRegex.test(time)
+            }
+
+            function setProgress(value) {
+                progressInput.value = value
+                progressBar.style.width = `${value}%`
+                progressBar.setAttribute("aria-valuenow", value)
+                progressBar.textContent = `${value}%`
+
+                if (value < 30) {
+                    progressBar.className = "progress-bar bg-success"
+                } else if (value < 70) {
+                    progressBar.className = "progress-bar bg-info"
+                } else if (value < 90) {
+                    progressBar.className = "progress-bar bg-warning"
+                } else {
+                    progressBar.className = "progress-bar bg-danger"
+                }
+            }
+
+            deadlineDate.addEventListener("change", updateProgress)
+            deadlineTime.addEventListener("change", updateProgress)
+            statusSelect.addEventListener("change", updateProgress)
+
+            updateProgress()
+            setInterval(updateProgress, 60000)
+
+            // Обробка відправки форми
+            form.addEventListener("submit", function (e) {
+                // Перевірка валідності форми
+                if (!form.checkValidity()) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    form.classList.add("was-validated")
+                    return false
+                }
+
+                // Перевірка дати дедлайну
+                if (!deadlineDate.value) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    alert("Будь ласка, встановіть дату дедлайну")
+                    return false
+                }
+
+                // Перевірка формату часу
+                if (!isValidTimeFormat(deadlineTime.value)) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    alert("Будь ласка, введіть час у форматі ГГ:ХХ (від 00:00 до 23:59)")
+                    return false
+                }
+
+                // Оновлення прогресу та дедлайну перед відправкою
+                const deadlineDateTime = new Date(`${deadlineDate.value}T${deadlineTime.value}:00`)
+                deadlineInput.value = deadlineDateTime.toISOString()
+                updateProgress()
+
+                // Відображення стану завантаження
+                submitButton.disabled = true
+                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Створення...'
+
+                // Дозволяємо формі відправитися
+                return true
+            })
+        })
+    </script>
+}
