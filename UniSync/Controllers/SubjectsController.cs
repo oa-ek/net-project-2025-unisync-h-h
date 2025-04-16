@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using UniSync.Areas.Identity.Data;
 using UniSync.Data;
 using UniSync.Models.Entity;
+using UniSync.Models.ViewModels;
 
 namespace UniSync.Controllers
 {
@@ -138,6 +139,49 @@ namespace UniSync.Controllers
             }
 
             return View(subject);
+        }
+
+
+        // POST: Subjects/CreateAjax
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateAjax([FromBody] SubjectCreateViewModel model)
+        {
+            if (string.IsNullOrWhiteSpace(model.Title))
+            {
+                return Json(new { success = false, message = "Назва предмета не може бути порожньою" });
+            }
+
+            try
+            {
+                var userId = _userManager.GetUserId(User);
+
+                // Перевірка, чи існує предмет з такою назвою у поточного користувача
+                var existingSubject = await _context.Subjects
+                    .FirstOrDefaultAsync(s => s.UserId == userId && s.Title == model.Title);
+
+                if (existingSubject != null)
+                {
+                    return Json(new { success = false, message = "Предмет з такою назвою вже існує" });
+                }
+
+                var subject = new Subject
+                {
+                    Title = model.Title,
+                    UserId = userId
+                    // CreatedAt видалено
+                };
+
+                _context.Add(subject);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true, id = subject.Id, title = subject.Title });
+            }
+            catch (Exception ex)
+            {
+                // Логування видалено
+                return Json(new { success = false, message = "Помилка при створенні предмета. Спробуйте ще раз." });
+            }
         }
 
         // POST: Subjects/Delete/5

@@ -1,36 +1,43 @@
 ﻿@model UniSync.Models.Entity.Project
 
 @{
-    ViewData["Title"] = "Edit Project";
+    ViewData["Title"] = "Редагування проекту";
 }
 
-<div class="card border-0 shadow-sm mb-4">
+<div
+class="card border-0 shadow-sm mb-4">
     <div class="card-body p-4">
-        <h1 class="fw-bold mb-4">Edit Project</h1>
+        <h1 class="fw-bold mb-4">Редагування проекту</h1>
 
-        <form asp-action="Edit" method="post">
+        <form asp-action="Edit" method="post" id="editProjectForm">
             <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+            
+            <!-- Важливі приховані поля -->
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CreatedAt" />
+            <input type="hidden" asp-for="UserId" />
+            <input type="hidden" asp-for="SubjectId" />
 
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label asp-for="Title" class="form-label fw-medium">Project Title</label>
-                        <input asp-for="Title" class="form-control" placeholder="Enter project title" required />
+                        <label asp-for="Title" class="form-label fw-medium">Назва проекту</label>
+                        <input asp-for="Title" class="form-control" placeholder="Введіть назву проекту" required />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label for="SubjectTitle" class="form-label fw-medium">Subject</label>
-                        <input name="SubjectTitle" id="SubjectTitle" class="form-control" type="text" value="@Model.Subject.Title" placeholder="Enter subject name" required />
+                        <label for="SubjectTitle" class="form-label fw-medium">Предмет</label>
+                        <input name="SubjectTitle" id="SubjectTitle" class="form-control" type="text" value="@Model.Subject.Title" readonly />
+                        <small class="text-muted">Предмет не можна змінити при редагуванні проекту</small>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Priority" class="form-label fw-medium">Priority</label>
+                        <label asp-for="Priority" class="form-label fw-medium">Пріоритет</label>
                         <select asp-for="Priority" class="form-select" required>
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
+                            <option value="Low">Низький</option>
+                            <option value="Medium">Середній</option>
+                            <option value="High">Високий</option>
                         </select>
                         <span asp-validation-for="Priority" class="text-danger"></span>
                     </div>
@@ -38,44 +45,56 @@
 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label asp-for="Status" class="form-label fw-medium">Status</label>
-                        <select asp-for="Status" class="form-select" required>
-                            <option value="Not Started">Not Started</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="On Hold">On Hold</option>
-                            <option value="Completed">Completed</option>
+                        <label asp-for="Status" class="form-label fw-medium">Статус</label>
+                        <select asp-for="Status" class="form-select" id="statusSelect" required>
+                            <option value="Not Started">Не розпочато</option>
+                            <option value="In Progress">В процесі</option>
+                            <option value="On Hold">Призупинено</option>
+                            <option value="Completed">Завершено</option>
                         </select>
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Deadline" class="form-label fw-medium">Deadline</label>
-                        <input asp-for="Deadline" class="form-control" type="date" />
+                        <label asp-for="Deadline" class="form-label fw-medium">Дедлайн</label>
+                        <div class="input-group">
+                            <input type="date" id="deadlineDate" class="form-control" required />
+                            <input type="text" id="deadlineTime" class="form-control" placeholder="ГГ:ХХ" 
+                                   pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" required />
+                        </div>
+                        <input asp-for="Deadline" type="hidden" id="deadlineInput" />
                         <span asp-validation-for="Deadline" class="text-danger"></span>
+                        <small class="text-muted">Встановіть дату та час дедлайну (формат часу: ГГ:ХХ, 24-годинний)</small>
+                        <div id="timeError" class="text-danger" style="display: none;">
+                            Введіть час у форматі ГГ:ХХ (від 00:00 до 23:59)
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Progress" class="form-label fw-medium">Progress (%)</label>
-                        <input asp-for="Progress" class="form-control" type="number" min="0" max="100" required />
-                        <span asp-validation-for="Progress" class="text-danger"></span>
+                        <label class="form-label fw-medium">Прогрес</label>
+                        <div class="progress" style="height: 25px;">
+                            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                        <input asp-for="Progress" type="hidden" id="progressInput" />
+                        <small class="text-muted mt-1 d-block">Прогрес розраховується автоматично на основі дедлайну</small>
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="mb-3">
-                        <label asp-for="Description" class="form-label fw-medium">Description</label>
-                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter project description"></textarea>
+                        <label asp-for="Description" class="form-label fw-medium">Опис</label>
+                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Введіть опис проекту"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
             </div>
 
             <div class="d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-save me-2"></i> Save Changes
+                <button type="submit" class="btn btn-primary" id="submitButton">
+                    <i class="bi bi-save me-2"></i> Зберегти зміни
                 </button>
                 <a asp-action="Index" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrow-left me-2"></i> Back to List
+                    <i class="bi bi-arrow-left me-2"></i> Назад до списку
                 </a>
             </div>
         </form>
@@ -86,4 +105,171 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        document.addEventListener('DOMContentLoaded',
+() => {
+            const form = document.getElementById('editProjectForm');
+            const submitButton = document.getElementById('submitButton');
+            const deadlineDate = document.getElementById('deadlineDate');
+            const deadlineTime = document.getElementById('deadlineTime');
+            const deadlineInput = document.getElementById('deadlineInput');
+            const progressBar = document.getElementById('progressBar');
+            const progressInput = document.getElementById('progressInput');
+            const statusSelect = document.getElementById('statusSelect');
+            const timeError = document.getElementById('timeError');
+            
+            const existingDeadline = new Date('@(Model.Deadline?.ToString("yyyy-MM-ddTHH:mm:ss") ?? DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ss"))');
+            
+            const formattedDate = existingDeadline.toISOString().split('T')[0];
+            deadlineDate.value = formattedDate;
+            
+            const hours = existingDeadline.getHours().toString().padStart(2, '0');
+            const minutes = existingDeadline.getMinutes().toString().padStart(2, '0');
+            deadlineTime.value = `${hours}:${minutes}`;
+            
+            const today = new Date();
+            const minDate = today.toISOString().split('T')[0];
+            
+            if (existingDeadline > today) {
+                deadlineDate.setAttribute('min', minDate);
+            }
+            
+            // Валідація формату часу
+            deadlineTime.addEventListener('input', (e) => {
+                const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/;
+                const value = e.target.value;
+
+                if (value && !timeRegex.test(value)) {
+                    timeError.style.display = 'block';
+                    e.target.setCustomValidity('Невірний формат часу');
+                } else {
+                    timeError.style.display = 'none';
+                    e.target.setCustomValidity('');
+                }
+            });
+
+            // Автоматичне форматування часу
+            deadlineTime.addEventListener('blur', (e) => {
+                const value = e.target.value;
+                if (value) {
+                    // Спроба розпізнати введений час
+                    const parts = value.split(':');
+                    if (parts.length === 1 && !isNaN(parts[0])) {
+                        // Якщо введено лише години
+                        const hours = Number.parseInt(parts[0]);
+                        if (hours >= 0 && hours <= 23) {
+                            e.target.value = hours.toString().padStart(2, '0') + ':00';
+                            timeError.style.display = 'none';
+                            e.target.setCustomValidity('');
+                        }
+                    } else if (parts.length === 2) {
+                        // Якщо введено години і хвилини
+                        const hours = Number.parseInt(parts[0]);
+                        const minutes = Number.parseInt(parts[1]);
+                        if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
+                            e.target.value = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
+                            timeError.style.display = 'none';
+                            e.target.setCustomValidity('');
+                        }
+                    }
+                }
+                updateProgress();
+            });
+            
+            function isValidTimeFormat(time) {
+                const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/;
+                return timeRegex.test(time);
+            }
+            
+            function updateProgress() {
+                if (!deadlineDate.value || !isValidTimeFormat(deadlineTime.value)) {
+                    return;
+                }
+                
+                if (statusSelect.value === 'Completed') {
+                    setProgress(100);
+                    return;
+                }
+                
+                const now = new Date();
+                const deadlineDateTime = new Date(
+                    `${deadlineDate.value}T${deadlineTime.value}:00`
+                );
+                
+                deadlineInput.value = deadlineDateTime.toISOString();
+                
+                if (now >= deadlineDateTime) {
+                    setProgress(100);
+                    return;
+                }
+                
+                const creationDate = new Date('@Model.CreatedAt.ToString("yyyy-MM-ddTHH:mm:ss")');
+                
+                const totalDuration = deadlineDateTime.getTime() - creationDate.getTime();
+                const elapsedDuration = now.getTime() - creationDate.getTime();
+                
+                let progressPercentage = Math.floor((elapsedDuration / totalDuration) * 100);
+                
+                progressPercentage = Math.min(Math.max(progressPercentage, 0), 99);
+                
+                setProgress(progressPercentage);
+            }
+            
+            function setProgress(value) {
+                progressInput.value = value;
+                progressBar.style.width = `${value}%`;
+                progressBar.setAttribute('aria-valuenow', value);
+                progressBar.textContent = `${value}%`;
+                
+                if (value < 30) {
+                    progressBar.className = 'progress-bar bg-success';
+                } else if (value < 70) {
+                    progressBar.className = 'progress-bar bg-info';
+                } else if (value < 90) {
+                    progressBar.className = 'progress-bar bg-warning';
+                } else {
+                    progressBar.className = 'progress-bar bg-danger';
+                }
+            }
+            
+            setProgress(@Model.Progress);
+            
+            deadlineDate.addEventListener('change', updateProgress);
+            deadlineTime.addEventListener('change', updateProgress);
+            statusSelect.addEventListener('change', updateProgress);
+            
+            setInterval(updateProgress, 60000); 
+            
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    if (!form.checkValidity()) {
+                        e.preventDefault();
+                        form.classList.add('was-validated');
+                    } else {
+                        if (!deadlineDate.value) {
+                            e.preventDefault();
+                            alert('Будь ласка, встановіть дату дедлайну');
+                            return;
+                        }
+                        
+                        if (!isValidTimeFormat(deadlineTime.value)) {
+                            e.preventDefault();
+                            alert('Будь ласка, введіть час у форматі ГГ:ХХ (від 00:00 до 23:59)');
+                            return;
+                        }
+                        
+                        updateProgress();
+                        
+                        console.log('Відправка форми з ID проекту:', document.querySelector('input[name="Id"]').value);
+                        
+                        if (submitButton) {
+                            submitButton.disabled = true;
+                            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Збереження...';
+                        }
+                    }
+                });
+            }
+        }
+)
+</script>
 }
