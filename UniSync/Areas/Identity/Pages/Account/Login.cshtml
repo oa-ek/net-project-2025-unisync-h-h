@@ -31,6 +31,37 @@
                     <div>
                         <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Увійти</button>
                     </div>
+
+                    @if (Model.ExternalLogins?.Count > 0)
+                    {
+                        <div class="mt-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <hr class="flex-grow-1" />
+                                <span class="mx-2 text-muted">або</span>
+                                <hr class="flex-grow-1" />
+                            </div>
+
+                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    @if (provider.Name == "Google")
+                                    {
+                                        <button type="submit" class="w-100 btn btn-lg btn-outline-dark mb-3" name="provider" value="@provider.Name">
+                                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" style="height: 24px; margin-right: 8px;" />
+                                            Увійти через Google
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="w-100 btn btn-lg btn-outline-dark mb-3" name="provider" value="@provider.Name">
+                                            Увійти через @provider.DisplayName
+                                        </button>
+                                    }
+                                }
+                            </form>
+                        </div>
+                    }
+
                     <div class="mt-3 text-center">
                         <p>
                             <a id="forgot-password" asp-page="./ForgotPassword">Забули пароль?</a>
@@ -48,4 +79,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-
