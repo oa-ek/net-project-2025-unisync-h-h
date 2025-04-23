@@ -102,6 +102,7 @@ namespace UniSync.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    await _userManager.AddToRoleAsync(user, "Student");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -117,7 +118,14 @@ namespace UniSync.Areas.Identity.Pages.Account
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                    _logger.LogError("Registration error: {ErrorCode} - {ErrorDescription}",
+                        error.Code, error.Description);
+                }                   
             }
+
 
             return Page();
         }

@@ -23,5 +23,8 @@ namespace UniSync.Areas.Identity.Data
         public ICollection<Subject> Subjects { get; set; }
 
         public ICollection<Project> Projects { get; set; }
+
+        public string? LockoutReason { get; set; }
+        public string? LockoutComment { get; set; }
     }
 }

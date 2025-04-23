@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject UserManager<UniSync.Areas.Identity.Data.UniSyncUser> UserManager
+@using UniSync.Areas.Identity.Data
+@using UniSync.Constants
+@inject UserManager<UniSyncUser> UserManager
+@inject SignInManager<UniSyncUser> SignInManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,30 +36,121 @@
                                 <i class="bi bi-house-door me-1"></i> Home
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-kanban me-1"></i> My Projects
-                            </a>
-                            <ul class="dropdown-menu shadow-sm" aria-labelledby="projectsDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-controller="Projects" asp-action="Index">
-                                        <i class="bi bi-list-ul me-2"></i> All Projects
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-kanban me-1"></i> My Projects
+                                </a>
+                                <ul class="dropdown-menu shadow-sm" aria-labelledby="projectsDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Projects" asp-action="Index">
+                                            <i class="bi bi-list-ul me-2"></i> All Projects
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Projects" asp-action="Create">
+                                            <i class="bi bi-plus-circle me-2"></i> Create New
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            var user = await UserManager.GetUserAsync(User);
+                            var isAdmin = user != null && (await UserManager.IsInRoleAsync(user, Roles.Admin) || await UserManager.IsInRoleAsync(user, Roles.SuperAdmin));
+                            var isModerator = user != null && await UserManager.IsInRoleAsync(user, Roles.Moderator);
+                            var isCourseManager = user != null && await UserManager.IsInRoleAsync(user, Roles.CourseManager);
+                            var isNewsEditor = user != null && await UserManager.IsInRoleAsync(user, Roles.NewsEditor);
+                        
+                            
+                            @if (isAdmin)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-shield-lock me-1"></i> Адміністрування
                                     </a>
+                                    <ul class="dropdown-menu shadow-sm" aria-labelledby="adminDropdown">
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="UserManagement" asp-action="Index">
+                                                <i class="bi bi-people me-2"></i> Управління користувачами
+                                            </a>
+                                        </li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-gear me-2"></i> Налаштування системи
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item" asp-controller="Projects" asp-action="Create">
-                                        <i class="bi bi-plus-circle me-2"></i> Create New
+                            }
+                            
+                            @if (isModerator)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="moderationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-flag me-1"></i> Модерація
                                     </a>
+                                    <ul class="dropdown-menu shadow-sm" aria-labelledby="moderationDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-exclamation-triangle me-2"></i> Скарги
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-chat-dots me-2"></i> Коментарі
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                <i class="bi bi-shield-lock me-1"></i> Privacy
-                            </a>
-                        </li>
-                    </ul>
+                            }
+                            
+                            @if (isCourseManager)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-mortarboard me-1"></i> Курси
+                                    </a>
+                                    <ul class="dropdown-menu shadow-sm" aria-labelledby="coursesDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-list-check me-2"></i> Управління групами
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-graph-up me-2"></i> Статистика
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            
+                            @if (isNewsEditor)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-newspaper me-1"></i> Новини
+                                    </a>
+                                    <ul class="dropdown-menu shadow-sm" aria-labelledby="newsDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-pencil-square me-2"></i> Створити новину
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-list-ul me-2"></i> Управління новинами
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                        
 
                     <div class="d-flex align-items-center">
                         <div class="search-container me-3">
