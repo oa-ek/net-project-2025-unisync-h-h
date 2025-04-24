@@ -30,4 +30,8 @@ namespace UniSync.Models.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
+    public class SuperAdminPasswordModel
+    {
+        public string Password { get; set; }
+    }
 }

@@ -29,6 +29,15 @@
                                     @Model.Roles[i].Name <span class="text-muted">(не можна видалити)</span>
                                 </label>
                             }
+                            else if (Model.Roles[i].Name == Roles.SuperAdmin)
+                            {
+                                <input class="form-check-input superadmin-checkbox" type="checkbox" id="role-@i"
+                                       data-role-index="@i" @(Model.Roles[i].IsSelected ? "checked" : "") />
+                                <input type="hidden" asp-for="@Model.Roles[i].IsSelected" id="hidden-role-@i" />
+                                <label class="form-check-label" for="role-@i">
+                                    @Model.Roles[i].Name <span class="text-danger">(потребує підтвердження)</span>
+                                </label>
+                            }
                             else
                             {
                                 <input class="form-check-input" type="checkbox" asp-for="@Model.Roles[i].IsSelected" id="role-@i" />
@@ -52,3 +61,86 @@
         </form>
     </div>
 </div>
+
+<div class="modal fade" id="superAdminConfirmModal" tabindex="-1" aria-labelledby="superAdminConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="superAdminConfirmModalLabel">Підтвердження ролі SuperAdmin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">Увага! Ви намагаєтесь надати користувачу роль SuperAdmin.</p>
+                <p>Ця роль має повний доступ до всіх функцій системи. Для підтвердження введіть пароль адміністратора:</p>
+                <div class="mb-3">
+                    <label for="adminPassword" class="form-label">Пароль адміністратора</label>
+                    <input type="password" class="form-control" id="adminPassword">
+                    <div id="passwordError" class="text-danger mt-2" style="display: none;">
+                        Невірний пароль. Спробуйте ще раз.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                <button type="button" class="btn btn-danger" id="confirmSuperAdminBtn">Підтвердити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentRoleIndex = -1;
+            let superAdminModal = new bootstrap.Modal(document.getElementById('superAdminConfirmModal'));
+
+            document.querySelectorAll('.superadmin-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function(e) {
+                    currentRoleIndex = this.getAttribute('data-role-index');
+
+                    if (this.checked) {
+                        e.preventDefault(); 
+                        this.checked = false;
+                        superAdminModal.show();
+                    } else {
+                        document.getElementById(`hidden-role-${currentRoleIndex}`).value = "false";
+                    }
+                });
+            });
+
+            document.getElementById('confirmSuperAdminBtn').addEventListener('click', function() {
+                const password = document.getElementById('adminPassword').value;
+
+                fetch('@Url.Action("VerifySuperAdminPassword", "UserManagement")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify({ password: password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.querySelector(`.superadmin-checkbox[data-role-index="${currentRoleIndex}"]`).checked = true;
+                        document.getElementById(`hidden-role-${currentRoleIndex}`).value = "true";
+                        superAdminModal.hide();
+                        document.getElementById('passwordError').style.display = 'none';
+                        document.getElementById('adminPassword').value = '';
+                    } else {
+                        document.getElementById('passwordError').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('passwordError').style.display = 'block';
+                });
+            });
+
+            document.getElementById('superAdminConfirmModal').addEventListener('hidden.bs.modal', function () {
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('passwordError').style.display = 'none';
+            });
+        });
+    </script>
+}

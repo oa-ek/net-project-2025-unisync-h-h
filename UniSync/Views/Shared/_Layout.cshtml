@@ -20,15 +20,18 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
+                <!-- Brand -->
                 <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="bi bi-calendar-check brand-icon me-2"></i>
                     <span class="fw-bold">UniSync</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                
+                <div class="navbar-collapse collapse d-lg-flex justify-content-between">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
@@ -39,7 +42,8 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-kanban me-1"></i> My Projects
                                 </a>
                                 <ul class="dropdown-menu shadow-sm" aria-labelledby="projectsDropdown">
@@ -58,15 +62,17 @@
                             </li>
 
                             var user = await UserManager.GetUserAsync(User);
-                            var isAdmin = user != null && (await UserManager.IsInRoleAsync(user, Roles.Admin) || await UserManager.IsInRoleAsync(user, Roles.SuperAdmin));
+                            var isAdmin = user != null && (await UserManager.IsInRoleAsync(user, Roles.Admin) ||
+                            await UserManager.IsInRoleAsync(user, Roles.SuperAdmin));
                             var isModerator = user != null && await UserManager.IsInRoleAsync(user, Roles.Moderator);
                             var isCourseManager = user != null && await UserManager.IsInRoleAsync(user, Roles.CourseManager);
                             var isNewsEditor = user != null && await UserManager.IsInRoleAsync(user, Roles.NewsEditor);
-                        
+
                             @if (isAdmin)
                             {
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-shield-lock me-1"></i> Адміністрування
                                     </a>
                                     <ul class="dropdown-menu shadow-sm" aria-labelledby="adminDropdown">
@@ -84,11 +90,12 @@
                                     </ul>
                                 </li>
                             }
-                            
+
                             @if (isModerator)
                             {
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="moderationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="moderationDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-flag me-1"></i> Модерація
                                     </a>
                                     <ul class="dropdown-menu shadow-sm" aria-labelledby="moderationDropdown">
@@ -105,11 +112,12 @@
                                     </ul>
                                 </li>
                             }
-                            
+
                             @if (isCourseManager)
                             {
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-mortarboard me-1"></i> Курси
                                     </a>
                                     <ul class="dropdown-menu shadow-sm" aria-labelledby="coursesDropdown">
@@ -126,11 +134,12 @@
                                     </ul>
                                 </li>
                             }
-                            
+
                             @if (isNewsEditor)
                             {
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-newspaper me-1"></i> Новини
                                     </a>
                                     <ul class="dropdown-menu shadow-sm" aria-labelledby="newsDropdown">
@@ -148,19 +157,23 @@
                                 </li>
                             }
                         }
-                        
-
+                    </ul>
+                    
+                    <!-- Right Menu Items -->
                     <div class="d-flex align-items-center">
-                        <div class="search-container me-3">
+                        <!-- Search -->
+                        <div class="search-container me-3 d-none d-md-block">
                             <input type="text" class="search-input" placeholder="Search projects...">
                             <button class="search-button" type="button"><i class="bi bi-search"></i></button>
                         </div>
 
+                        <!-- User Profile -->
                         @if (User.Identity.IsAuthenticated)
                         {
                             var user = await UserManager.GetUserAsync(User);
                             <div class="dropdown">
-                                <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" 
+                                        type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="avatar-initials me-2">
                                         @{
                                             var firstInitial = !string.IsNullOrEmpty(user?.FirstName) ? user.FirstName[0] : '?';

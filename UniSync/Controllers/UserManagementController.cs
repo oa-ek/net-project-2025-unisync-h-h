@@ -40,7 +40,7 @@ namespace UniSync.Controllers
                 userViewModels.Add(new UserViewModel
                 {
                     Id = user.Id,
-                    Email = user.Email,
+                    Email = user.Email ?? string.Empty,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Roles = roles.ToList(),
@@ -69,7 +69,7 @@ namespace UniSync.Controllers
             {
                 UserId = user.Id,
                 UserName = $"{user.FirstName} {user.LastName}",
-                Email = user.Email,
+                Email = user.Email ?? string.Empty,
                 Roles = Roles.AllRoles.Select(r => new RoleViewModel
                 {
                     Name = r,
@@ -144,6 +144,12 @@ namespace UniSync.Controllers
             }
 
             var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                TempData["ErrorMessage"] = "Поточний користувач не знайдений";
+                return RedirectToAction(nameof(Index));
+            }
+
             if (currentUser.Id == id)
             {
                 TempData["ErrorMessage"] = "Ви не можете заблокувати самого себе";
@@ -212,14 +218,20 @@ namespace UniSync.Controllers
             if (string.IsNullOrEmpty(id))
             {
                 TempData["ErrorMessage"] = "Ідентифікатор користувача не вказано";
-                return NotFound();
+                return RedirectToAction(nameof(Index));
             }
 
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
                 TempData["ErrorMessage"] = "Користувача не знайдено";
-                return NotFound();
+                return RedirectToAction(nameof(Index));
+            }
+
+            if (user.LockoutEnd == null || user.LockoutEnd <= DateTimeOffset.UtcNow)
+            {
+                TempData["ErrorMessage"] = "Користувач не заблокований";
+                return RedirectToAction(nameof(Index));
             }
 
             var result = await _userManager.SetLockoutEndDateAsync(user, null);
@@ -229,15 +241,12 @@ namespace UniSync.Controllers
                 {
                     appUser.LockoutReason = null;
                     appUser.LockoutComment = null;
-                    var updateResult = await _userManager.UpdateAsync(appUser);
-                    if (!updateResult.Succeeded)
-                    {
-                        _logger.LogWarning("Не вдалося очистити причину та коментар блокування для користувача {UserId}: {Errors}",
-                            id, string.Join(", ", updateResult.Errors.Select(e => e.Description)));
-                    }
+                    await _userManager.UpdateAsync(appUser);
+                }
 
                 _logger.LogInformation("Користувач {UserId} розблокований адміністратором {AdminId}",
-                    id, (await _userManager.GetUserAsync(User)).Id);
+                 id, (await _userManager.GetUserAsync(User))?.Id ?? "Unknown");
+
                 TempData["SuccessMessage"] = "Користувача успішно розблоковано";
             }
             else
@@ -248,6 +257,45 @@ namespace UniSync.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> VerifySuperAdminPassword([FromBody] SuperAdminPasswordModel model)
+        {
+            if (string.IsNullOrEmpty(model.Password))
+            {
+                return Json(new { success = false });
+            }
+
+            // Отримуємо поточного користувача
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                return Json(new { success = false });
+            }
+
+            // Перевіряємо, чи є поточний користувач адміністратором
+            if (!await _userManager.IsInRoleAsync(currentUser, Roles.Admin) &&
+                !await _userManager.IsInRoleAsync(currentUser, Roles.SuperAdmin))
+            {
+                _logger.LogWarning("Спроба перевірки пароля для SuperAdmin від користувача без прав адміністратора: {UserId}", currentUser.Id);
+                return Json(new { success = false });
+            }
+
+            // Перевіряємо пароль
+            var isPasswordValid = await _userManager.CheckPasswordAsync(currentUser, model.Password);
+
+            if (isPasswordValid)
+            {
+                _logger.LogInformation("Успішна перевірка пароля для надання ролі SuperAdmin користувачем {UserId}", currentUser.Id);
+                return Json(new { success = true });
+            }
+            else
+            {
+                _logger.LogWarning("Невдала спроба перевірки пароля для надання ролі SuperAdmin користувачем {UserId}", currentUser.Id);
+                return Json(new { success = false });
+            }
         }
     }
 }

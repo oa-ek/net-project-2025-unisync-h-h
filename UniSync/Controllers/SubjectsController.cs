@@ -28,12 +28,18 @@ namespace UniSync.Controllers
         public async Task<IActionResult> Index()
         {
             var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                return Unauthorized();
+            }
+
             var subjects = await _context.Subjects
                 .Where(s => s.UserId == currentUser.Id)
                 .ToListAsync();
 
             return View(subjects);
         }
+
 
         // GET: Subjects/Create
         public IActionResult Create()
@@ -49,7 +55,7 @@ namespace UniSync.Controllers
             if (ModelState.IsValid)
             {
                 var currentUser = await _userManager.GetUserAsync(User);
-                subject.UserId = currentUser.Id;
+                subject.UserId = currentUser?.Id ?? "Unknown";
 
                 _context.Add(subject);
                 await _context.SaveChangesAsync();

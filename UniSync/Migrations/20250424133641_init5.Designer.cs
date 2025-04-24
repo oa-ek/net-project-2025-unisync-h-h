@@ -12,8 +12,8 @@ using UniSync.Data;
 namespace UniSync.Migrations
 {
     [DbContext(typeof(UniSyncContext))]
-    [Migration("20250423095741_init3.0")]
-    partial class init30
+    [Migration("20250424133641_init5")]
+    partial class init5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
