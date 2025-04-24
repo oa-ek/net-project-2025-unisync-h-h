@@ -10,7 +10,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - UniSync</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -64,7 +63,6 @@
                             var isCourseManager = user != null && await UserManager.IsInRoleAsync(user, Roles.CourseManager);
                             var isNewsEditor = user != null && await UserManager.IsInRoleAsync(user, Roles.NewsEditor);
                         
-                            
                             @if (isAdmin)
                             {
                                 <li class="nav-item dropdown">
@@ -212,7 +210,6 @@
             </div>
         </nav>
     </header>
-
 
     <div class="container mt-4">
         <main role="main" class="pb-4">

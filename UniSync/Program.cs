@@ -51,7 +51,6 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole(Roles.SuperAdmin));
 });
 
-builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

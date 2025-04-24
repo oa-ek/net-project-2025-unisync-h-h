@@ -235,7 +235,6 @@ namespace UniSync.Controllers
                         _logger.LogWarning("Не вдалося очистити причину та коментар блокування для користувача {UserId}: {Errors}",
                             id, string.Join(", ", updateResult.Errors.Select(e => e.Description)));
                     }
-                }
 
                 _logger.LogInformation("Користувач {UserId} розблокований адміністратором {AdminId}",
                     id, (await _userManager.GetUserAsync(User)).Id);
