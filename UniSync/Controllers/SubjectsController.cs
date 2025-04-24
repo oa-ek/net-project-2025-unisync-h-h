@@ -183,7 +183,7 @@ namespace UniSync.Controllers
 
                 return Json(new { success = true, id = subject.Id, title = subject.Title });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Логування видалено
                 return Json(new { success = false, message = "Помилка при створенні предмета. Спробуйте ще раз." });

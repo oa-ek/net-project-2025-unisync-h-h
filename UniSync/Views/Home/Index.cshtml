@@ -8,10 +8,10 @@
     <div class="col-md-8">
         <div class="card border-0 welcome-card text-white shadow">
             <div class="card-body p-4">
-                <h1 class="display-5 fw-bold mb-3">Welcome to UniSync</h1>
-                <p class="lead opacity-90 mb-4">Manage your university projects efficiently and stay on top of your deadlines.</p>
+                <h1 class="display-5 fw-bold mb-3">Ласкаво просимо до UniSync</h1>
+                <p class="lead opacity-90 mb-4">Ефективно керуйте своїми проектами та дотримуйтесь дедлайнів.</p>
                 <a asp-controller="Projects" asp-action="Create" class="btn btn-light btn-lg">
-                    <i class="bi bi-plus-circle me-2"></i>Create New Project
+                    <i class="bi bi-plus-circle me-2"></i>Створити новий проект
                 </a>
             </div>
         </div>
@@ -19,19 +19,19 @@
     <div class="col-md-4">
         <div class="card h-100 border-0 stats-card shadow-sm">
             <div class="card-body">
-                <h4 class="fw-semibold mb-3"><i class="bi bi-speedometer2 me-2 text-primary"></i>Quick Stats</h4>
+                <h4 class="fw-semibold mb-3"><i class="bi bi-speedometer2 me-2 text-primary"></i>Статистичні дані</h4>
                 <div class="d-flex justify-content-between">
                     <div class="text-center px-2">
                         <div class="stat-value">@(Model?.Count() ?? 0)</div>
-                        <div class="stat-label">Total Projects</div>
+                        <div class="stat-label">Всього проектів</div>
                     </div>
                     <div class="text-center px-2">
                         <div class="stat-value">@(Model?.Count(p => p.Status == "Completed") ?? 0)</div>
-                        <div class="stat-label">Completed</div>
+                        <div class="stat-label">Завершено</div>
                     </div>
                     <div class="text-center px-2">
                         <div class="stat-value">@(Model?.Count(p => p.Deadline < DateTime.Now.AddDays(7) && p.Status != "Completed") ?? 0)</div>
-                        <div class="stat-label">Due Soon</div>
+                        <div class="stat-label">Не закінчені</div>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-semibold mb-0"><i class="bi bi-kanban me-2 text-primary"></i>Your Projects</h2>
+    <h2 class="fw-semibold mb-0"><i class="bi bi-kanban me-2 text-primary"></i>Всі Проекти</h2>
     <div class="d-flex gap-2 filter-controls">
         <div class="dropdown">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -146,21 +146,17 @@ else
     <div class="card border-0 shadow-sm empty-state">
         <div class="card-body text-center p-5">
             <i class="bi bi-clipboard-x empty-state-icon"></i>
-            <h3 class="fw-semibold mb-2">No projects available</h3>
-            <p class="text-muted mb-4">Start by creating your first project to track your academic work.</p>
-            <a asp-controller="Projects" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle me-2"></i>Create New Project
-            </a>
+            <h3 class="fw-semibold mb-2">Немає доступних проектів</h3>           
         </div>
     </div>
 }
 
 <div class="d-flex justify-content-center mt-5">
     <a asp-controller="Projects" asp-action="Index" class="btn btn-outline-primary me-3">
-        <i class="bi bi-list-ul me-2"></i> View All Projects
+        <i class="bi bi-list-ul me-2"></i> Мої проекти
     </a>
     <a asp-controller="Projects" asp-action="Create" class="btn btn-primary">
-        <i class="bi bi-plus-circle me-2"></i> Create New Project
+        <i class="bi bi-plus-circle me-2"></i> Ствврити проект
     </a>
 </div>
 

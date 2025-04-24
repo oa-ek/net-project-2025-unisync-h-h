@@ -18,7 +18,7 @@ namespace UniSync.Areas.Identity.Data
         [Range(1, 10)]
         public int? Course { get; set; }
 
-        public ICollection<Article> Articles { get; set; }
+        public required ICollection<Article> Articles { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Subject> Subjects { get; set; }
 

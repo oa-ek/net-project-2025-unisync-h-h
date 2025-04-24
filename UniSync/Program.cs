@@ -157,7 +157,8 @@ await using (var scope = app.Services.CreateAsyncScope())
             EmailConfirmed = true,
             FirstName = "Super",
             LastName = "Admin",
-            LockoutEnabled = false
+            LockoutEnabled = false,
+            Articles = new List<Article>()
         };
         var result = await userManager.CreateAsync(superAdmin, "AdminPassword38060798$34@76#");
         if (result.Succeeded)

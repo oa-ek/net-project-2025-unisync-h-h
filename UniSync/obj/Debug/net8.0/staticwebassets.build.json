@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "d3C4jhcw1sT+CSc6p9ddNqmjEL1cc8d0YDs+CXlEMpk=",
+  "Hash": "EatKqCN5BP9L4v0aiYm0GB3siZATsiNhtRZixLp2AdQ=",
   "Source": "UniSync",
   "BasePath": "_content/UniSync",
   "Mode": "Default",
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ty06nslhet",
-      "Integrity": "m75D0rGWOse/FtdoqMQC8qPOZ7rbZO4maaD/9bneaag=",
+      "Fingerprint": "4gl3721xs2",
+      "Integrity": "VI70Z8thlhRBEm4snct5QA9lzjAM+0OeZzk6ddHVbUg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2581,6 +2581,51 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/site.4gl3721xs2.css",
+      "AssetFile": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8310"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VI70Z8thlhRBEm4snct5QA9lzjAM+0OeZzk6ddHVbUg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 24 Apr 2025 22:20:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4gl3721xs2"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VI70Z8thlhRBEm4snct5QA9lzjAM+0OeZzk6ddHVbUg="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -2591,7 +2636,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6802"
+          "Value": "8310"
         },
         {
           "Name": "Content-Type",
@@ -2599,11 +2644,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"m75D0rGWOse/FtdoqMQC8qPOZ7rbZO4maaD/9bneaag=\""
+          "Value": "\"VI70Z8thlhRBEm4snct5QA9lzjAM+0OeZzk6ddHVbUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 21:48:57 GMT"
+          "Value": "Thu, 24 Apr 2025 22:20:46 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2613,52 +2658,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-m75D0rGWOse/FtdoqMQC8qPOZ7rbZO4maaD/9bneaag="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.ty06nslhet.css",
-      "AssetFile": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6802"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"m75D0rGWOse/FtdoqMQC8qPOZ7rbZO4maaD/9bneaag=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 21:48:57 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ty06nslhet"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-m75D0rGWOse/FtdoqMQC8qPOZ7rbZO4maaD/9bneaag="
+          "Value": "sha256-VI70Z8thlhRBEm4snct5QA9lzjAM+0OeZzk6ddHVbUg="
         }
       ]
     },

@@ -18,6 +18,17 @@
             <div class="list-group mb-4">
                 @for (int i = 0; i < Model.Roles.Count; i++)
                 {
+                    string displayName = Model.Roles[i].Name switch
+                    {
+                        Roles.SuperAdmin => "Супер адміністратор (SuperAdmin) — має повний доступ до системи",
+                        Roles.Admin => "Адміністратор (Admin) — керує користувачами та контентом",
+                        "User" => "Користувач (User) — має базовий доступ до створення та редагування проєктів",
+                        "Moderator" => "Модератор (Moderator) — перевіряє контент і може видаляти порушення",
+                        "NewsEditor" => "Редактор новин (NewsEditor) — редагує та пише новини",
+                        "Student" => "Студент (Student) — звичайний користувач із базовим доступом",
+                        _ => $"{Model.Roles[i].Name} — невідомий опис ролі"
+                    };
+
                     <div class="list-group-item">
                         <div class="form-check">
                             <input type="hidden" asp-for="@Model.Roles[i].Name" />
@@ -26,7 +37,7 @@
                                 <input class="form-check-input" type="checkbox" asp-for="@Model.Roles[i].IsSelected" id="role-@i" disabled checked />
                                 <input type="hidden" asp-for="@Model.Roles[i].IsSelected" value="true" />
                                 <label class="form-check-label" for="role-@i">
-                                    @Model.Roles[i].Name <span class="text-muted">(не можна видалити)</span>
+                                    @displayName <span class="text-muted">(не можна видалити)</span>
                                 </label>
                             }
                             else if (Model.Roles[i].Name == Roles.SuperAdmin)
@@ -35,14 +46,14 @@
                                        data-role-index="@i" @(Model.Roles[i].IsSelected ? "checked" : "") />
                                 <input type="hidden" asp-for="@Model.Roles[i].IsSelected" id="hidden-role-@i" />
                                 <label class="form-check-label" for="role-@i">
-                                    @Model.Roles[i].Name <span class="text-danger">(потребує підтвердження)</span>
+                                    @displayName <span class="text-danger">(потребує підтвердження)</span>
                                 </label>
                             }
                             else
                             {
                                 <input class="form-check-input" type="checkbox" asp-for="@Model.Roles[i].IsSelected" id="role-@i" />
                                 <label class="form-check-label" for="role-@i">
-                                    @Model.Roles[i].Name
+                                    @displayName
                                 </label>
                             }
                         </div>
@@ -66,11 +77,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="superAdminConfirmModalLabel">Підтвердження ролі SuperAdmin</h5>
+                <h5 class="modal-title" id="superAdminConfirmModalLabel">Підтвердження ролі Супер адміністратора</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p class="text-danger">Увага! Ви намагаєтесь надати користувачу роль SuperAdmin.</p>
+                <p class="text-danger">Увага! Ви намагаєтесь надати користувачу роль Супер адміністратора.</p>
                 <p>Ця роль має повний доступ до всіх функцій системи. Для підтвердження введіть пароль адміністратора:</p>
                 <div class="mb-3">
                     <label for="adminPassword" class="form-label">Пароль адміністратора</label>
@@ -99,7 +110,7 @@
                     currentRoleIndex = this.getAttribute('data-role-index');
 
                     if (this.checked) {
-                        e.preventDefault(); 
+                        e.preventDefault();
                         this.checked = false;
                         superAdminModal.show();
                     } else {
