@@ -1,0 +1,75 @@
+﻿<div class="modal fade" id="banUserModal" tabindex="-1" aria-labelledby="banUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="banUserModalLabel">Заблокувати користувача</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-controller="UserManagement" asp-action="BanUser" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="banUserId" />
+                    <div class="mb-3">
+                        <label class="form-label">Користувач</label>
+                        <input type="text" class="form-control" id="banUserName" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Причина блокування <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="reason" name="reason" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="duration" class="form-label">Тривалість блокування <span class="text-danger">*</span></label>
+                        <select class="form-select" id="duration" name="duration" required>
+                            <option value="" disabled selected>Виберіть тривалість</option>
+                            <option value="1">1 день</option>
+                            <option value="7">7 днів</option>
+                            <option value="30">30 днів</option>
+                            <option value="permanent">Назавжди</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Коментар (необов’язково)</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="notifyUser" name="notifyUser" value="true">
+                        <label class="form-check-label" for="notifyUser">
+                            Сповістити користувача (наприклад, через email)
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="submit" class="btn btn-danger">Заблокувати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var banUserModal = document.getElementById('banUserModal');
+        banUserModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var userId = button.getAttribute('data-user-id');
+            var userName = button.getAttribute('data-user-name');
+            var modal = this;
+            modal.querySelector('#banUserId').value = userId;
+            modal.querySelector('#banUserName').value = userName;
+        });
+
+        // Очистка форми при закритті модального вікна
+        banUserModal.addEventListener('hidden.bs.modal', function () {
+            var reason = banUserModal.querySelector('#reason');
+            var duration = banUserModal.querySelector('#duration');
+            var comment = banUserModal.querySelector('#comment');
+            var notifyUser = banUserModal.querySelector('#notifyUser');
+
+            reason.value = '';
+            duration.value = '';
+            comment.value = '';
+            notifyUser.checked = false;
+        });
+    });
+</script>

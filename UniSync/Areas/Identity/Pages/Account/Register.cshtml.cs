@@ -119,15 +119,10 @@ namespace UniSync.Areas.Identity.Pages.Account
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
                     _logger.LogError("Registration error: {ErrorCode} - {ErrorDescription}",
                         error.Code, error.Description);
-                }                   
+                }
             }
-
 
             return Page();
         }

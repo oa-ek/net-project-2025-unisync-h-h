@@ -68,13 +68,19 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 // Додаємо Google аутентифікацію
+var googleClientId = builder.Configuration["Authentication:Google:ClientId"];
+var googleClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+
+if (string.IsNullOrEmpty(googleClientId) || string.IsNullOrEmpty(googleClientSecret))
+{
+    throw new InvalidOperationException("Google ClientId or ClientSecret is not configured.");
+}
+
 builder.Services.AddAuthentication()
     .AddGoogle(options =>
     {
-        options.ClientId = builder.Configuration["Authentication:Google:ClientId"]
-                    ?? throw new InvalidOperationException("Google ClientId is not configured.");
-        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]
-                               ?? throw new InvalidOperationException("Google ClientSecret is not configured.");
+        options.ClientId = googleClientId;
+        options.ClientSecret = googleClientSecret;
         options.CallbackPath = "/signin-google";
     });
 
