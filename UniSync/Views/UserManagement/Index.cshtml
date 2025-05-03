@@ -1,0 +1,114 @@
+﻿@using UniSync.Constants
+@model List<UniSync.Models.ViewModels.UserViewModel>
+@{
+    ViewData["Title"] = "Управління користувачами";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold"><i class="bi bi-people me-2 text-primary"></i>Управління користувачами</h1>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle me-2"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Користувач</th>
+                            <th>Email</th>
+                            <th>Ролі</th>
+                            <th>Статус</th>
+                            <th class="text-end">Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-initials me-2">
+                                            @{
+                                                var firstInitial = !string.IsNullOrEmpty(user.FirstName) ? user.FirstName[0] : '?';
+                                                var secondInitial = !string.IsNullOrEmpty(user.LastName) ? user.LastName[0] : ' ';
+                                            }
+                                            @firstInitial@secondInitial
+                                        </div>
+                                        <div>
+                                            <div class="fw-medium">@user.FirstName @user.LastName</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle">@user.Email</td>
+                                <td class="align-middle">
+                                    @foreach (var role in user.Roles)
+                                    {
+                                        <span class="badge bg-primary me-1">@role</span>
+                                    }
+                                </td>
+                                <td class="align-middle">
+                                    @if (user.IsLocked)
+                                    {
+                                        <span class="badge bg-danger">Заблоковано</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Активний</span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="EditRoles" asp-route-id="@user.Id" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-key"></i> Ролі
+                                        </a>
+                                        @if (!user.Roles.Contains(Roles.SuperAdmin))
+                                        {
+                                            @if (user.IsLocked)
+                                            {
+                                                <form asp-action="UnbanUser" asp-route-id="@user.Id" method="post" class="d-inline">
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-sm btn-outline-success ms-1" onclick="return confirm('Ви впевнені, що хочете розблокувати цього користувача?')">
+                                                        <i class="bi bi-unlock me-1"></i>Розблокувати
+                                                    </button>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-sm btn-outline-danger ms-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#banUserModal"
+                                                        data-user-id="@user.Id"
+                                                        data-user-name="@user.FirstName @user.LastName">
+                                                    <i class="bi bi-lock me-1"></i>Заблокувати
+                                                </button>
+                                            }
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("BanUser")
+</div>

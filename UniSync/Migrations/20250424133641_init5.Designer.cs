@@ -12,8 +12,8 @@ using UniSync.Data;
 namespace UniSync.Migrations
 {
     [DbContext(typeof(UniSyncContext))]
-    [Migration("20250401105843_Initial")]
-    partial class Initial
+    [Migration("20250424133641_init5")]
+    partial class init5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -218,11 +218,17 @@ namespace UniSync.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LockoutComment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("LockoutReason")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)

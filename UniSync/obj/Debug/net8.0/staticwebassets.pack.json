@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\UniSync.bundle.scp.css",
-      "PackagePath": "staticwebassets\\UniSync.bundle.scp.css"
+      "PackagePath": "staticwebassets\\UniSync.iwzadufey9.bundle.scp.css"
     },
     {
       "Id": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\css\\site.css",
@@ -243,6 +243,10 @@
     {
       "Id": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.UniSync.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.UniSync.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -1376,6 +1376,7 @@ D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\De
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\Azure.Core.dll
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\Azure.Identity.dll
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\Humanizer.dll
+D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -1658,3 +1659,7 @@ D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\obj\De
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\obj\Debug\net8.0\UniSync.pdb
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\obj\Debug\net8.0\UniSync.genruntimeconfig.cache
 D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\obj\Debug\net8.0\ref\UniSync.dll
+D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\bin\Debug\net8.0\UniSync.staticwebassets.endpoints.json
+D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\obj\Debug\net8.0\staticwebassets\msbuild.UniSync.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Visual Studio\Project\UniSync 2.0\net-project-2025-unisync-h-h\UniSync\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

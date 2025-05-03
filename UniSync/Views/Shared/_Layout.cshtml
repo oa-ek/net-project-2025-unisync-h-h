@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject UserManager<UniSync.Areas.Identity.Data.UniSyncUser> UserManager
+@using UniSync.Areas.Identity.Data
+@using UniSync.Constants
+@inject UserManager<UniSyncUser> UserManager
+@inject SignInManager<UniSyncUser> SignInManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,10 +10,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - UniSync</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> 
     <link rel="stylesheet" href="~/UniSync.styles.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -18,57 +20,158 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
+                <!-- Brand -->
                 <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="bi bi-calendar-check brand-icon me-2"></i>
                     <span class="fw-bold">UniSync</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+
+                <div class="navbar-collapse collapse d-lg-flex justify-content-between">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-                                <i class="bi bi-house-door me-1"></i> Home
+                                <i class="bi bi-house-door me-1"></i> Дім
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-kanban me-1"></i> My Projects
-                            </a>
-                            <ul class="dropdown-menu shadow-sm" aria-labelledby="projectsDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-controller="Projects" asp-action="Index">
-                                        <i class="bi bi-list-ul me-2"></i> All Projects
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-kanban me-1"></i> Мої проекти
+                                </a>
+                                <ul class="dropdown-menu shadow-sm" aria-labelledby="projectsDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Projects" asp-action="Index">
+                                            <i class="bi bi-list-ul me-2"></i> Всі мої проекти
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Projects" asp-action="Create">
+                                            <i class="bi bi-plus-circle me-2"></i> Створити проект
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            var user = await UserManager.GetUserAsync(User);
+                            var isAdmin = user != null && (await UserManager.IsInRoleAsync(user, Roles.Admin) ||
+                            await UserManager.IsInRoleAsync(user, Roles.SuperAdmin));
+                            var isModerator = user != null && await UserManager.IsInRoleAsync(user, Roles.Moderator);
+                            var isCourseManager = user != null && await UserManager.IsInRoleAsync(user, Roles.CourseManager);
+                            var isNewsEditor = user != null && await UserManager.IsInRoleAsync(user, Roles.NewsEditor);
+
+                            @if (isAdmin || isModerator || isCourseManager || isNewsEditor)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="actionsDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-gear me-1"></i> Дії
                                     </a>
+                                    <ul class="dropdown-menu shadow-sm" aria-labelledby="actionsDropdown">
+                                        @if (isAdmin)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" asp-controller="UserManagement" asp-action="Index">
+                                                    <i class="bi bi-people me-2"></i> Управління користувачами
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="bi bi-gear me-2"></i> Налаштування системи
+                                                </a>
+                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
+                                        }
+                                        @if (isModerator)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="bi bi-exclamation-triangle me-2"></i> Скарги
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="bi bi-chat-dots me-2"></i> Коментарі
+                                                </a>
+                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
+                                        }
+                                        @if (isCourseManager)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="bi bi-list-check me-2"></i> Управління групами
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="bi bi-graph-up me-2"></i> Статистика
+                                                </a>
+                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
+                                        }
+                                        @if (isNewsEditor)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="bi bi-pencil-square me-2"></i> Створити новину
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="bi bi-list-ul me-2"></i> Управління новинами
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
                                 </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item" asp-controller="Projects" asp-action="Create">
-                                        <i class="bi bi-plus-circle me-2"></i> Create New
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                <i class="bi bi-shield-lock me-1"></i> Privacy
-                            </a>
-                        </li>
+                            }
+
+                            <!-- Нова вкладка "Новини" -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-newspaper me-1"></i> Новини
+                                </a>
+                                <ul class="dropdown-menu shadow-sm" aria-labelledby="newsDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="News" asp-action="Index">
+                                            <i class="bi bi-list-ul me-2"></i> Переглянути новини
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="News" asp-action="Updates">
+                                            <i class="bi bi-bell me-2"></i> Останні оновлення
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
 
+                    <!-- Right Menu Items -->
                     <div class="d-flex align-items-center">
-                        <div class="search-container me-3">
+                        <!-- Search -->
+                        <div class="search-container me-3 d-none d-md-block">
                             <input type="text" class="search-input" placeholder="Search projects...">
                             <button class="search-button" type="button"><i class="bi bi-search"></i></button>
                         </div>
 
+                        <!-- User Profile -->
                         @if (User.Identity.IsAuthenticated)
                         {
                             var user = await UserManager.GetUserAsync(User);
                             <div class="dropdown">
-                                <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center"
+                                        type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="avatar-initials me-2">
                                         @{
                                             var firstInitial = !string.IsNullOrEmpty(user?.FirstName) ? user.FirstName[0] : '?';
@@ -76,7 +179,7 @@
                                         }
                                         @firstInitial@secondInitial
                                     </span>
-                                    <span class="d-none d-md-inline">@(user?.FirstName) @(user?.LastName)</span>
+                                    <span class="d-none d-lg-inline">@(user?.FirstName) @(user?.LastName)</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
                                     <li>
@@ -118,7 +221,6 @@
             </div>
         </nav>
     </header>
-
 
     <div class="container mt-4">
         <main role="main" class="pb-4">

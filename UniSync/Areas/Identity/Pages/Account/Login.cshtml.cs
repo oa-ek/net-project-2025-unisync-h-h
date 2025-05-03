@@ -21,13 +21,19 @@ namespace UniSync.Areas.Identity.Pages.Account
         private readonly UserManager<UniSyncUser> _userManager;
 
         public LoginModel(SignInManager<UniSyncUser> signInManager,
-                          ILogger<LoginModel> logger,
-                          UserManager<UniSyncUser> userManager)
+                  ILogger<LoginModel> logger,
+                  UserManager<UniSyncUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
             _userManager = userManager;
+
+            Input = new InputModel();
+            ExternalLogins = new List<AuthenticationScheme>();
+            ReturnUrl = string.Empty;
+            ErrorMessage = string.Empty;
         }
+
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -44,22 +50,27 @@ namespace UniSync.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Електронна пошта обов'язкова")]
             [EmailAddress(ErrorMessage = "Невірний формат електронної пошти")]
             [Display(Name = "Електронна пошта")]
-            public string Email { get; set; }
+            public string? Email { get; set; }
 
             [Required(ErrorMessage = "Пароль обов'язковий")]
             [DataType(DataType.Password)]
             [Display(Name = "Пароль")]
-            public string Password { get; set; }
+            public string? Password { get; set; }
 
             [Display(Name = "Запам'ятати мене?")]
             public bool RememberMe { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string? returnUrl = null, string? error = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
+            }
+
+            if (error == "AccountLocked")
+            {
+                ModelState.AddModelError(string.Empty, "Цей обліковий запис заблоковано. Будь ласка, зверніться до адміністратора.");
             }
 
             returnUrl ??= Url.Content("~/");
@@ -72,7 +83,7 @@ namespace UniSync.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
 
@@ -80,6 +91,14 @@ namespace UniSync.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                // Перевіряємо, чи користувач заблокований перед спробою входу
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+                if (user != null && user.LockoutEnd != null && user.LockoutEnd > DateTimeOffset.UtcNow)
+                {
+                    _logger.LogWarning("Обліковий запис користувача заблоковано: {Email}", Input.Email);
+                    return RedirectToAction("Locked", "AccountStatus", new { email = Input.Email });
+                }
+
                 // Спроба входу
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
@@ -93,8 +112,8 @@ namespace UniSync.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("Обліковий запис користувача заблоковано.");
-                    return RedirectToPage("./Lockout");
+                    _logger.LogWarning("Обліковий запис користувача заблоковано: {Email}", Input.Email);
+                    return RedirectToAction("Locked", "AccountStatus", new { email = Input.Email });
                 }
                 else
                 {
@@ -107,4 +126,3 @@ namespace UniSync.Areas.Identity.Pages.Account
         }
     }
 }
-

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using UniSync.Areas.Identity.Data;
 using UniSync.Data;
+using UniSync.Models.Entity;
 
 namespace UniSync.Areas.Identity.Pages.Account
 {
@@ -95,13 +96,15 @@ namespace UniSync.Areas.Identity.Pages.Account
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     SpecialtyId = Input.SpecialtyId,
-                    Course = Input.Course
+                    Course = Input.Course,
+                    Articles = new List<Article>()
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    await _userManager.AddToRoleAsync(user, "Student");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -116,6 +119,8 @@ namespace UniSync.Areas.Identity.Pages.Account
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
+                    _logger.LogError("Registration error: {ErrorCode} - {ErrorDescription}",
+                        error.Code, error.Description);
                 }
             }
 

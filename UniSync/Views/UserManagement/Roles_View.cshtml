@@ -1,0 +1,90 @@
+﻿@model List<UniSync.Models.ViewModels.UserViewModel>
+@using UniSync.Constants
+
+@{
+    ViewData["Title"] = "Управління користувачами";
+}
+
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <h1 class="fw-bold mb-4">@ViewData["Title"]</h1>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                <i class="bi bi-check-circle me-2"></i>@TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                <i class="bi bi-exclamation-triangle me-2"></i>@TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Ім'я</th>
+                        <th>Email</th>
+                        <th>Ролі</th>
+                        <th>Статус</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr class="@(user.IsLocked ? "table-danger" : "")">
+                            <td>@user.FirstName @user.LastName</td>
+                            <td>@user.Email</td>
+                            <td>
+                                @foreach (var role in user.Roles)
+                                {
+                                    <span class="badge bg-primary me-1">@role</span>
+                                }
+                            </td>
+                            <td>
+                                @if (user.IsLocked)
+                                {
+                                    <span class="badge bg-danger">Заблоковано</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Активний</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a asp-action="EditRoles" asp-route-id="@user.Id" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-pencil me-1"></i>Ролі
+                                    </a>
+                                    @if (user.IsLocked)
+                                    {
+                                        <form asp-action="UnbanUser" asp-route-id="@user.Id" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-outline-success ms-1" onclick="return confirm('Ви впевнені, що хочете розблокувати цього користувача?')">
+                                                <i class="bi bi-unlock me-1"></i>Розблокувати
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form asp-action="BanUser" asp-route-id="@user.Id" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger ms-1" onclick="return confirm('Ви впевнені, що хочете заблокувати цього користувача?')">
+                                                <i class="bi bi-lock me-1"></i>Заблокувати
+                                            </button>
+                                        </form>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
