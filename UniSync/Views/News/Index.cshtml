@@ -1,0 +1,116 @@
+﻿@model IEnumerable<UniSync.Models.Entity.News>
+
+@{
+    ViewData["Title"] = "Новини";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4">Новини</h1>
+            <p class="lead">Останні новини та оголошення UniSync</p>
+        </div>
+        @if (User.IsInRole("Admin") || User.IsInRole("NewsEditor"))
+        {
+            <div class="col-auto">
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>Створити новину
+                </a>
+                <a asp-action="Manage" class="btn btn-outline-primary ms-2">
+                    <i class="bi bi-gear me-2"></i>Управління
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <div class="d-flex flex-wrap">
+                <a asp-action="Index" class="btn btn-outline-primary me-2 mb-2">Усі</a>
+                <a asp-action="Category" asp-route-category="0" class="btn btn-outline-primary me-2 mb-2">Загальні</a>
+                <a asp-action="Category" asp-route-category="1" class="btn btn-outline-primary me-2 mb-2">Навчання</a>
+                <a asp-action="Category" asp-route-category="2" class="btn btn-outline-primary me-2 mb-2">Події</a>
+                <a asp-action="Category" asp-route-category="3" class="btn btn-outline-primary me-2 mb-2">Оголошення</a>
+            </div>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>Наразі немає доступних новин.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model.Where(n => n.IsImportant).Take(1))
+            {
+                <div class="col-12 mb-4">
+                    <div class="card shadow-sm featured-news">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                {
+                                    <img src="@item.ImageUrl" class="img-fluid rounded-start h-100 object-fit-cover" alt="@item.Title">
+                                }
+                                else
+                                {
+                                    <div class="bg-light h-100 d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-newspaper text-secondary" style="font-size: 3rem;"></i>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <span class="badge bg-danger">Важливо</span>
+                                        <small class="text-muted">@item.PublishedDate.ToString("dd.MM.yyyy")</small>
+                                    </div>
+                                    <h3 class="card-title">@item.Title</h3>
+                                    <p class="card-text">@item.Summary</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Читати далі</a>
+                                        <small class="text-muted">Автор: @item.AuthorName</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @foreach (var item in Model.Where(n => !n.IsImportant))
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="@item.ImageUrl" class="card-img-top" style="height: 180px; object-fit: cover;" alt="@item.Title">
+                        }
+                        else
+                        {
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 180px;">
+                                <i class="bi bi-newspaper text-secondary" style="font-size: 3rem;"></i>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-primary">@item.Category</span>
+                                <small class="text-muted">@item.PublishedDate.ToString("dd.MM.yyyy")</small>
+                            </div>
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@(item.Summary?.Length > 100 ? item.Summary.Substring(0, 100) + "..." : item.Summary)</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Читати далі</a>
+                                <small class="text-muted">Автор: @item.AuthorName</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

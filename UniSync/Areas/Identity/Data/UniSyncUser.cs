@@ -21,8 +21,8 @@ namespace UniSync.Areas.Identity.Data
         public required ICollection<Article> Articles { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Subject> Subjects { get; set; }
-
         public ICollection<Project> Projects { get; set; }
+        public virtual ICollection<News> News { get; set; } = new List<News>();
 
         public string? LockoutReason { get; set; }
         public string? LockoutComment { get; set; }

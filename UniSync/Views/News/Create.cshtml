@@ -1,0 +1,127 @@
+﻿@model UniSync.ViewModels.NewsViewModel
+
+@{
+    ViewData["Title"] = "Створити новину";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4"><i class="bi bi-newspaper me-2"></i>Створити новину</h2>
+
+    <form asp-action="Create" enctype="multipart/form-data" id="createNewsForm">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <!-- Заголовок -->
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-bold">Заголовок</label>
+                    <input asp-for="Title" class="form-control" placeholder="Введіть заголовок новини..." />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <!-- Короткий опис -->
+                <div class="mb-3">
+                    <label asp-for="Summary" class="form-label fw-bold">Короткий опис</label>
+                    <textarea asp-for="Summary" class="form-control" rows="3" placeholder="Короткий опис (до 200 символів)..." maxlength="200"></textarea>
+                    <small class="form-text text-muted">Максимум 200 символів.</small>
+                    <span asp-validation-for="Summary" class="text-danger"></span>
+                </div>
+
+                <!-- Зміст -->
+                <div class="mb-3">
+                    <label asp-for="Content" class="form-label fw-bold">Зміст</label>
+                    <textarea asp-for="Content" class="form-control" id="contentEditor" rows="10" placeholder="Введіть текст новини..."></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+
+                <!-- Категорія -->
+                <div class="mb-3">
+                    <label asp-for="Category" class="form-label fw-bold">Категорія</label>
+                    <select asp-for="Category" class="form-select" asp-items="Html.GetEnumSelectList<UniSync.Models.Entity.NewsCategory>()">
+                        <option value="" disabled selected>Оберіть категорію...</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+
+                <!-- Важлива новина -->
+                <div class="mb-3 form-check">
+                    <input asp-for="IsImportant" class="form-check-input" type="checkbox" id="isImportant" />
+                    <label asp-for="IsImportant" class="form-check-label">Важлива новина</label>
+                </div>
+
+                <!-- Зображення -->
+                <div class="mb-3">
+                    <label asp-for="Image" class="form-label fw-bold">Зображення</label>
+                    <input asp-for="Image" type="file" class="form-control" id="imageInput" accept="image/*" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                    <div id="imagePreview" class="mt-2" style="display: none;">
+                        <img id="previewImage" src="#" alt="Попередній перегляд зображення" style="max-width: 300px; max-height: 200px; object-fit: cover;" />
+                    </div>
+                    <small class="form-text text-muted">Дозволені формати: JPEG, PNG, GIF. Максимальний розмір: 5 МБ.</small>
+                </div>
+            </div>
+
+            <!-- Кнопки -->
+            <div class="card-footer bg-light d-flex justify-content-between">
+                <a asp-action="Index" asp-controller="News" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Скасувати
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>Створити
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- TinyMCE для редагування вмісту -->
+    @inject IConfiguration Configuration
+    <script src="https://cdn.tiny.cloud/1/@Configuration["TinyMCE:ApiKey"]/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#contentEditor',
+            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            height: 400,
+            menubar: false,
+            language: 'uk',
+            placeholder: 'Введіть текст новини...'
+        });
+    </script>
+
+    <!-- Попередній перегляд зображення -->
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('imagePreview');
+            const previewImage = document.getElementById('previewImage');
+
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Файл занадто великий! Максимальний розмір: 5 МБ.');
+                    event.target.value = '';
+                    preview.style.display = 'none';
+                    return;
+                }
+
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Непідтримуваний формат файлу! Дозволені формати: JPEG, PNG, GIF.');
+                    event.target.value = '';
+                    preview.style.display = 'none';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+    </script>
+}

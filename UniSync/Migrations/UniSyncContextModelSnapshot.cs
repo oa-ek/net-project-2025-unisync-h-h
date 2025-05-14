@@ -358,6 +358,58 @@ namespace UniSync.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("UniSync.Models.Entity.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("PublishedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("News");
+                });
+
             modelBuilder.Entity("UniSync.Models.Entity.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -637,6 +689,17 @@ namespace UniSync.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("UniSync.Models.Entity.News", b =>
+                {
+                    b.HasOne("UniSync.Areas.Identity.Data.UniSyncUser", "Author")
+                        .WithMany("News")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+                });
+
             modelBuilder.Entity("UniSync.Models.Entity.Project", b =>
                 {
                     b.HasOne("UniSync.Models.Entity.Subject", "Subject")
@@ -682,6 +745,8 @@ namespace UniSync.Migrations
                     b.Navigation("Articles");
 
                     b.Navigation("Comments");
+
+                    b.Navigation("News");
 
                     b.Navigation("Projects");
 

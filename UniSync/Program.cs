@@ -9,12 +9,16 @@ using UniSync.Constants;
 using UniSync.Data;
 using UniSync.Models;
 using UniSync.Services;
+using UniSync.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Додаємо DbContext
 builder.Services.AddDbContext<UniSyncContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Додаємо NewsRepository
+builder.Services.AddScoped<INewsRepository, NewsRepository>();
 
 // Налаштування Identity
 builder.Services.AddIdentity<UniSyncUser, IdentityRole>(options =>

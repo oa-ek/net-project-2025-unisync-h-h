@@ -20,10 +20,26 @@ namespace UniSync.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<News> News { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<News>()
+                .HasOne(n => n.Author)
+                .WithMany(u => u.News)
+                .HasForeignKey(n => n.AuthorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Налаштування Category як рядка (опціонально)
+            modelBuilder.Entity<News>()
+                .Property(n => n.Category)
+                .HasConversion<string>();
+
+            // Додавання індексу для AuthorId
+            modelBuilder.Entity<News>()
+                .HasIndex(n => n.AuthorId);
 
             modelBuilder.Entity<Article>()
                 .HasOne(a => a.User)
@@ -65,7 +81,6 @@ namespace UniSync.Data
                 .HasForeignKey(p => p.SubjectId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Правильне налаштування зв'язку між Project і User
             modelBuilder.Entity<Project>()
                 .HasOne(p => p.User)
                 .WithMany(u => u.Projects)
@@ -93,4 +108,3 @@ namespace UniSync.Data
         }
     }
 }
-
