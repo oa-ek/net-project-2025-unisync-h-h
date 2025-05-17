@@ -3,35 +3,32 @@
   "WorkspaceRootPath": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\news\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\news\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\news\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\news\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\models\\entity\\newsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\models\\entity\\newsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\news\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\news\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\naezz\\AppData\\Roaming\\Microsoft\\UserSecrets\\6b046fa8-abbe-4552-b5eb-23c2db2f53ae\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\news\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\news\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\news\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\news\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\areas\\identity\\data\\unisyncuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\data\\unisyncuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\news\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\news\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\areas\\identity\\data\\unisynccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\areas\\identity\\data\\unisynccontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\models\\entity\\inewsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -44,6 +41,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\models\\entity\\news.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\models\\entity\\news.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|d:\\visual studio\\project\\unisync 2.0\\net-project-2025-unisync-h-h\\unisync\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0254E511-FE99-45F3-87E1-BDE8F0F2F163}|UniSync\\UniSync.csproj|solutionrelative:unisync\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -53,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1257,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,130 +62,93 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "secrets.json",
-              "DocumentMoniker": "C:\\Users\\naezz\\AppData\\Roaming\\Microsoft\\UserSecrets\\6b046fa8-abbe-4552-b5eb-23c2db2f53ae\\secrets.json",
-              "ToolTip": "C:\\Users\\naezz\\AppData\\Roaming\\Microsoft\\UserSecrets\\6b046fa8-abbe-4552-b5eb-23c2db2f53ae\\secrets.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-14T18:59:44.175Z",
+              "DocumentIndex": 0,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniSync\\Views\\News\\Delete.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Delete.cshtml",
+              "RelativeToolTip": "UniSync\\Views\\News\\Delete.cshtml",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAQwGMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-17T16:35:24.921Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NewsViewModel.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\NewsViewModel.cs",
-              "RelativeDocumentMoniker": "UniSync\\Models\\Entity\\NewsViewModel.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\NewsViewModel.cs",
-              "RelativeToolTip": "UniSync\\Models\\Entity\\NewsViewModel.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAmwBIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:39:32.707Z",
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniSync\\Views\\News\\Edit.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Edit.cshtml",
+              "RelativeToolTip": "UniSync\\Views\\News\\Edit.cshtml",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAQwK4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-17T16:35:04.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Create.cshtml",
-              "RelativeDocumentMoniker": "UniSync\\Views\\News\\Create.cshtml",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Create.cshtml",
-              "RelativeToolTip": "UniSync\\Views\\News\\Create.cshtml",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAAwFAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Details.cshtml",
+              "RelativeDocumentMoniker": "UniSync\\Views\\News\\Details.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Details.cshtml",
+              "RelativeToolTip": "UniSync\\Views\\News\\Details.cshtml",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAQwLMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T17:56:23.863Z",
+              "WhenOpened": "2025-05-17T16:20:47.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "NewsController.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\NewsController.cs",
-              "RelativeDocumentMoniker": "UniSync\\Controllers\\NewsController.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\NewsController.cs",
-              "RelativeToolTip": "UniSync\\Controllers\\NewsController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAuwBcAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:36:57.472Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UniSyncUser.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
-              "RelativeDocumentMoniker": "UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
-              "RelativeToolTip": "UniSync\\Areas\\Identity\\Data\\UniSyncUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:42:19.093Z",
+              "Title": "Manage.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Manage.cshtml",
+              "RelativeDocumentMoniker": "UniSync\\Views\\News\\Manage.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Manage.cshtml",
+              "RelativeToolTip": "UniSync\\Views\\News\\Manage.cshtml",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAQwJgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-17T15:47:42.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Program.cs",
-              "RelativeDocumentMoniker": "UniSync\\Program.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Program.cs",
-              "RelativeToolTip": "UniSync\\Program.cs",
-              "ViewState": "AgIAAKkAAAAAAAAAAAAAALQAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:48:10.022Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniSync\\Views\\News\\Index.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Index.cshtml",
+              "RelativeToolTip": "UniSync\\Views\\News\\Index.cshtml",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAQwGQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-17T15:42:55.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniSync\\Views\\News\\Create.cshtml",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\News\\Create.cshtml",
+              "RelativeToolTip": "UniSync\\Views\\News\\Create.cshtml",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAQwHYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-17T15:42:54.855Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "News.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\News.cs",
-              "RelativeDocumentMoniker": "UniSync\\Models\\Entity\\News.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\News.cs",
-              "RelativeToolTip": "UniSync\\Models\\Entity\\News.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAqwDcAAAABAAAAAAAAAA==",
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "UniSync\\Controllers\\NewsController.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "UniSync\\Controllers\\NewsController.cs",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAcwPAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:33:26.083Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UniSyncContext.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
-              "RelativeDocumentMoniker": "UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
-              "RelativeToolTip": "UniSync\\Areas\\Identity\\Data\\UniSyncContext.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAmwG0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:29:38.847Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "NewsRepository.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\NewsRepository.cs",
-              "RelativeDocumentMoniker": "UniSync\\Models\\NewsRepository.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\NewsRepository.cs",
-              "RelativeToolTip": "UniSync\\Models\\NewsRepository.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:28:01.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "INewsRepository.cs",
-              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\INewsRepository.cs",
-              "RelativeDocumentMoniker": "UniSync\\Models\\Entity\\INewsRepository.cs",
-              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\INewsRepository.cs",
-              "RelativeToolTip": "UniSync\\Models\\Entity\\INewsRepository.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAUwAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:27:33.64Z",
+              "WhenOpened": "2025-05-14T15:36:57.472Z",
               "EditorCaption": ""
             },
             {
@@ -195,9 +159,48 @@
               "RelativeDocumentMoniker": "UniSync\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "UniSync\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAwH4AAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAAwIAAAABxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-14T15:04:55.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "News.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\News.cs",
+              "RelativeDocumentMoniker": "UniSync\\Models\\Entity\\News.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\News.cs",
+              "RelativeToolTip": "UniSync\\Models\\Entity\\News.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAcwDcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:33:26.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NewsRepository.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\NewsRepository.cs",
+              "RelativeDocumentMoniker": "UniSync\\Models\\NewsRepository.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\NewsRepository.cs",
+              "RelativeToolTip": "UniSync\\Models\\NewsRepository.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAA6wEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:28:01.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "INewsRepository.cs",
+              "DocumentMoniker": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\INewsRepository.cs",
+              "RelativeDocumentMoniker": "UniSync\\Models\\Entity\\INewsRepository.cs",
+              "ToolTip": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\Models\\Entity\\INewsRepository.cs",
+              "RelativeToolTip": "UniSync\\Models\\Entity\\INewsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:27:33.64Z",
               "EditorCaption": ""
             }
           ]

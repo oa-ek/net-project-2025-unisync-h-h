@@ -1,0 +1,180 @@
+﻿@model UniSync.Models.Entity.News
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Головна</a></li>
+            <li class="breadcrumb-item"><a asp-controller="News" asp-action="Index">Новини</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+        </ol>
+    </nav>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                    <span class="badge bg-primary me-2">@Model.Category</span>
+                    @if (Model.IsImportant)
+                    {
+                        <span class="badge bg-danger"><i class="bi bi-exclamation-circle me-1"></i>Важлива новина</span>
+                    }
+                </div>
+                <div class="text-muted small">
+                    <i class="bi bi-calendar me-1"></i>@Model.PublishedDate.ToString("dd.MM.yyyy HH:mm")
+                </div>
+            </div>
+
+            <h1 class="mb-4">@Model.Title</h1>
+
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <div class="text-center mb-4">
+                    <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Summary))
+            {
+                <div class="lead mb-4 p-3 bg-light rounded">
+                    @Model.Summary
+                </div>
+            }
+
+            <div class="news-content mb-4">
+                @Html.Raw(Model.Content)
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+                <div>
+                    <span class="text-muted">
+                        <i class="bi bi-person me-1"></i>Автор: <strong>@Model.AuthorName</strong>
+                    </span>
+                </div>
+                <div class="d-flex gap-2">
+                    @if (User.IsInRole("Admin") || User.IsInRole("NewsEditor"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-warning">
+                            <i class="bi bi-pencil me-1"></i>Редагувати
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+                            <i class="bi bi-trash me-1"></i>Видалити
+                        </a>
+                    }
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bi bi-arrow-left me-1"></i>До списку новин
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок з іншими новинами -->
+    <div class="mt-5">
+        <h4 class="mb-4"><i class="bi bi-newspaper me-2"></i>Інші новини</h4>
+        <div id="relatedNews" class="row">
+            <div class="col-12 text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Завантаження...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Завантаження інших новин
+            $.ajax({
+                url: '@Url.Action("GetLatestNews", "News")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Фільтруємо, щоб не показувати поточну новину
+                    var filteredNews = data.filter(function(item) {
+                        return item.id !== @Model.Id;
+                    }).slice(0, 3); // Обмежуємо до 3 новин
+
+                    if (filteredNews.length > 0) {
+                        var html = '';
+                        filteredNews.forEach(function(item) {
+                            html += `
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 shadow-sm">
+                                        ${item.imageUrl
+                                            ? `<img src="${item.imageUrl}" class="card-img-top" style="height: 150px; object-fit: cover;" alt="${item.title}">`
+                                            : `<div class="bg-light d-flex align-items-center justify-content-center" style="height: 150px;">
+                                                <i class="bi bi-newspaper text-secondary" style="font-size: 2rem;"></i>
+                                               </div>`
+                                        }
+                                        <div class="card-body">
+                                            <h5 class="card-title">${item.title}</h5>
+                                            <p class="card-text small">${item.summary || ''}</p>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="/News/Details/${item.id}" class="btn btn-sm btn-outline-primary">Читати далі</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        $('#relatedNews').html(html);
+                    } else {
+                        $('#relatedNews').html('<div class="col-12"><div class="alert alert-info">Немає інших новин для відображення.</div></div>');
+                    }
+                },
+                error: function () {
+                    $('#relatedNews').html('<div class="col-12"><div class="alert alert-danger">Помилка при завантаженні новин.</div></div>');
+                }
+            });
+
+            // Додаємо клас для стилізації зображень у контенті
+            $('.news-content img').addClass('img-fluid rounded my-3');
+        });
+    </script>
+}
+
+<style>
+    .news-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+        .news-content h1, .news-content h2, .news-content h3,
+        .news-content h4, .news-content h5, .news-content h6 {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-content ul, .news-content ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .news-content blockquote {
+            border-left: 4px solid #dee2e6;
+            padding-left: 1rem;
+            margin-left: 0;
+            color: #6c757d;
+        }
+
+        .news-content table {
+            width: 100%;
+            margin-bottom: 1rem;
+            border-collapse: collapse;
+        }
+
+            .news-content table th,
+            .news-content table td {
+                padding: 0.5rem;
+                border: 1px solid #dee2e6;
+            }
+
+            .news-content table th {
+                background-color: #f8f9fa;
+            }
+</style>

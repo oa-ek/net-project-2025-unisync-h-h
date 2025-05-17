@@ -126,7 +126,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" asp-controller="News" asp-action="">
+                                                <a class="dropdown-item" asp-controller="News" asp-action="Manage">
                                                     <i class="bi bi-list-ul me-2"></i> Управління новинами
                                                 </a>
                                             </li>
@@ -136,23 +136,10 @@
                             }
 
                             <!-- Нова вкладка "Новини" -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-newspaper me-1"></i> Новини
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="News" asp-action="Index">
+                                    <i class="bi bi-list-ul me-2"></i> Новини
                                 </a>
-                                <ul class="dropdown-menu shadow-sm" aria-labelledby="newsDropdown">
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="News" asp-action="Index">
-                                            <i class="bi bi-list-ul me-2"></i> Переглянути новини
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="News" asp-action="Updates">
-                                            <i class="bi bi-bell me-2"></i> Останні оновлення
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                         }
                     </ul>

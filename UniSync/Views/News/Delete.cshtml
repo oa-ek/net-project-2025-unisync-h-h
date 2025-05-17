@@ -1,0 +1,100 @@
+﻿@model UniSync.Models.Entity.News
+
+@{
+    ViewData["Title"] = "Видалення новини";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0"><i class="bi bi-exclamation-triangle-fill me-2"></i>Підтвердження видалення</h2>
+                </div>
+
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <strong>Увага!</strong> Ви впевнені, що бажаєте видалити цю новину? Ця дія є незворотньою.
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Інформація про новину</h5>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-3">Заголовок</dt>
+                                <dd class="col-sm-9">@Model.Title</dd>
+
+                                <dt class="col-sm-3">Опубліковано</dt>
+                                <dd class="col-sm-9">@Model.PublishedDate.ToString("dd.MM.yyyy HH:mm")</dd>
+
+                                <dt class="col-sm-3">Автор</dt>
+                                <dd class="col-sm-9">@Model.AuthorName</dd>
+
+                                <dt class="col-sm-3">Категорія</dt>
+                                <dd class="col-sm-9">@Model.Category</dd>
+
+                                <dt class="col-sm-3">Важлива новина</dt>
+                                <dd class="col-sm-9">
+                                    @if (Model.IsImportant)
+                                    {
+                                        <span class="badge bg-danger">Так</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Ні</span>
+                                    }
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <div class="card mb-3">
+                                    <div class="card-header bg-light">Зображення новини</div>
+                                    <div class="card-body p-2">
+                                        <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header bg-light">Короткий опис</div>
+                                <div class="card-body">
+                                    @if (!string.IsNullOrEmpty(Model.Summary))
+                                    {
+                                        <p>@Model.Summary</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-muted">Немає короткого опису</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer bg-light">
+                    <form asp-action="Delete" class="d-inline">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Manage" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Скасувати
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash me-2"></i>Видалити новину
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
