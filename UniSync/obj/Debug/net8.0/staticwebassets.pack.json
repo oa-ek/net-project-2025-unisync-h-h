@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\images\\news\\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg",
+      "PackagePath": "staticwebassets\\images\\news\\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg"
+    },
+    {
       "Id": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

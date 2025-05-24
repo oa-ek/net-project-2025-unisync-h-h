@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9kWGJCyRp9j4M2yNEGX8yJrNYO0zFuJ7r011nxVuAgg=",
+  "Hash": "NrTde364H7Idjvy6yVImZUeJebo9+fAij27zky7rN8E=",
   "Source": "UniSync",
   "BasePath": "_content/UniSync",
   "Mode": "Default",
@@ -1359,6 +1359,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\images\\news\\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg",
+      "SourceId": "UniSync",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\",
+      "BasePath": "_content/UniSync",
+      "RelativePath": "images/news/91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1)#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0wvvsubpn6",
+      "Integrity": "MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\news\\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg"
     },
     {
       "Identity": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\js\\site.js",
@@ -4961,6 +4982,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        }
+      ]
+    },
+    {
+      "Route": "images/news/91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).0wvvsubpn6.jpg",
+      "AssetFile": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\images\\news\\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 13:17:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0wvvsubpn6"
+        },
+        {
+          "Name": "label",
+          "Value": "images/news/91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU="
+        }
+      ]
+    },
+    {
+      "Route": "images/news/91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg",
+      "AssetFile": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\images\\news\\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 13:17:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU="
         }
       ]
     },

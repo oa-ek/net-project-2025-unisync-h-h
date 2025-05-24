@@ -46,8 +46,7 @@
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "ViewState": "AgIAAD4AAAAAAAAAAAAqwEsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-21T20:41:14.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T20:41:14.111Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "ViewState": "AgIAADMAAAAAAAAAAAAqwD0AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-21T17:57:27.76Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T17:57:27.76Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml.cs",
               "ViewState": "AgIAAPMAAAAAAAAAAAAAAPMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T19:22:46.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T19:22:46.156Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "UniSync\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
               "ViewState": "AgIAABkAAAAAAAAAAAAqwDIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-21T19:22:45.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T19:22:45.703Z"
             }
           ]
         }

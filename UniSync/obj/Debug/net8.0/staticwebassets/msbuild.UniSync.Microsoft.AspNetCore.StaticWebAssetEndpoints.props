@@ -24,6 +24,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"5430"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Apr 2025 22:21:28 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UniSync/images/news/91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).0wvvsubpn6.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\news\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"0wvvsubpn6"},{"Name":"integrity","Value":"sha256-MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU="},{"Name":"label","Value":"_content/UniSync/images/news/91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"60863"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 13:17:06 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UniSync/images/news/91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\news\91dfd075-7aab-48c5-8393-954951b66369_bc212e488168a314370b4e3ea3798383 (1).jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"60863"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022MHesSmjlhNknNiomxh7/gN/QTxvaP2K9MaP2SXcDnNU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 13:17:06 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/UniSync/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
