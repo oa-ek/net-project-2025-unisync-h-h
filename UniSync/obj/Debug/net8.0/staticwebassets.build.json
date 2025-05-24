@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wZlkwx477EcLrT8gzHfnWb+LBR63BZP8cfPQ1DknQ5o=",
+  "Hash": "9kWGJCyRp9j4M2yNEGX8yJrNYO0zFuJ7r011nxVuAgg=",
   "Source": "UniSync",
   "BasePath": "_content/UniSync",
   "Mode": "Default",
@@ -1359,27 +1359,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\images\\news\\397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035.png",
-      "SourceId": "UniSync",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\",
-      "BasePath": "_content/UniSync",
-      "RelativePath": "images/news/397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "a7ow87qr4n",
-      "Integrity": "hiYHJeiltuBuhhQCsij+2G41V6QCFPVVxXfN27m+oBo=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\news\\397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035.png"
     },
     {
       "Identity": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\js\\site.js",
@@ -4982,88 +4961,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
-        }
-      ]
-    },
-    {
-      "Route": "images/news/397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035.a7ow87qr4n.png",
-      "AssetFile": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\images\\news\\397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "98388"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hiYHJeiltuBuhhQCsij+2G41V6QCFPVVxXfN27m+oBo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 19:18:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "a7ow87qr4n"
-        },
-        {
-          "Name": "label",
-          "Value": "images/news/397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-hiYHJeiltuBuhhQCsij+2G41V6QCFPVVxXfN27m+oBo="
-        }
-      ]
-    },
-    {
-      "Route": "images/news/397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035.png",
-      "AssetFile": "D:\\Visual Studio\\Project\\UniSync 2.0\\net-project-2025-unisync-h-h\\UniSync\\wwwroot\\images\\news\\397ff158-002c-46d5-9e9d-99247fa4f35e_Screenshot 2025-05-08 011035.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "98388"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hiYHJeiltuBuhhQCsij+2G41V6QCFPVVxXfN27m+oBo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 19:18:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-hiYHJeiltuBuhhQCsij+2G41V6QCFPVVxXfN27m+oBo="
         }
       ]
     },
@@ -9846,7 +9743,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 16:44:51 GMT"
+          "Value": "Sat, 24 May 2025 12:52:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9883,7 +9780,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 16:44:51 GMT"
+          "Value": "Sat, 24 May 2025 12:52:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9928,7 +9825,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 16:44:51 GMT"
+          "Value": "Sat, 24 May 2025 12:52:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9973,7 +9870,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 16:44:51 GMT"
+          "Value": "Sat, 24 May 2025 12:52:42 GMT"
         },
         {
           "Name": "Cache-Control",

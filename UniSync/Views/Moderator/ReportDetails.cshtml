@@ -1,0 +1,205 @@
+﻿@using UniSync.Models.Entity
+@model UniSync.Models.Entity.ContentReport
+
+@{
+    ViewData["Title"] = "Деталі звіту";
+}
+
+<div class="container mt-4">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Moderator" asp-action="Index">Модерація</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Деталі звіту #@Model.Id</li>
+        </ol>
+    </nav>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="bi bi-flag me-2"></i>Звіт #@Model.Id
+                    @switch (Model.Status)
+                    {
+                        case ReportStatus.Pending:
+                            <span class="badge bg-warning ms-2">Очікує розгляду</span>
+                            break;
+                        case ReportStatus.Confirmed:
+                            <span class="badge bg-danger ms-2">Порушення підтверджено</span>
+                            break;
+                        case ReportStatus.Rejected:
+                            <span class="badge bg-success ms-2">Порушення не підтверджено</span>
+                            break;
+                        case ReportStatus.Resolved:
+                            <span class="badge bg-primary ms-2">Вирішено</span>
+                            break;
+                    }
+                </h5>
+                <div>
+                    @if (Model.Status == ReportStatus.Pending)
+                    {
+                        <a asp-action="ProcessReport" asp-route-id="@Model.Id" class="btn btn-success">
+                            <i class="bi bi-check2 me-2"></i>Обробити звіт
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Інформація про звіт</h6>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4">Тип контенту</dt>
+                                <dd class="col-sm-8">
+                                    @switch (Model.ContentType)
+                                    {
+                                        case ContentType.News:
+                                            <span class="badge bg-primary">Новина</span>
+                                            break;
+                                        case ContentType.Comment:
+                                            <span class="badge bg-info">Коментар</span>
+                                            break;
+                                        case ContentType.UserProfile:
+                                            <span class="badge bg-warning">Профіль</span>
+                                            break;
+                                        default:
+                                            <span class="badge bg-secondary">Інше</span>
+                                            break;
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">ID контенту</dt>
+                                <dd class="col-sm-8">@Model.ContentId</dd>
+
+                                <dt class="col-sm-4">Причина</dt>
+                                <dd class="col-sm-8">
+                                    @switch (Model.Reason)
+                                    {
+                                        case ReportReason.Spam:
+                                            <span class="badge bg-warning">Спам</span>
+                                            break;
+                                        case ReportReason.Offensive:
+                                            <span class="badge bg-danger">Образливий вміст</span>
+                                            break;
+                                        case ReportReason.Misinformation:
+                                            <span class="badge bg-info">Недостовірна інформація</span>
+                                            break;
+                                        case ReportReason.RuleViolation:
+                                            <span class="badge bg-dark">Порушення правил</span>
+                                            break;
+                                        case ReportReason.Other:
+                                            <span class="badge bg-secondary">Інше</span>
+                                            break;
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">Дата створення</dt>
+                                <dd class="col-sm-8">@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+
+                                <dt class="col-sm-4">Відправник</dt>
+                                <dd class="col-sm-8">@Model.Reporter?.UserName</dd>
+
+                                @if (Model.Status != ReportStatus.Pending)
+                                {
+                                    <dt class="col-sm-4">Дата обробки</dt>
+                                    <dd class="col-sm-8">@Model.ResolvedAt?.ToString("dd.MM.yyyy HH:mm")</dd>
+
+                                    <dt class="col-sm-4">Модератор</dt>
+                                    <dd class="col-sm-8">@Model.Moderator?.UserName</dd>
+                                }
+                            </dl>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">Додатковий опис від користувача</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">@Model.Description</p>
+                            </div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.ModeratorComment))
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">Коментар модератора</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">@Model.ModeratorComment</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Контент, на який надійшла скарга</h6>
+                        </div>
+                        <div class="card-body">
+                            @switch (Model.ContentType)
+                            {
+                                case ContentType.News:
+                                    if (Model.ReportedNews != null)
+                                    {
+                                        <div class="mb-3">
+                                            <h5>@Model.ReportedNews.Title</h5>
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <span class="badge bg-primary">@Model.ReportedNews.Category</span>
+                                                <small class="text-muted">@Model.ReportedNews.PublishedDate.ToString("dd.MM.yyyy")</small>
+                                            </div>
+                                            @if (!string.IsNullOrEmpty(Model.ReportedNews.ImageUrl))
+                                            {
+                                                <img src="@Model.ReportedNews.ImageUrl" alt="@Model.ReportedNews.Title" class="img-fluid rounded mb-3" style="max-height: 200px;">
+                                            }
+                                            <p>@Model.ReportedNews.Summary</p>
+                                            <a asp-controller="News" asp-action="Details" asp-route-id="@Model.ReportedNews.Id" class="btn btn-sm btn-outline-primary" target="_blank">
+                                                <i class="bi bi-box-arrow-up-right me-1"></i>Переглянути новину
+                                            </a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-warning">
+                                            <i class="bi bi-exclamation-triangle me-2"></i>Новину не знайдено. Можливо, її вже видалено.
+                                        </div>
+                                    }
+                                    break;
+                                // Додайте інші типи контенту за необхідності
+                                default:
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle me-2"></i>Деталі контенту недоступні.
+                                    </div>
+                                    break;
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-light">
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Назад до списку
+                </a>
+                @if (Model.Status == ReportStatus.Pending)
+                {
+                    <div>
+                        <a asp-action="ProcessReport" asp-route-id="@Model.Id" class="btn btn-success">
+                            <i class="bi bi-check2 me-2"></i>Обробити звіт
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

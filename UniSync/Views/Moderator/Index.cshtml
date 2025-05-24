@@ -1,0 +1,133 @@
+﻿@using UniSync.Models.Entity
+@model IEnumerable<UniSync.Models.Entity.ContentReport>
+
+@{
+    ViewData["Title"] = "Модерація контенту";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="bi bi-shield-check me-2"></i>Модерація контенту</h1>
+        <div>
+            <a asp-action="Dashboard" class="btn btn-outline-primary me-2">
+                <i class="bi bi-speedometer2 me-2"></i>Панель модератора
+            </a>
+            <a asp-action="AllReports" class="btn btn-outline-secondary">
+                <i class="bi bi-list-ul me-2"></i>Усі звіти
+            </a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="bi bi-exclamation-circle me-2"></i>Очікуючі звіти
+                    <span class="badge bg-danger ms-2">@Model.Count()</span>
+                </h5>
+                <div class="input-group" style="max-width: 300px;">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Пошук...">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-success m-3">
+                    <i class="bi bi-check-circle me-2"></i>Немає очікуючих звітів. Усі звіти оброблено!
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover" id="reportsTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Тип контенту</th>
+                                <th>Причина</th>
+                                <th>Дата створення</th>
+                                <th>Відправник</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>
+                                        @switch (item.ContentType)
+                                        {
+                                            case ContentType.News:
+                                                <span class="badge bg-primary">Новина</span>
+                                                break;
+                                            case ContentType.Comment:
+                                                <span class="badge bg-info">Коментар</span>
+                                                break;
+                                            case ContentType.UserProfile:
+                                                <span class="badge bg-warning">Профіль</span>
+                                                break;
+                                            default:
+                                                <span class="badge bg-secondary">Інше</span>
+                                                break;
+                                        }
+                                    </td>
+                                    <td>
+                                        @switch (item.Reason)
+                                        {
+                                            case ReportReason.Spam:
+                                                <span class="badge bg-warning">Спам</span>
+                                                break;
+                                            case ReportReason.Offensive:
+                                                <span class="badge bg-danger">Образливий вміст</span>
+                                                break;
+                                            case ReportReason.Misinformation:
+                                                <span class="badge bg-info">Недостовірна інформація</span>
+                                                break;
+                                            case ReportReason.RuleViolation:
+                                                <span class="badge bg-dark">Порушення правил</span>
+                                                break;
+                                            case ReportReason.Other:
+                                                <span class="badge bg-secondary">Інше</span>
+                                                break;
+                                        }
+                                    </td>
+                                    <td>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                                    <td>@item.Reporter?.UserName</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a asp-action="ReportDetails" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary" title="Деталі">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                            <a asp-action="ProcessReport" asp-route-id="@item.Id" class="btn btn-sm btn-outline-success" title="Обробити">
+                                                <i class="bi bi-check2"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Пошук звітів
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#reportsTable tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

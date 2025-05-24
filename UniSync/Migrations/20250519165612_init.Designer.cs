@@ -12,8 +12,8 @@ using UniSync.Data;
 namespace UniSync.Migrations
 {
     [DbContext(typeof(UniSyncContext))]
-    [Migration("20250514172357_initnewnews")]
-    partial class initnewnews
+    [Migration("20250519165612_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -361,6 +361,60 @@ namespace UniSync.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("UniSync.Models.Entity.ContentReport", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ContentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ContentType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("ModeratorComment")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("ModeratorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Reason")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReporterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("ResolvedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModeratorId");
+
+                    b.HasIndex("ReporterId");
+
+                    b.HasIndex("ContentType", "ContentId");
+
+                    b.ToTable("ContentReports");
+                });
+
             modelBuilder.Entity("UniSync.Models.Entity.News", b =>
                 {
                     b.Property<int>("Id")
@@ -690,6 +744,24 @@ namespace UniSync.Migrations
                     b.Navigation("Article");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("UniSync.Models.Entity.ContentReport", b =>
+                {
+                    b.HasOne("UniSync.Areas.Identity.Data.UniSyncUser", "Moderator")
+                        .WithMany()
+                        .HasForeignKey("ModeratorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("UniSync.Areas.Identity.Data.UniSyncUser", "Reporter")
+                        .WithMany()
+                        .HasForeignKey("ReporterId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Moderator");
+
+                    b.Navigation("Reporter");
                 });
 
             modelBuilder.Entity("UniSync.Models.Entity.News", b =>

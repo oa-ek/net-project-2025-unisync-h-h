@@ -1,0 +1,139 @@
+﻿@using UniSync.Models.Entity
+@model UniSync.ViewModels.ContentReportViewModel
+@{
+    ViewData["Title"] = "Повідомити про порушення";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h4 class="mb-0"><i class="bi bi-flag me-2"></i>Повідомити про порушення</h4>
+                </div>
+                <div class="card-body">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    }
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                    }
+
+                    <form asp-controller="Report" asp-action="Create" method="post" id="reportForm">
+                        <div class="mb-3">
+                            <label asp-for="ContentType" class="form-label fw-bold">Тип контенту</label>
+                            <select asp-for="ContentType" class="form-select" id="contentType" asp-items="Html.GetEnumSelectList<ContentType>()" onchange="updateContent()">
+                                <option value="" disabled selected>Оберіть тип...</option>
+                            </select>
+                            <span asp-validation-for="ContentType" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ContentId" class="form-label fw-bold">Контент</label>
+                            <select asp-for="ContentId" class="form-select" id="contentId">
+                                <option value="" disabled selected>Оберіть контент...</option>
+                            </select>
+                            <span asp-validation-for="ContentId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Reason" class="form-label fw-bold">Причина</label>
+                            <select asp-for="Reason" class="form-select" asp-items="Html.GetEnumSelectList<ReportReason>()">
+                                <option value="" disabled selected>Оберіть причину...</option>
+                            </select>
+                            <span asp-validation-for="Reason" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-bold">Додатковий опис</label>
+                            <textarea asp-for="Description" class="form-control" rows="4" placeholder="Опишіть детальніше, що саме порушує правила..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                            <div class="form-text">Обов’язкове поле, до 500 символів.</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Скасувати
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-flag me-2"></i>Надіслати звіт
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-light">
+                    <div class="small text-muted">
+                        <i class="bi bi-shield-check me-1"></i>Ваш звіт буде розглянуто модераторами.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script>
+        function updateContent() {
+            var contentType = document.getElementById("contentType").value;
+            var contentIdSelect = document.getElementById("contentId");
+            contentIdSelect.innerHTML = '<option value="" disabled selected>Оберіть контент...</option>';
+
+            if (contentType === "@((int)ContentType.News)") {
+        @if (ViewBag.News != null)
+        {
+            foreach (var news in ViewBag.News)
+            {
+                <text>
+                                    contentIdSelect.innerHTML += '<option value="@news.Id">@news.Title</option>';
+                </text>
+            }
+        }
+            } else if (contentType === "@((int)ContentType.Comment)") {
+        @if (ViewBag.Comments != null)
+        {
+            foreach (var comment in ViewBag.Comments)
+            {
+                <text>
+                                    contentIdSelect.innerHTML += '<option value="@comment.Id">@(comment.Text.Length > 50 ? comment.Text.Substring(0, 50) + "..." : comment.Text)</option>';
+                </text>
+            }
+        }
+            } else if (contentType === "@((int)ContentType.UserProfile)") {
+        @if (ViewBag.Users != null)
+        {
+            foreach (var user in ViewBag.Users)
+            {
+                <text>
+                                    contentIdSelect.innerHTML += '<option value="@user.Id">@user.UserName</option>';
+                </text>
+            }
+        }
+            }
+        }
+
+        $(document).ready(function () {
+            $("#reportForm").validate({
+                rules: {
+                    ContentType: { required: true },
+                    ContentId: { required: true },
+                    Reason: { required: true },
+                    Description: { required: true, maxlength: 500 }
+                },
+                messages: {
+                    ContentType: "Оберіть тип контенту.",
+                    ContentId: "Оберіть контент.",
+                    Reason: "Оберіть причину.",
+                    Description: {
+                        required: "Вкажіть опис скарги.",
+                        maxlength: "Опис не може перевищувати 500 символів."
+                    }
+                }
+            });
+        });
+    </script>
+}

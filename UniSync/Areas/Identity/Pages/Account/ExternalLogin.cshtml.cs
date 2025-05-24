@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Text;
@@ -80,9 +78,17 @@ namespace UniSync.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Поле 'Електронна пошта' є обов'язковим.")] // Додано повідомлення про помилку
+            [EmailAddress(ErrorMessage = "Невірний формат електронної пошти.")] // Додано повідомлення про помилку
             public string Email { get; set; }
+
+            [Required(ErrorMessage = "Поле 'Ім'я' є обов'язковим.")] // ДОДАНО: Валідація для імені
+            [Display(Name = "Ім'я")] // ДОДАНО: Відображуване ім'я для поля
+            public string FirstName { get; set; } // ДОДАНО: Властивість для імені
+
+            [Required(ErrorMessage = "Поле 'Прізвище' є обов'язковим.")] // ДОДАНО: Валідація для прізвища
+            [Display(Name = "Прізвище")] // ДОДАНО: Відображуване ім'я для поля
+            public string LastName { get; set; } // ДОДАНО: Властивість для прізвища
         }
 
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -100,13 +106,13 @@ namespace UniSync.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (remoteError != null)
             {
-                ErrorMessage = $"Error from external provider: {remoteError}";
+                ErrorMessage = $"Помилка від зовнішнього провайдера: {remoteError}"; // Переклад
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information.";
+                ErrorMessage = "Помилка завантаження інформації про зовнішній вхід."; // Переклад
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -126,13 +132,19 @@ namespace UniSync.Areas.Identity.Pages.Account
                 // If the user does not have an account, then ask the user to create an account.
                 ReturnUrl = returnUrl;
                 ProviderDisplayName = info.ProviderDisplayName;
-                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+
+                // ДОДАНО: Спроба отримати ім'я та прізвище з клеймів Google
+                string email = info.Principal.FindFirstValue(ClaimTypes.Email);
+                string firstName = info.Principal.FindFirstValue(ClaimTypes.GivenName); // ClaimTypes.GivenName для імені
+                string lastName = info.Principal.FindFirstValue(ClaimTypes.Surname);   // ClaimTypes.Surname для прізвища
+
+                Input = new InputModel
                 {
-                    Input = new InputModel
-                    {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
-                    };
-                }
+                    Email = email,
+                    FirstName = firstName, // ДОДАНО: Передача імені з клеймів
+                    LastName = lastName    // ДОДАНО: Передача прізвища з клеймів
+                };
+
                 return Page();
             }
         }
@@ -144,7 +156,7 @@ namespace UniSync.Areas.Identity.Pages.Account
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information during confirmation.";
+                ErrorMessage = "Помилка завантаження інформації про зовнішній вхід під час підтвердження."; // Переклад
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -152,8 +164,17 @@ namespace UniSync.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                // Встановлення імені користувача та електронної пошти
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
+                // ДОДАНО: Встановлення імені та прізвища для UniSyncUser
+                // Переконайтеся, що ваш UniSyncUser має властивості FirstName та LastName
+                if (user is UniSyncUser uniSyncUser)
+                {
+                    uniSyncUser.FirstName = Input.FirstName;
+                    uniSyncUser.LastName = Input.LastName;
+                }
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -161,7 +182,7 @@ namespace UniSync.Areas.Identity.Pages.Account
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
-                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
+                        _logger.LogInformation("Користувач створив обліковий запис за допомогою провайдера {Name}.", info.LoginProvider); // Переклад
 
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -172,8 +193,8 @@ namespace UniSync.Areas.Identity.Pages.Account
                             values: new { area = "Identity", userId = userId, code = code },
                             protocol: Request.Scheme);
 
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        await _emailSender.SendEmailAsync(Input.Email, "Підтвердіть вашу електронну пошту", // Переклад
+                            $"Будь ласка, підтвердіть ваш обліковий запис, <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>натиснувши тут</a>."); // Переклад
 
                         // If account confirmation is required, we need to show the link if we don't have a real email sender
                         if (_userManager.Options.SignIn.RequireConfirmedAccount)
@@ -204,9 +225,9 @@ namespace UniSync.Areas.Identity.Pages.Account
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(UniSyncUser)}'. " +
-                    $"Ensure that '{nameof(UniSyncUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
-                    $"override the external login page in /Areas/Identity/Pages/Account/ExternalLogin.cshtml");
+                throw new InvalidOperationException($"Неможливо створити екземпляр '{nameof(UniSyncUser)}'. " + // Переклад
+                    $"Переконайтеся, що '{nameof(UniSyncUser)}' не є абстрактним класом і має конструктор без параметрів, або ж " + // Переклад
+                    $"перевизначте сторінку зовнішнього входу в /Areas/Identity/Pages/Account/ExternalLogin.cshtml"); // Переклад
             }
         }
 
@@ -214,7 +235,7 @@ namespace UniSync.Areas.Identity.Pages.Account
         {
             if (!_userManager.SupportsUserEmail)
             {
-                throw new NotSupportedException("The default UI requires a user store with email support.");
+                throw new NotSupportedException("UI за замовчуванням вимагає сховища користувачів з підтримкою електронної пошти."); // Переклад
             }
             return (IUserEmailStore<UniSyncUser>)_userStore;
         }

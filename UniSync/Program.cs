@@ -10,8 +10,18 @@ using UniSync.Data;
 using UniSync.Models;
 using UniSync.Services;
 using UniSync.Repositories;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.AddFilter("Microsoft.AspNetCore.Authentication", LogLevel.Debug);
+builder.Logging.AddFilter("Microsoft.AspNetCore.Identity", LogLevel.Debug);
+builder.Logging.AddFilter("Microsoft.AspNetCore.Authentication.Google", LogLevel.Trace);
+builder.Logging.AddFilter("Microsoft.AspNetCore.Authentication.Cookies", LogLevel.Debug);
+
 
 // Додаємо DbContext
 builder.Services.AddDbContext<UniSyncContext>(options =>
@@ -19,6 +29,8 @@ builder.Services.AddDbContext<UniSyncContext>(options =>
 
 // Додаємо NewsRepository
 builder.Services.AddScoped<INewsRepository, NewsRepository>();
+
+builder.Services.AddScoped<IContentReportRepository, ContentReportRepository>();
 
 // Налаштування Identity
 builder.Services.AddIdentity<UniSyncUser, IdentityRole>(options =>
@@ -39,10 +51,13 @@ builder.Services.AddIdentity<UniSyncUser, IdentityRole>(options =>
 .AddDefaultTokenProviders()
 .AddDefaultUI();
 
+
 // Налаштування автентифікаційного cookie
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    options.Cookie.SameSite = SameSiteMode.Lax;
     options.ExpireTimeSpan = TimeSpan.FromDays(14);
     options.LoginPath = "/Identity/Account/Login";
     options.LogoutPath = "/Identity/Account/Logout";
@@ -71,13 +86,22 @@ builder.Services.ConfigureApplicationCookie(options =>
     };
 });
 
+builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.ExternalScheme, options =>
+{
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.IsEssential = true;
+    options.Cookie.HttpOnly = true;
+});
+
+
 // Додаємо Google аутентифікацію
 var googleClientId = builder.Configuration["Authentication:Google:ClientId"];
 var googleClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 
 if (string.IsNullOrEmpty(googleClientId) || string.IsNullOrEmpty(googleClientSecret))
 {
-    throw new InvalidOperationException("Google ClientId or ClientSecret is not configured.");
+    throw new InvalidOperationException("Google ClientId or ClientSecret is not configured. Please check secrets.json or appsettings.json.");
 }
 
 builder.Services.AddAuthentication()
@@ -85,11 +109,14 @@ builder.Services.AddAuthentication()
     {
         options.ClientId = googleClientId;
         options.ClientSecret = googleClientSecret;
-        options.CallbackPath = "/signin-google";
+        options.SignInScheme = IdentityConstants.ExternalScheme;
+        options.CallbackPath = new PathString("/signin-google");
+        options.SaveTokens = true;
     });
 
 builder.Services.AddTransient<IEmailSender, DummyEmailSender>();
 builder.Services.AddScoped<RoleService>();
+builder.Services.AddScoped<IContentReportRepository, ContentReportRepository>();
 
 // Налаштування авторизації
 builder.Services.AddAuthorization(options =>
@@ -145,8 +172,9 @@ app.MapControllerRoute(
 // Ініціалізація ролей та супер-адміна
 await using (var scope = app.Services.CreateAsyncScope())
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<UniSyncUser>>();
+    var serviceProvider = scope.ServiceProvider;
+    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = serviceProvider.GetRequiredService<UserManager<UniSyncUser>>();
 
     // Створення ролей
     foreach (var role in Roles.AllRoles)
@@ -178,7 +206,7 @@ await using (var scope = app.Services.CreateAsyncScope())
 
 app.Run();
 
-// Допоміжні класи
+// Допоміжні класи (залишаємо як є)
 public class DummyEmailSender : IEmailSender
 {
     public Task SendEmailAsync(string email, string subject, string htmlMessage)

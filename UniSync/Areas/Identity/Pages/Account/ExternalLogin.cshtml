@@ -1,30 +1,48 @@
 ﻿@page
 @model ExternalLoginModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Реєстрація через зовнішній сервіс"; // Більш описовий заголовок
 }
 
-<h1>@ViewData["Title"]</h1>
-<h2 id="external-login-title">Associate your @Model.ProviderDisplayName account.</h2>
-<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+                <h2 id="external-login-title" class="text-center mb-3">Прив'яжіть ваш обліковий запис @Model.ProviderDisplayName.</h2>
+                <hr class="mb-4" />
 
-<p id="external-login-description" class="text-info">
-    You've successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
-    Please enter an email address for this site below and click the Register button to finish
-    logging in.
-</p>
+                <p id="external-login-description" class="text-info text-center mb-4">
+                    Ви успішно авторизувались через <strong>@Model.ProviderDisplayName</strong>.
+                    Будь ласка, заповніть додаткові дані нижче та натисніть кнопку "Зареєструватися", щоб завершити вхід.
+                </p>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="email" placeholder="Please enter your email."/>
-                <label asp-for="Input.Email" class="form-label"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.FirstName" class="form-control" aria-required="true" placeholder="Ваше ім'я" />
+                                <label asp-for="Input.FirstName">Ім'я</label>
+                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.LastName" class="form-control" aria-required="true" placeholder="Ваше прізвище" />
+                                <label asp-for="Input.LastName">Прізвище</label>
+                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Email" class="form-control" autocomplete="email" placeholder="Будь ласка, введіть вашу електронну пошту." aria-required="true" />
+                                <label asp-for="Input.Email" class="form-label">Електронна пошта</label>
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="w-100 btn btn-lg btn-primary mt-3">Зареєструватися</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
+        </div>
     </div>
 </div>
 

@@ -21,6 +21,7 @@ namespace UniSync.Data
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<ContentReport> ContentReports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -105,6 +106,22 @@ namespace UniSync.Data
                 .WithMany(s => s.Users)
                 .HasForeignKey(u => u.SpecialtyId)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<ContentReport>()
+    .HasOne(r => r.Reporter)
+    .WithMany()
+    .HasForeignKey(r => r.ReporterId)
+    .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ContentReport>()
+                .HasOne(r => r.Moderator)
+                .WithMany()
+                .HasForeignKey(r => r.ModeratorId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
+
+            modelBuilder.Entity<ContentReport>()
+                .HasIndex(r => new { r.ContentType, r.ContentId });
         }
     }
 }

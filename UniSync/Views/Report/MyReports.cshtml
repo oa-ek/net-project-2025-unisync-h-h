@@ -1,0 +1,159 @@
+﻿@using System.Security.Claims
+@using UniSync.Models.Entity
+@model IEnumerable<UniSync.Models.Entity.ContentReport>
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Мої скарги";
+    var userId = HttpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0"><i class="bi bi-exclamation-triangle me-2"></i>Мої скарги</h2>
+        <div class="col-auto">
+            <a asp-controller="Report" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-2"></i>Створити репорт
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <form asp-action="Index" method="get" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <select name="status" class="form-select">
+                    <option value="">Всі статуси</option>
+                    <option value="@((int)ReportStatus.Pending)">Очікує</option>
+                    <option value="@((int)ReportStatus.Confirmed)">Підтверджено</option>
+                    <option value="@((int)ReportStatus.Rejected)">Відхилено</option>
+                    <option value="@((int)ReportStatus.Resolved)">Вирішено</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Фільтрувати</button>
+            </div>
+        </div>
+    </form>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>Ви ще не створювали звітів.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Тип контенту</th>
+                        <th>Причина</th>
+                        <th>Статус</th>
+                        <th>Дата</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var report in Model)
+                    {
+                        <tr>
+                            <td>@report.Id</td>
+                            <td>
+                                @switch (report.ContentType)
+                                {
+                                    case ContentType.News:
+                                        <span class="badge bg-primary">Новина</span>
+                                        break;
+                                    case ContentType.Comment:
+                                        <span class="badge bg-info">Коментар</span>
+                                        break;
+                                    case ContentType.UserProfile:
+                                        <span class="badge bg-warning">Профіль</span>
+                                        break;
+                                    default:
+                                        <span class="badge bg-secondary">Інше</span>
+                                        break;
+                                }
+                            </td>
+                            <td>@report.Reason</td>
+                            <td>
+                                @switch (report.Status)
+                                {
+                                    case ReportStatus.Pending:
+                                        <span class="badge bg-warning">Очікує</span>
+                                        break;
+                                    case ReportStatus.Confirmed:
+                                        <span class="badge bg-danger">Підтверджено</span>
+                                        break;
+                                    case ReportStatus.Rejected:
+                                        <span class="badge bg-success">Відхилено</span>
+                                        break;
+                                    case ReportStatus.Resolved:
+                                        <span class="badge bg-primary">Вирішено</span>
+                                        break;
+                                }
+                            </td>
+                            <td>@report.CreatedAt.ToString("g")</td>
+                            <td>
+                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#reportModal-@report.Id">Деталі</button>
+                            </td>
+                        </tr>
+
+                        <div class="modal fade" id="reportModal-@report.Id" tabindex="-1" aria-labelledby="reportModalLabel-@report.Id" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="reportModalLabel-@report.Id">Деталі скарги #@report.Id</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Тип контенту:</strong> @report.ContentType</p>
+                                        <p><strong>ID контенту:</strong> @report.ContentId</p>
+                                        <p><strong>Причина:</strong> @report.Reason</p>
+                                        <p><strong>Опис:</strong> @(report.Description ?? "Немає")</p>
+                                        <p><strong>Статус:</strong> @report.Status</p>
+                                        <p><strong>Дата створення:</strong> @report.CreatedAt.ToString("g")</p>
+                                        <p><strong>Коментар модератора:</strong> @(report.ModeratorComment ?? "Немає")</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').DataTable({
+                order: [[4, 'desc']],
+                columnDefs: [{ orderable: false, targets: 5 }],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Uk.json'
+                }
+            });
+        });
+    </script>
+}

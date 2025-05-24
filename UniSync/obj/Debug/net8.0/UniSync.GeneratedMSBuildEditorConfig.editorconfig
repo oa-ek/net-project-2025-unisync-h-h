@@ -96,6 +96,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Moderator/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZXJhdG9yXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Moderator/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZXJhdG9yXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Moderator/ProcessReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZXJhdG9yXFByb2Nlc3NSZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Moderator/ReportDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZXJhdG9yXFJlcG9ydERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/News/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -142,6 +158,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Projects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Report/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Report/MyReports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XE15UmVwb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Visual Studio/Project/UniSync 2.0/net-project-2025-unisync-h-h/UniSync/Views/Shared/Error.cshtml]

@@ -1,68 +1,41 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace UniSync.Controllers
 {
     public class GoogleAccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public GoogleAccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public GoogleAccountController(
+            SignInManager<IdentityUser> signInManager)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
         }
 
+        /*
         [HttpGet]
-        public IActionResult Login(string returnUrl = "/")
+        public IActionResult ExternalLogin(string provider, string returnUrl = "/")
         {
-            var redirectUrl = Url.Action("ExternalLoginCallback", "GoogleAccount", new { returnUrl }, protocol: Request.Scheme);
-            Console.WriteLine($"Generated redirect_uri: {redirectUrl}");
-            return Challenge(new AuthenticationProperties { RedirectUri = redirectUrl }, GoogleDefaults.AuthenticationScheme);
-        }
+            var redirectUrl = Url.Page(
+                "/Account/ExternalLogin", // Вказуємо на стандартну сторінку Identity UI
+                pageHandler: "Callback",
+                values: new { returnUrl },
+                protocol: "https");
 
-        [HttpGet]
-        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = "/")
-        {
-            var info = await _signInManager.GetExternalLoginInfoAsync();
-            if (info == null)
+            var props = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+
+            // Ця частина була для вирішення конкретних проблем з prompt, але часто не потрібна.
+            if (props.Parameters.ContainsKey("prompt"))
             {
-                return RedirectToPage("/Login");
+                props.Parameters.Remove("prompt");
             }
 
-            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-            var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
-
-            if (user == null)
-            {
-                user = new IdentityUser { UserName = email, Email = email };
-                var result = await _userManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    await _userManager.AddLoginAsync(user, info);
-                }
-                else
-                {
-                    return BadRequest("Не вдалося створити користувача.");
-                }
-            }
-
-            await _signInManager.SignInAsync(user, isPersistent: false);
-            return LocalRedirect(returnUrl);
+            return Challenge(props, provider);
         }
-
-        public IActionResult OnPost(string provider, string returnUrl = null)
-        {
-            var redirectUrl = Url.Page("./ExternalLogin", pageHandler: "Callback", values: new { returnUrl }, protocol: Request.Scheme);
-            Console.WriteLine($"Generated redirect_uri: {redirectUrl}");
-            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
-            return new ChallengeResult(provider, properties);
-        }
+        */
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -70,6 +43,5 @@ namespace UniSync.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
     }
 }

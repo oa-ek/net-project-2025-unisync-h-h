@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UniSync.Migrations
 {
     /// <inheritdoc />
-    public partial class initnewnews : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -235,6 +235,40 @@ namespace UniSync.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ContentReports",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ContentType = table.Column<int>(type: "int", nullable: false),
+                    ContentId = table.Column<int>(type: "int", nullable: false),
+                    Reason = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    ResolvedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModeratorComment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    ReporterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ModeratorId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ContentReports", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ContentReports_AspNetUsers_ModeratorId",
+                        column: x => x.ModeratorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ContentReports_AspNetUsers_ReporterId",
+                        column: x => x.ReporterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -488,6 +522,21 @@ namespace UniSync.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ContentReports_ContentType_ContentId",
+                table: "ContentReports",
+                columns: new[] { "ContentType", "ContentId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ContentReports_ModeratorId",
+                table: "ContentReports",
+                column: "ModeratorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ContentReports_ReporterId",
+                table: "ContentReports",
+                column: "ReporterId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_News_AuthorId",
                 table: "News",
                 column: "AuthorId");
@@ -541,6 +590,9 @@ namespace UniSync.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "ContentReports");
 
             migrationBuilder.DropTable(
                 name: "News");
